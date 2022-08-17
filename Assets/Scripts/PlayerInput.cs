@@ -21,7 +21,6 @@ namespace Move.Inputs{
             if(Input.GetButtonDown(GlobalStringVars.Fire_1))
             {
                 _shooter.Shoot(_horizontalDidection);
-                Debug.Log("Пам");
             }                
             _playerMovement.Move(_horizontalDidection, _isJumpButtonPressed);
         }
