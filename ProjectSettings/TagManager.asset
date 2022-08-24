@@ -9,6 +9,10 @@ TagManager:
   - ZoneFire
   - CasseteHP
   - James
+  - JumpZone
+  - AttackZone
+  - 2JumpZone
+  - Cat1
   layers:
   - Default
   - TransparentFX
