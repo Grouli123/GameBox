@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Damageable
   - EnemyStopper
+  - ZoneFire
+  - CasseteHP
+  - James
   layers:
   - Default
   - TransparentFX

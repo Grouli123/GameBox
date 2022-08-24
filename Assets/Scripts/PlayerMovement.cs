@@ -7,13 +7,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement vars")]   
     [SerializeField] private float _jumpForce;
     [SerializeField] private bool _isGrounded = false;
-    public static float speed = 1;
+    public static float speed = 0.6f;
 
     [Header("Settings")]
     [SerializeField] private Transform _groundColliderTransform;
     [SerializeField] private AnimationCurve _curve;
     [SerializeField] private LayerMask _groundMask;    
-    //[SerializeField] private Animator _animator;
+    [SerializeField] private Animator _animator;
        
     private Rigidbody2D _rb;    
     private AudioSource _jumpSound;
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start() 
     {
         _jumpSound = GetComponent<AudioSource>();
-     //   _animator.GetComponent<Animator>();
+        _animator.GetComponent<Animator>();
     }
     private void Awake()
     {
@@ -64,12 +64,12 @@ public class PlayerMovement : MonoBehaviour
 
         if(Mathf.Abs(direction) > 0.01f)
         {
-            // _animator.SetBool("IsRun", true);
+            _animator.SetBool("IsRun", true);
             HorizontalMovement(direction);
         }
         else
         {
-            // _animator.SetBool("IsRun", false);
+            _animator.SetBool("IsRun", false);
         }
 
         if(_isGrounded == false)

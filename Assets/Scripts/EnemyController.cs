@@ -18,7 +18,10 @@ public class EnemyController : MonoBehaviour
     private float _currentState;
     private float _currentTimeToRevert;
 
-    [SerializeField] private bool _isHeroFound; // если поставить true, то он будет преследовать игрока, если поставить false, то он будет патрулировать от одного тригера к другому и при столкновении с одним из тригеров переключается на false, то есть на патрулирование.
+    [SerializeField] private bool _isHeroFound; // если поставить true, то он будет преследовать игрока,
+                                                // если поставить false, то он будет патрулировать от одного тригера
+                                                // к другому и при столкновении с одним из тригеров переключается на false,
+                                                // то есть на патрулирование.
 
     private void Start()
     {
