@@ -13,6 +13,7 @@ TagManager:
   - AttackZone
   - 2JumpZone
   - Cat1
+  - Tcepellin
   layers:
   - Default
   - TransparentFX

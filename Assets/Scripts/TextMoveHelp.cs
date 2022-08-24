@@ -8,6 +8,8 @@ public class TextMoveHelp : MonoBehaviour
     [Header("Text")]
     [SerializeField] private Text Text;
 
+    [Header("Scripts")]
+    [SerializeField] private Cats cats;
 
     private void Update()
     {
@@ -33,9 +35,22 @@ public class TextMoveHelp : MonoBehaviour
             Text.text = "Space+Space - Двойной прыжок";
         }
 
-        if (collision.gameObject.CompareTag("Cat1"))
+        if (collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == false)
         {
             Text.text = "Вручи 1-го котика бабушке";
+        }
+
+        if(collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == true)
+        {
+            Text.text = "Ой спасибо тебе внучек!";
+            Destroy(collision.gameObject, 3);
+        }
+
+        if (collision.gameObject.CompareTag("Tcepellin"))
+        {
+            cats.TcepellinCat = true;
+            Text.text = "Кажется ты нашел первого котика";
+            Destroy(collision.gameObject, 3);
         }
     }
 }
