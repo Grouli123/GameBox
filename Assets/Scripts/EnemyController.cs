@@ -21,7 +21,6 @@ public class EnemyController : MonoBehaviour
     private bool _isIdle = false;
     private bool _isAngry = false;
     private bool _isBackToAPoint = false;
-    private bool _isShoot = false;
 
     private Vector2 _enemyTarget;
 
