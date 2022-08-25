@@ -82,14 +82,12 @@ public class EnemyController : MonoBehaviour
             _isMovingRight = false;
             
             _flipEnemy.transform.Rotate(0f, 180f, 0f);
-            Debug.Log("1");
         }
         else if (transform.position.x < _pointOfRevert.position.x - _positionOfPatrol)
         {
             _isMovingRight = true;
             
             _flipEnemy.transform.Rotate(0f, 180f, 0f);
-            Debug.Log("2");
         }
 
         if (_isMovingRight)
@@ -100,15 +98,24 @@ public class EnemyController : MonoBehaviour
         else
         {
             transform.position = new Vector2(transform.position.x - _speed * Time.deltaTime, transform.position.y);
-
-
         }
     }
 
     private void Angry()
     {
         transform.position = Vector2.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
-        //transform.Rotate(0f, 180f, 0f);
+
+        if (transform.position.x < _player.position.x)
+        {
+            
+            _isMovingRight = true;
+            
+        }
+        else 
+        {
+            _isMovingRight = false;
+            
+        }
 
         _speed = _currentSpeed * 1.2f;
         CheakIfTimeToFire();
