@@ -43,12 +43,13 @@ public class PlayerMovement : MonoBehaviour
                    
         if(isJumpButtonPressed)
         {
-            // _animator.SetBool("IsJump", true);  
+            _animator.SetBool("IsJump", true);  
             Jump();
         }
         else
         {
-            // _animator.SetBool("IsJump", false);  
+            if(_isGrounded == true)
+                _animator.SetBool("IsJump", false);  
         }
             
         if (!facingRight && direction > 0)
