@@ -105,4 +105,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb.velocity = new Vector2(_curve.Evaluate(direction) * speed,_rb.velocity.y);
     }
+
+    public void OnAnimator(string name, bool active)
+    {
+        _animator.SetBool(name, active);
+    }
 }

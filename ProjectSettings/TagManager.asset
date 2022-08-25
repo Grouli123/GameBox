@@ -19,6 +19,7 @@ TagManager:
   - Pryanic
   - Undefined
   - Cat3
+  - DamageEnemy
   layers:
   - Default
   - TransparentFX
