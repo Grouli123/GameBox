@@ -50,7 +50,14 @@ public class TextMoveHelp : MonoBehaviour
         {
             cats.TcepellinCat = true;
             Text.text = "Кажется ты нашел первого котика";
-            Destroy(collision.gameObject, 3);
+            Destroy(collision.gameObject, 2);
+        }
+
+        if (collision.gameObject.CompareTag("Ofeliya"))
+        {
+            cats.OfeliyaCat = true;
+            Text.text = "Кажется ты нашел второго котика";
+            Destroy(collision.gameObject, 2);
         }
     }
 }
