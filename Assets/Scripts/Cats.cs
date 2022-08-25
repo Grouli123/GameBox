@@ -6,6 +6,7 @@ public class Cats : MonoBehaviour
 {
     private bool _tcepellin = false;
     private bool _ofeliya = false;
+    private bool _pryanic = false;
 
     public bool TcepellinCat
     {
@@ -17,5 +18,11 @@ public class Cats : MonoBehaviour
     {
         get { return _ofeliya; }
         set { _ofeliya = value; }
+    }
+
+    public bool PryanicCat
+    {
+        get { return _pryanic; }
+        set { _pryanic = value; }
     }
 }

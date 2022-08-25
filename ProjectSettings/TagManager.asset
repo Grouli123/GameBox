@@ -15,6 +15,10 @@ TagManager:
   - Cat1
   - Tcepellin
   - Ofeliya
+  - Cat2
+  - Pryanic
+  - Undefined
+  - Cat3
   layers:
   - Default
   - TransparentFX

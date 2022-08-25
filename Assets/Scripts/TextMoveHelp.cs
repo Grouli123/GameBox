@@ -40,10 +40,29 @@ public class TextMoveHelp : MonoBehaviour
             Text.text = "Вручи 1-го котика бабушке";
         }
 
-        if(collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == true)
+        if (collision.gameObject.CompareTag("Cat2") & cats.OfeliyaCat == false)
         {
-            Text.text = "Ой спасибо тебе внучек!";
-            Destroy(collision.gameObject, 3);
+            Text.text = "Вручи 2-го котика бабушке";
+        }
+
+        if (collision.gameObject.CompareTag("Cat3") & cats.PryanicCat == false)
+        {
+            Text.text = "Вручи 3-го котика бабушке";
+        }
+
+        if (collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == true)
+        {
+            Text.text = "Cпасибо тебе внучек!";
+        }
+
+        if(collision.gameObject.CompareTag("Cat2") & cats.OfeliyaCat == true)
+        {
+            Text.text = "Cпасибо тебе внучек!";
+        }
+
+        if (collision.gameObject.CompareTag("Cat3") & cats.PryanicCat == true)
+        {
+            Text.text = "Cпасибо тебе внучек!";
         }
 
         if (collision.gameObject.CompareTag("Tcepellin"))
@@ -59,5 +78,17 @@ public class TextMoveHelp : MonoBehaviour
             Text.text = "Кажется ты нашел второго котика";
             Destroy(collision.gameObject, 2);
         }
+
+        if (collision.gameObject.CompareTag("Pryanic"))
+        {
+            cats.PryanicCat = true;
+            Text.text = "Кажется ты нашел Третьего котика";
+            Destroy(collision.gameObject, 2);
+        }
+    }
+
+    public void Texting(string text)
+    {
+        Text.text = text;
     }
 }
