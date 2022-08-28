@@ -27,7 +27,7 @@ public class HeroDeath : MonoBehaviour
     }
     public void Death()
     {
-        if(playerSettings.Hp < 0)
+        if(playerSettings.Hp < 0 || playerMovement.FallDetector == true)
         {
             playerMovement.Speed = 0f;
             deathPanel.SetActive(true);
@@ -42,7 +42,7 @@ public class HeroDeath : MonoBehaviour
 
     public void ClickOnContinue()
     {
-        if(playerSettings.Cassete <=0)
+        if(playerSettings.Cassete <= 0)
         {
             clickImage.sprite = Click[0];
             ClickedButton.interactable = false;

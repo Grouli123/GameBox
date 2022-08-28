@@ -21,7 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource _jumpSound;
     private bool facingRight;
     private bool canDoubleJump;
-    public float jumpOffset; 
+    public float jumpOffset;
+    private bool fallDetector = false;
 
     [SerializeField] private PlayerSettings _playerSettings;
 
@@ -131,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag == "FallDetector")
         {
-            transform.position = respawnPoint;
+            fallDetector = true;
         }
         else if (collision.tag == "Checkpoint")
         {
@@ -139,6 +140,11 @@ public class PlayerMovement : MonoBehaviour
         } 
     }
 
+    public bool FallDetector
+    {
+        get { return fallDetector; }
+        set { fallDetector = value; }
+    }
     public float Speed
     {
         get { return speed; }
