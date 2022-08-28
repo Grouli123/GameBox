@@ -13,7 +13,7 @@ public class CoinCollectScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.gameObject.CompareTag("Damageable"))
+        if (other.gameObject.CompareTag("Player"))
         {
             _coinCounter.ApplyChange(1);
             // _eatSound.Play();

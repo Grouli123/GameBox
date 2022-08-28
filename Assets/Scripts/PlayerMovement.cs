@@ -21,10 +21,19 @@ public class PlayerMovement : MonoBehaviour
     private bool canDoubleJump;
     public float jumpOffset; 
 
+    [SerializeField] private PlayerSettings _playerSettings;
+
+
+    private Vector3 respawnPoint;
+
     private void Start() 
     {
         _jumpSound = GetComponent<AudioSource>();
         _animator.GetComponent<Animator>();
+        
+        _playerSettings.GetComponent<PlayerSettings>();
+
+        respawnPoint = transform.position;
     }
     private void Awake()
     {
@@ -36,6 +45,15 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 _overlapCirrcleTransform = _groundColliderTransform.position;
         _isGrounded = Physics2D.OverlapCircle(_overlapCirrcleTransform, jumpOffset, _groundMask);
+    }
+
+    private void Update() 
+    {
+        if (_playerSettings.Hp < 0)
+        {
+            transform.position = respawnPoint;
+            _playerSettings.Hp = 100;
+        }
     }
 
     public void Move(float direction, bool isJumpButtonPressed)
@@ -109,5 +127,20 @@ public class PlayerMovement : MonoBehaviour
     public void OnAnimator(string name, bool active)
     {
         _animator.SetBool(name, active);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) 
+    {
+        if (collision.tag == "FallDetector")
+        {
+            transform.position = respawnPoint;
+        }
+        else if (collision.tag == "Checkpoint")
+        {
+            respawnPoint = transform.position;
+        }
+        
+
+        
     }
 }

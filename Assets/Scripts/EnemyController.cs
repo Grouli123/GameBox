@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float _stoppingDistance;
     [SerializeField] private float _speed;
 
-    [SerializeField] private int _positionOfPatrol;
+    [SerializeField] private float _positionOfPatrol;
 
     private bool _isMovingRight = true;
     private bool _isIdle = false;
@@ -112,16 +112,15 @@ public class EnemyController : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
 
-        if (transform.position.x < _player.position.x)
+         if (transform.position.x > _player.transform.position.x)
         {
             
-            _isMovingRight = true;
             
+            _flipEnemy.transform.Rotate(0f, 180f, 0f);
         }
-        else 
+        else if (transform.position.x < _player.transform.position.x)
         {
-            _isMovingRight = false;
-            
+            _flipEnemy.transform.Rotate(0f, 180f, 0f);
         }
 
         _speed = _currentSpeed * 1.2f;

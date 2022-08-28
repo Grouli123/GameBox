@@ -6,83 +6,104 @@ using UnityEngine.UI;
 public class TextMoveHelp : MonoBehaviour
 {
     [Header("Text")]
+    [SerializeField] private GameObject _textBackground;
     [SerializeField] private Text Text;
 
     [Header("Scripts")]
     [SerializeField] private Cats cats;
 
+    private void Start() 
+    {
+        _textBackground.GetComponent<GameObject>();
+        FulText();  
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
-            Text.text = " ";
+            Text.text = " ";            
+            _textBackground.SetActive(false);    
         }
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("JumpZone"))
         {
-            Text.text = "Space - Прыжок";
+            Text.text = "Space - РџСЂС‹Р¶РѕРє";
+            FulText();
+            
         }
 
         if (collision.gameObject.CompareTag("AttackZone"))
         {
-            Text.text = "ЛКМ - Стрелять";
+            Text.text = "Р›РљРњ - РЎС‚СЂРµР»СЏС‚СЊ";
+            FulText();
         }
 
         if (collision.gameObject.CompareTag("2JumpZone"))
         {
-            Text.text = "Space+Space - Двойной прыжок";
+            Text.text = "Space+Space - Р”РІРѕР№РЅРѕР№ РїСЂС‹Р¶РѕРє";
+            FulText();
         }
 
         if (collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == false)
         {
-            Text.text = "Вручи 1-го котика бабушке";
+            Text.text = "Р’СЂСѓС‡Рё 1-РіРѕ РєРѕС‚РёРєР° Р±Р°Р±СѓС€РєРµ";
+            FulText();
         }
 
         if (collision.gameObject.CompareTag("Cat2") & cats.OfeliyaCat == false)
         {
-            Text.text = "Вручи 2-го котика бабушке";
+            Text.text = "Р’СЂСѓС‡Рё 2-РіРѕ РєРѕС‚РёРєР° Р±Р°Р±СѓС€РєРµ";
+            FulText();
         }
 
         if (collision.gameObject.CompareTag("Cat3") & cats.PryanicCat == false)
         {
-            Text.text = "Вручи 3-го котика бабушке";
+            Text.text = "Р’СЂСѓС‡Рё 3-РіРѕ РєРѕС‚РёРєР° Р±Р°Р±СѓС€РєРµ";
+            FulText();
         }
 
         if (collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == true)
         {
-            Text.text = "Cпасибо тебе внучек!";
+            Text.text = "РЎРїР°СЃРёР±Рѕ С‚РµР±Рµ, РІРЅСѓС‡РµРє!";
+            FulText();
         }
 
         if(collision.gameObject.CompareTag("Cat2") & cats.OfeliyaCat == true)
         {
-            Text.text = "Cпасибо тебе внучек!";
+            Text.text = "РЎРїР°СЃРёР±Рѕ С‚РµР±Рµ, РІРЅСѓС‡РµРє!";
+            FulText();
         }
 
         if (collision.gameObject.CompareTag("Cat3") & cats.PryanicCat == true)
         {
-            Text.text = "Cпасибо тебе внучек!";
+            Text.text = "РЎРїР°СЃРёР±Рѕ С‚РµР±Рµ, РІРЅСѓС‡РµРє!";
+            FulText();
         }
 
         if (collision.gameObject.CompareTag("Tcepellin"))
         {
             cats.TcepellinCat = true;
-            Text.text = "Кажется ты нашел первого котика";
+            Text.text = "РљР°Р¶РµС‚СЃСЏ, С‚С‹ РЅР°С€РµР» РїРµСЂРІРѕРіРѕ РєРѕС‚РёРєР°";
+            FulText();
             Destroy(collision.gameObject, 2);
         }
 
         if (collision.gameObject.CompareTag("Ofeliya"))
         {
             cats.OfeliyaCat = true;
-            Text.text = "Кажется ты нашел второго котика";
+            Text.text = "РљР°Р¶РµС‚СЃСЏ, С‚С‹ РЅР°С€РµР» РІС‚РѕСЂРѕРіРѕ РєРѕС‚РёРєР°";
+            FulText();
             Destroy(collision.gameObject, 2);
         }
 
         if (collision.gameObject.CompareTag("Pryanic"))
         {
             cats.PryanicCat = true;
-            Text.text = "Кажется ты нашел Третьего котика";
+            Text.text = "РљР°Р¶РµС‚СЃСЏ, С‚С‹ РЅР°С€РµР» С‚СЂРµС‚СЊРµРіРѕ РєРѕС‚РёРєР°";
+            FulText();
             Destroy(collision.gameObject, 2);
         }
     }
@@ -91,4 +112,10 @@ public class TextMoveHelp : MonoBehaviour
     {
         Text.text = text;
     }
+
+    private void FulText()
+    {
+        _textBackground.SetActive(true);
+    }
+
 }
