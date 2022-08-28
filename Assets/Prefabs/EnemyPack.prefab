@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3056675607112295092}
   - component: {fileID: 3056675607112295093}
   - component: {fileID: 3056675607112295090}
+  - component: {fileID: 6411571820992539998}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -137,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2757e0b9743c26844804cddf81c260a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 0
   _bullet: {fileID: 9220966992173392303, guid: fcf397a6ea7b2e14ca1762c270c97d21, type: 3}
   _firePoint: {fileID: 3056675608858175743}
   _flipEnemy: {fileID: 3056675607112295094}
@@ -146,6 +148,19 @@ MonoBehaviour:
   _speed: 0
   _positionOfPatrol: 4
   _currentSpeed: 1
+--- !u!114 &6411571820992539998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3056675607112295091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917f78e434d92d24a87f76ff2c8be4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyController: {fileID: 3056675607112295090}
 --- !u!1 &3056675608163044464
 GameObject:
   m_ObjectHideFlags: 0

@@ -49,10 +49,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update() 
     {
-        if (_playerSettings.Hp < 0)
+        if (_playerSettings.Hp < 0 & _playerSettings.Cassete > 0)
         {
             transform.position = respawnPoint;
-            _playerSettings.Hp = 100;
+            _playerSettings.Hp = 10;
+            _playerSettings.Cassete -= 1;
         }
     }
 

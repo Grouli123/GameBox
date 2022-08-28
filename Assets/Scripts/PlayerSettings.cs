@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSettings : MonoBehaviour
 {
     [SerializeField] private float lives;
     [SerializeField] private float cassete;
-    [SerializeField] private float hairGel;
-    [SerializeField] private float james;
+    [SerializeField] private Text textCassete;
+
+    private void Update()
+    {
+        textCassete.text = cassete.ToString();
+    }
     public float Hp
     {
         get { return lives; }
@@ -18,17 +23,5 @@ public class PlayerSettings : MonoBehaviour
     {
         get { return cassete; }
         set { cassete = value; }
-    }
-
-    public float HairGel
-    {
-        get { return hairGel; }
-        set { hairGel = value; }
-    }
-
-    public float James
-    {
-        get { return james; }
-        set { james = value; }
     }
 }
