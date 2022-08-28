@@ -14,7 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AnimationCurve _curve;
     [SerializeField] private LayerMask _groundMask;    
     [SerializeField] private Animator _animator;
-       
+
+    [Header("Scripts")]
+    [SerializeField] private HeroDeath heroDeath;
     private Rigidbody2D _rb;    
     private AudioSource _jumpSound;
     private bool facingRight;
@@ -49,12 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update() 
     {
-        if (_playerSettings.Hp < 0 & _playerSettings.Cassete > 0)
-        {
-            transform.position = respawnPoint;
-            _playerSettings.Hp = 10;
-            _playerSettings.Cassete -= 1;
-        }
+
     }
 
     public void Move(float direction, bool isJumpButtonPressed)
@@ -139,9 +136,23 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.tag == "Checkpoint")
         {
             respawnPoint = transform.position;
-        }
-        
+        } 
+    }
 
-        
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
+    public void OnClickContinueOnDeath()
+    {
+        if (_playerSettings.Hp < 0 & _playerSettings.Cassete > 0)
+        {
+            heroDeath.PanelDeath(false);
+            transform.position = respawnPoint;
+            _playerSettings.Hp = 10;
+            _playerSettings.Cassete -= 1;
+        }
     }
 }

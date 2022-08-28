@@ -51,10 +51,11 @@ public class ButtonForGame : MonoBehaviour
 
     public void OnClickFreeze()
     {
-        if(Input.GetKeyDown(KeyCode.B))
+        if(Input.GetKeyDown(KeyCode.B) & playerSettings.HairGel == 3)
         {
             _timeFreeze = 5;
             _freeze = true;
+            playerSettings.HairGel = 0;
         }
 
         if (_timeFreeze < 0)
@@ -67,5 +68,11 @@ public class ButtonForGame : MonoBehaviour
     {
         get { return _freeze; }
         set { _freeze = value; }
+    }
+
+    public float Lives
+    {
+        get { return playerSettings.Hp; }
+        set { playerSettings.Hp = value; }
     }
 }

@@ -31,7 +31,12 @@ public class DamageForHero : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<EnemyDamage>())
         {
-            playerSettings.Hp -= 0.5f;
+            playerSettings.Hp -= 1f;
+            PlayerMovement.OnAnimator("IsDamage", true);
+        }
+        else
+        {
+            PlayerMovement.OnAnimator("IsDamage", false);
         }
     }
 

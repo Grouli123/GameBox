@@ -7,6 +7,7 @@ public class DamageForEnemy : MonoBehaviour
     [SerializeField] private float lives;
     [SerializeField] private EnemyController enemyController;
     [SerializeField] private ButtonForGame buttonForGame;
+    
 
     private void Update()
     {
@@ -32,6 +33,11 @@ public class DamageForEnemy : MonoBehaviour
         else
         {
             enemyController.enabled = true;
+        }
+
+        if(buttonForGame.Lives < 0)
+        {
+            enemyController.enabled = false;
         }
     }
 }

@@ -11,6 +11,7 @@ public class TextMoveHelp : MonoBehaviour
 
     [Header("Scripts")]
     [SerializeField] private Cats cats;
+    [SerializeField] private PlayerSettings playerSettings;
 
     private void Start() 
     {
@@ -24,6 +25,12 @@ public class TextMoveHelp : MonoBehaviour
         {
             Text.text = " ";            
             _textBackground.SetActive(false);    
+        }
+
+        if(Input.GetKeyDown(KeyCode.B) & playerSettings.HairGel < 3)
+        {
+            Text.text = "Недостаточно геля";
+            _textBackground.SetActive(true);
         }
     }
     public void OnTriggerEnter2D(Collider2D collision)
