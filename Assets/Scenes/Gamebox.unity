@@ -1966,17 +1966,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15705496, y: 0.6267784}
   m_EdgeRadius: 0
---- !u!114 &122538555 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6411571820992539998, guid: 1f3d466e7a596b44b80f4dcc28727427, type: 3}
-  m_PrefabInstance: {fileID: 1580702972}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 917f78e434d92d24a87f76ff2c8be4e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &128533898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14939,6 +14928,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8f55a8547626624ab620cd840299744, type: 3}
+--- !u!114 &686871605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6411571820992539998, guid: 1f3d466e7a596b44b80f4dcc28727427, type: 3}
+  m_PrefabInstance: {fileID: 260217083}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917f78e434d92d24a87f76ff2c8be4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &689261444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42256,7 +42256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3749b975347972940afb7dae550b7727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageForEnemy: {fileID: 122538555}
+  damageForEnemy: {fileID: 686871605}
   playerMovement: {fileID: 1978076189}
   coinCollectScript: {fileID: 812466815}
   playerSettings: {fileID: 1978076191}

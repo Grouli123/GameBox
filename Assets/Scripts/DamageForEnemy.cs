@@ -27,12 +27,12 @@ public class DamageForEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageEnemy") & doubleDamage == true)
         {
-            lives -= 10f;
+            this.lives -= 10f;
             Debug.Log("Double");
         }
         else if(collision.gameObject.CompareTag("DamageEnemy") & doubleDamage == false)
         {
-            lives -= 5f;
+            this.lives -= 5f;
             Debug.Log("NonDouble");
         }
     }

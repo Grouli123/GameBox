@@ -33,7 +33,14 @@ public class BafHero : MonoBehaviour
 
     private void Damage()
     {
-
+        if(DoubleDamage == true & OnDoubleDamage == true)
+        {
+            damageForEnemy.DoubleDamage = true;
+        }
+        else
+        {
+            damageForEnemy.DoubleDamage = false;
+        }
     }
 
     private void Speed()
