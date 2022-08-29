@@ -8,6 +8,10 @@ public class Cats : MonoBehaviour
     private bool _ofeliya = false;
     private bool _pryanic = false;
 
+    private bool _tcepellinAdvertisement = false;
+    private bool _ofeliyaAdvertisement = false;
+    private bool _pryanicAdvertisement = false;
+
     public bool TcepellinCat
     {
         get { return _tcepellin; }
@@ -24,5 +28,23 @@ public class Cats : MonoBehaviour
     {
         get { return _pryanic; }
         set { _pryanic = value; }
+    }
+
+    public bool TcepellinAdvertisement
+    {
+        get { return _tcepellinAdvertisement; }
+        set { _tcepellinAdvertisement = value; }
+    }
+
+    public bool OfeliyaAdvertisement
+    {
+        get { return _ofeliyaAdvertisement; }
+        set { _ofeliyaAdvertisement = value; }
+    }
+
+    public bool PryanicAdvertisement
+    {
+        get { return _pryanicAdvertisement; }
+        set { _pryanicAdvertisement = value; }
     }
 }

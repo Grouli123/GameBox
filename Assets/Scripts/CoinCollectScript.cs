@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class CoinCollectScript : MonoBehaviour
 {
-    [SerializeField] private IntegerVariable _coinCounter;    
+    [SerializeField] private IntegerVariable _coinCounter;
     // [SerializeField] private AudioSource _eatSound;
+
+    private bool doubleCoins = false;
 
      private void Start() 
     {
@@ -15,10 +17,23 @@ public class CoinCollectScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            _coinCounter.ApplyChange(1);
+            if (doubleCoins == true)
+            {
+                _coinCounter.ApplyChange(2);
+            }
+            else
+            {
+                _coinCounter.ApplyChange(1);
+            }
             // _eatSound.Play();
             Destroy(gameObject);
         }
+    }
+
+    public bool DoubleCoins
+    {
+        get { return doubleCoins; }
+        set { doubleCoins = value; }
     }
 }
 

@@ -7,7 +7,8 @@ public class DamageForEnemy : MonoBehaviour
     [SerializeField] private float lives;
     [SerializeField] private EnemyController enemyController;
     [SerializeField] private ButtonForGame buttonForGame;
-    
+
+    private bool doubleDamage;
 
     private void Update()
     {
@@ -20,7 +21,14 @@ public class DamageForEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageEnemy"))
         {
-            lives -= 10;
+            if(doubleDamage == true)
+            {
+                lives -= 10f;
+            }
+            else
+            {
+                lives -= 5f;
+            }
         }
     }
 
@@ -39,5 +47,11 @@ public class DamageForEnemy : MonoBehaviour
         {
             enemyController.enabled = false;
         }
+    }
+
+    public bool DoubleDamage
+    {
+        get { return doubleDamage; }
+        set { doubleDamage = value; }
     }
 }

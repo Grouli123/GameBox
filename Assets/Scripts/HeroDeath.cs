@@ -27,16 +27,14 @@ public class HeroDeath : MonoBehaviour
     }
     public void Death()
     {
-        if(playerSettings.Hp < 0 || playerMovement.FallDetector == true)
+        if(playerSettings.Hp <= 0 || playerMovement.FallDetector == true)
         {
             playerMovement.Speed = 0f;
             deathPanel.SetActive(true);
-            deathAnimImage.SetBool("Death", true);
         }
         else
         {
             playerMovement.Speed = 0.6f;
-            deathAnimImage.SetBool("Death", false);
         }
     }
 

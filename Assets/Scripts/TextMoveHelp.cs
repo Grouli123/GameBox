@@ -12,6 +12,11 @@ public class TextMoveHelp : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private Cats cats;
     [SerializeField] private PlayerSettings playerSettings;
+    [SerializeField] private BafHero bafHero;
+
+    [Header("Other")]
+    [SerializeField] private Image advertisement;
+    [SerializeField] private Sprite[] advertisementSprite; 
 
     private void Start() 
     {
@@ -32,14 +37,37 @@ public class TextMoveHelp : MonoBehaviour
             Text.text = "Недостаточно геля";
             _textBackground.SetActive(true);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            advertisement.gameObject.SetActive(false);
+            FulText(false);
+        }
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin"))
+        {
+            Text.text = "Нажмите Е";
+            FulText(true);
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementOfeliya"))
+        {
+            Text.text = "Нажмите Е";
+            FulText(true);
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementPryanic"))
+        {
+            Text.text = "Нажмите Е";
+            FulText(true);
+        }
+
         if (collision.gameObject.CompareTag("JumpZone"))
         {
             Text.text = "Space - Прыжок";
             FulText(true);
-            
         }
 
         if (collision.gameObject.CompareTag("AttackZone"))
@@ -76,21 +104,24 @@ public class TextMoveHelp : MonoBehaviour
         {
             Text.text = "Спасибо тебе, внучек!";
             FulText(true);
+            bafHero.onDoubleDamage = true;
         }
 
         if(collision.gameObject.CompareTag("Cat2") & cats.OfeliyaCat == true)
         {
             Text.text = "Спасибо тебе, внучек!";
             FulText(true);
+            bafHero.onDoubleSpeed = true;
         }
 
         if (collision.gameObject.CompareTag("Cat3") & cats.PryanicCat == true)
         {
             Text.text = "Спасибо тебе, внучек!";
             FulText(true);
+            bafHero.onDobleLives = true;
         }
 
-        if (collision.gameObject.CompareTag("Tcepellin"))
+        if (collision.gameObject.CompareTag("Tcepellin") & cats.TcepellinAdvertisement == true)
         {
             cats.TcepellinCat = true;
             Text.text = "Кажется, ты нашел первого котика";
@@ -98,7 +129,7 @@ public class TextMoveHelp : MonoBehaviour
             Destroy(collision.gameObject, 2);
         }
 
-        if (collision.gameObject.CompareTag("Ofeliya"))
+        if (collision.gameObject.CompareTag("Ofeliya") & cats.OfeliyaAdvertisement == true)
         {
             cats.OfeliyaCat = true;
             Text.text = "Кажется, ты нашел второго котика";
@@ -106,7 +137,7 @@ public class TextMoveHelp : MonoBehaviour
             Destroy(collision.gameObject, 2);
         }
 
-        if (collision.gameObject.CompareTag("Pryanic"))
+        if (collision.gameObject.CompareTag("Pryanic") & cats.PryanicAdvertisement == true)
         {
             cats.PryanicCat = true;
             Text.text = "Кажется, ты нашел третьего котика";
@@ -117,6 +148,27 @@ public class TextMoveHelp : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin"))
+        {
+            advertisement.gameObject.SetActive(false);
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementOfeliya"))
+        {
+            advertisement.gameObject.SetActive(false);
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementPryanic"))
+        {
+            advertisement.gameObject.SetActive(false);
+            Text.text = " ";
+            FulText(false);
+        }
+
         if (collision.gameObject.CompareTag("JumpZone"))
         {
             Text.text = " ";
@@ -187,6 +239,36 @@ public class TextMoveHelp : MonoBehaviour
         {
             Text.text = " ";
             FulText(false);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin") & Input.GetKeyDown(KeyCode.E))
+        {
+            //Text.text = "Esc - закрыть";
+            //FulText(true);
+            advertisement.gameObject.SetActive(true);
+            advertisement.sprite = advertisementSprite[0];
+            cats.TcepellinAdvertisement = true;
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementOfeliya") & Input.GetKeyDown(KeyCode.E))
+        {
+            //Text.text = "Esc - закрыть";
+           // FulText(true);
+            advertisement.gameObject.SetActive(true);
+            advertisement.sprite = advertisementSprite[1];
+            cats.OfeliyaAdvertisement = true;
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementPryanic") & Input.GetKeyDown(KeyCode.E))
+        {
+            cats.PryanicAdvertisement = true;
+           // Text.text = "Esc - закрыть";
+           // FulText(true);
+            advertisement.gameObject.SetActive(true);
+            advertisement.sprite = advertisementSprite[2];
         }
     }
 

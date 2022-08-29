@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement vars")]   
     [SerializeField] private float _jumpForce;
     [SerializeField] private bool _isGrounded = false;
-    public static float speed = 0.6f;
+    public static float speed = 0.5f;
 
     [Header("Settings")]
     [SerializeField] private Transform _groundColliderTransform;
@@ -151,10 +151,17 @@ public class PlayerMovement : MonoBehaviour
         set { speed = value; }
     }
 
+    public float JumpForce
+    {
+        get { return _jumpForce; }
+        set { _jumpForce = value; }
+    }
+
     public void OnClickContinueOnDeath()
     {
         if (_playerSettings.Hp < 0 & _playerSettings.Cassete > 0)
         {
+            fallDetector = false;
             heroDeath.PanelDeath(false);
             transform.position = respawnPoint;
             _playerSettings.Hp = 10;
