@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float lives;
     [SerializeField] private GameObject _bullet;  
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Transform _flipEnemy;
@@ -75,10 +74,6 @@ public class EnemyController : MonoBehaviour
             BackToAPoint();
         }
 
-        if(lives < 0)
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void Idle()
@@ -125,11 +120,6 @@ public class EnemyController : MonoBehaviour
 
         _speed = _currentSpeed * 1.2f;
         CheakIfTimeToFire();
-        
-       
-
-       
-       
         //GameObject _currentBullet = Instantiate(_bullet, _firePoint.position, _firePoint.rotation);
 
     }
@@ -148,12 +138,5 @@ public class EnemyController : MonoBehaviour
             _nextFire = Time.time + _fireRate;
         }
     }
-
-    public float Lives
-    {
-        get { return lives; }
-        set { lives = value; }
-    }
-
 
 }

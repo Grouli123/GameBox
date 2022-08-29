@@ -22,6 +22,9 @@ TagManager:
   - DamageEnemy
   - Checkpoint
   - FallDetector
+  - ZoneAdvertisementTcepellin
+  - ZoneAdvertisementOfeliya
+  - ZoneAdvertisementPryanic
   layers:
   - Default
   - TransparentFX

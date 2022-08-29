@@ -11,11 +11,17 @@ public class TextMoveHelp : MonoBehaviour
 
     [Header("Scripts")]
     [SerializeField] private Cats cats;
+    [SerializeField] private PlayerSettings playerSettings;
+    [SerializeField] private BafHero bafHero;
+
+    [Header("Other")]
+    [SerializeField] private Image advertisement;
+    [SerializeField] private Sprite[] advertisementSprite; 
 
     private void Start() 
     {
         _textBackground.GetComponent<GameObject>();
-        FulText();  
+        FulText(true);  
     }
 
     private void Update()
@@ -25,86 +31,244 @@ public class TextMoveHelp : MonoBehaviour
             Text.text = " ";            
             _textBackground.SetActive(false);    
         }
+
+        if(Input.GetKeyDown(KeyCode.B) & playerSettings.HairGel < 3)
+        {
+            Text.text = "Недостаточно геля";
+            _textBackground.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            advertisement.gameObject.SetActive(false);
+            FulText(false);
+        }
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin"))
+        {
+            Text.text = "Нажмите Е";
+            FulText(true);
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementOfeliya"))
+        {
+            Text.text = "Нажмите Е";
+            FulText(true);
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementPryanic"))
+        {
+            Text.text = "Нажмите Е";
+            FulText(true);
+        }
+
         if (collision.gameObject.CompareTag("JumpZone"))
         {
             Text.text = "Space - Прыжок";
-            FulText();
-            
+            FulText(true);
         }
 
         if (collision.gameObject.CompareTag("AttackZone"))
         {
             Text.text = "ЛКМ - Стрелять";
-            FulText();
+            FulText(true);
         }
 
         if (collision.gameObject.CompareTag("2JumpZone"))
         {
             Text.text = "Space+Space - Двойной прыжок";
-            FulText();
+            FulText(true);
         }
 
         if (collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == false)
         {
             Text.text = "Вручи 1-го котика бабушке";
-            FulText();
+            FulText(true);
         }
 
         if (collision.gameObject.CompareTag("Cat2") & cats.OfeliyaCat == false)
         {
             Text.text = "Вручи 2-го котика бабушке";
-            FulText();
+            FulText(true);
         }
 
         if (collision.gameObject.CompareTag("Cat3") & cats.PryanicCat == false)
         {
             Text.text = "Вручи 3-го котика бабушке";
-            FulText();
+            FulText(true);
         }
 
         if (collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == true)
         {
             Text.text = "Спасибо тебе, внучек!";
-            FulText();
+            FulText(true);
+            bafHero.onDoubleDamage = true;
         }
 
         if(collision.gameObject.CompareTag("Cat2") & cats.OfeliyaCat == true)
         {
             Text.text = "Спасибо тебе, внучек!";
-            FulText();
+            FulText(true);
+            bafHero.onDoubleSpeed = true;
         }
 
         if (collision.gameObject.CompareTag("Cat3") & cats.PryanicCat == true)
         {
             Text.text = "Спасибо тебе, внучек!";
-            FulText();
+            FulText(true);
+            bafHero.onDobleLives = true;
+        }
+
+        if (collision.gameObject.CompareTag("Tcepellin") & cats.TcepellinAdvertisement == true)
+        {
+            cats.TcepellinCat = true;
+            Text.text = "Кажется, ты нашел первого котика";
+            FulText(true);
+            Destroy(collision.gameObject, 2);
+        }
+
+        if (collision.gameObject.CompareTag("Ofeliya") & cats.OfeliyaAdvertisement == true)
+        {
+            cats.OfeliyaCat = true;
+            Text.text = "Кажется, ты нашел второго котика";
+            FulText(true);
+            Destroy(collision.gameObject, 2);
+        }
+
+        if (collision.gameObject.CompareTag("Pryanic") & cats.PryanicAdvertisement == true)
+        {
+            cats.PryanicCat = true;
+            Text.text = "Кажется, ты нашел третьего котика";
+            FulText(true);
+            Destroy(collision.gameObject, 2);
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin"))
+        {
+            advertisement.gameObject.SetActive(false);
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementOfeliya"))
+        {
+            advertisement.gameObject.SetActive(false);
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementPryanic"))
+        {
+            advertisement.gameObject.SetActive(false);
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("JumpZone"))
+        {
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("AttackZone"))
+        {
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("2JumpZone"))
+        {
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == false)
+        {
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("Cat2") & cats.OfeliyaCat == false)
+        {
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("Cat3") & cats.PryanicCat == false)
+        {
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == true)
+        {
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("Cat2") & cats.OfeliyaCat == true)
+        {
+            Text.text = " ";
+            FulText(false);
+        }
+
+        if (collision.gameObject.CompareTag("Cat3") & cats.PryanicCat == true)
+        {
+            Text.text = " ";
+            FulText(false);
         }
 
         if (collision.gameObject.CompareTag("Tcepellin"))
         {
-            cats.TcepellinCat = true;
-            Text.text = "Кажется, ты нашел первого котика";
-            FulText();
-            Destroy(collision.gameObject, 2);
+            Text.text = " ";
+            FulText(false);
         }
 
         if (collision.gameObject.CompareTag("Ofeliya"))
         {
-            cats.OfeliyaCat = true;
-            Text.text = "Кажется, ты нашел второго котика";
-            FulText();
-            Destroy(collision.gameObject, 2);
+            Text.text = " ";
+            FulText(false);
         }
 
         if (collision.gameObject.CompareTag("Pryanic"))
         {
-            cats.PryanicCat = true;
-            Text.text = "Кажется, ты нашел третьего котика";
-            FulText();
-            Destroy(collision.gameObject, 2);
+            Text.text = " ";
+            FulText(false);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin") & Input.GetKeyDown(KeyCode.E))
+        {
+            //Text.text = "Esc - закрыть";
+            //FulText(true);
+            advertisement.gameObject.SetActive(true);
+            advertisement.sprite = advertisementSprite[0];
+            cats.TcepellinAdvertisement = true;
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementOfeliya") & Input.GetKeyDown(KeyCode.E))
+        {
+            //Text.text = "Esc - закрыть";
+           // FulText(true);
+            advertisement.gameObject.SetActive(true);
+            advertisement.sprite = advertisementSprite[1];
+            cats.OfeliyaAdvertisement = true;
+        }
+
+        if (collision.gameObject.CompareTag("ZoneAdvertisementPryanic") & Input.GetKeyDown(KeyCode.E))
+        {
+            cats.PryanicAdvertisement = true;
+           // Text.text = "Esc - закрыть";
+           // FulText(true);
+            advertisement.gameObject.SetActive(true);
+            advertisement.sprite = advertisementSprite[2];
         }
     }
 
@@ -113,9 +277,9 @@ public class TextMoveHelp : MonoBehaviour
         Text.text = text;
     }
 
-    private void FulText()
+    private void FulText(bool active)
     {
-        _textBackground.SetActive(true);
+        _textBackground.SetActive(active);
     }
 
 }

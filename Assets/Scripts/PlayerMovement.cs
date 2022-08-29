@@ -7,19 +7,22 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement vars")]   
     [SerializeField] private float _jumpForce;
     [SerializeField] private bool _isGrounded = false;
-    public static float speed = 0.6f;
+    public static float speed = 0.5f;
 
     [Header("Settings")]
     [SerializeField] private Transform _groundColliderTransform;
     [SerializeField] private AnimationCurve _curve;
     [SerializeField] private LayerMask _groundMask;    
     [SerializeField] private Animator _animator;
-       
+
+    [Header("Scripts")]
+    [SerializeField] private HeroDeath heroDeath;
     private Rigidbody2D _rb;    
     private AudioSource _jumpSound;
     private bool facingRight;
     private bool canDoubleJump;
-    public float jumpOffset; 
+    public float jumpOffset;
+    private bool fallDetector = false;
 
     [SerializeField] private PlayerSettings _playerSettings;
 
@@ -49,11 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update() 
     {
-        if (_playerSettings.Hp < 0)
-        {
-            transform.position = respawnPoint;
-            _playerSettings.Hp = 100;
-        }
+
     }
 
     public void Move(float direction, bool isJumpButtonPressed)
@@ -133,14 +132,40 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag == "FallDetector")
         {
-            transform.position = respawnPoint;
+            fallDetector = true;
         }
         else if (collision.tag == "Checkpoint")
         {
             respawnPoint = transform.position;
-        }
-        
+        } 
+    }
 
-        
+    public bool FallDetector
+    {
+        get { return fallDetector; }
+        set { fallDetector = value; }
+    }
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
+    public float JumpForce
+    {
+        get { return _jumpForce; }
+        set { _jumpForce = value; }
+    }
+
+    public void OnClickContinueOnDeath()
+    {
+        if (_playerSettings.Hp < 0 & _playerSettings.Cassete > 0)
+        {
+            fallDetector = false;
+            heroDeath.PanelDeath(false);
+            transform.position = respawnPoint;
+            _playerSettings.Hp = 10;
+            _playerSettings.Cassete -= 1;
+        }
     }
 }

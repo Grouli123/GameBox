@@ -13,6 +13,9 @@ public class Weapons : MonoBehaviour
     [SerializeField] private Image weap3;
     [SerializeField] private Image weap4;
 
+    [Header("Scripts")]
+    [SerializeField] private BafHero bafHero;
+
     private void Start()
     {
         weap1.sprite = active;
@@ -30,6 +33,11 @@ public class Weapons : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            bafHero.doubleDamage = true;
+            bafHero.doubleSpeed = false;
+            bafHero.doubleLives = false;
+            bafHero.doubleJump = false;
+            bafHero.doubleCoins = false;
             weap1.sprite = active;
             weap2.sprite = notActive;
             weap3.sprite = notActive;
