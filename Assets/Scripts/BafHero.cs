@@ -21,6 +21,7 @@ public class BafHero : MonoBehaviour
     private bool DoubleCoins = false;
     private bool DoubleLives = false;
     private bool DoubleJump = false;
+
     private void Update()
     {
         Damage();
@@ -32,10 +33,7 @@ public class BafHero : MonoBehaviour
 
     private void Damage()
     {
-        if(DoubleDamage == true & OnDoubleDamage == true)
-        {
-            damageForEnemy.DoubleDamage = true;
-        }
+
     }
 
     private void Speed()
@@ -68,10 +66,6 @@ public class BafHero : MonoBehaviour
         {
             playerSettings.Hp = 15f;
         }
-        else
-        {
-            playerSettings.Hp = 10f;
-        }
     }
 
     private void Jump()
@@ -102,6 +96,18 @@ public class BafHero : MonoBehaviour
     {
         get { return OnDoubleLives; }
         set { OnDoubleLives = value; }
+    }
+
+    public bool onDoubleCoins
+    {
+        get { return OnDoubleCoins; }
+        set { OnDoubleCoins = value; }
+    }
+
+    public bool onDoubleJump
+    {
+        get { return OnDoubleJump; }
+        set { OnDoubleJump = value; }
     }
 
     public bool doubleDamage

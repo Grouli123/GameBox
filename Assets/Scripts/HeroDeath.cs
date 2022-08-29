@@ -34,7 +34,7 @@ public class HeroDeath : MonoBehaviour
         }
         else
         {
-            playerMovement.Speed = 0.6f;
+            playerMovement.Speed = 0.5f;
         }
     }
 
