@@ -52,20 +52,6 @@ public class PlayerMovement : MonoBehaviour
         _isGrounded = Physics2D.OverlapCircle(_overlapCirrcleTransform, jumpOffset, _groundMask);
     }
 
-    private void Update() 
-    {
-        if (!facingRight)
-        {
-            if(!sound.isPlaying)
-            sound.Play();
-
-        }
-        else
-        {
-            sound.Stop();
-        }
-    }
-
     public void Move(float direction, bool isJumpButtonPressed)
     {
                    
@@ -82,22 +68,25 @@ public class PlayerMovement : MonoBehaviour
             
         if (!facingRight && direction > 0)
         {
+            sound.Play();
             facingRight = !facingRight;         
             transform.Rotate(0f, 180f, 0f); 
         }
         else if (facingRight && direction < 0)
         {
+            sound.Play();
             facingRight = !facingRight;
             transform.Rotate(0f, 180f, 0f);
         }
 
         if(Mathf.Abs(direction) > 0.01f)
-        {
+        {            
             _animator.SetBool("IsRun", true);
             HorizontalMovement(direction);
         }
         else
         {
+            sound.Stop();
             _animator.SetBool("IsRun", false);
 
         }
