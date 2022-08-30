@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     public Transform groundCheckPosition;
 
     public LayerMask groundLayer;
+    public Collider2D bodyCollider;
 
     public Transform player, shootPos;
     public GameObject bullet;
@@ -62,7 +63,7 @@ public class EnemyController : MonoBehaviour
 
     private void Patrol()
     {
-        if (mustTurn)
+        if (mustTurn || bodyCollider.IsTouchingLayers(groundLayer))
         {
             Flip();
         }
