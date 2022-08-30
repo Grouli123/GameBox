@@ -1,142 +1,91 @@
 using UnityEngine;
-
+using System.Collections;
 public class EnemyController : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] private GameObject _bullet;  
-    [SerializeField] private Transform _firePoint;
-    [SerializeField] private Transform _flipEnemy;
-   private float _fireRate;
-   private float _nextFire;
+    public float walkSpeed, range, timeBTWShoots, shootSpeed;
+    private float distToPlayer;
+    private bool mustTurn, canShot;
 
-    //[SerializeField] private Transform _firePoint;
-    [SerializeField] private Transform _pointOfRevert;    
-    [SerializeField] private Transform _player;
+    [HideInInspector]
+    public bool mustPatrol;
 
-    [SerializeField] private float _stoppingDistance;
-    [SerializeField] private float _speed;
+    public Rigidbody2D rb;
 
-    [SerializeField] private float _positionOfPatrol;
+    public Transform groundCheckPosition;
 
-    private bool _isMovingRight = true;
-    private bool _isIdle = false;
-    private bool _isAngry = false;
-    private bool _isBackToAPoint = false;
+    public LayerMask groundLayer;
 
-    private Vector2 _enemyTarget;
+    public Transform player, shootPos;
+    public GameObject bullet;
 
-    [SerializeField] private float _currentSpeed;
-
-    private void Start() 
+    private void Start()
     {
-        _fireRate = 1f;
-        _nextFire = Time.time;
-
-
-        _player.GetComponent<Transform>();
-        //_bullet.GetComponent<GameObject>();
-
-        _speed = _currentSpeed;
-        
-        //_enemyTarget = new Vector2(_bullet.transform.position.x, _bullet.transform.position.y);
+        mustPatrol = true;
+        canShot = true;
     }
 
-    private void Update() 
+    private void Update()
     {
-        if (Vector2.Distance(transform.position, _pointOfRevert.position) < _positionOfPatrol && _isAngry == false)
+        if (mustPatrol)
         {
-            _isIdle = true;
-        }    
-
-        if (Vector2.Distance(transform.position, _player.position) < _stoppingDistance)
-        {
-            _isAngry = true;
-            _isIdle = false;
-            _isBackToAPoint = false;
+            Patrol();
         }
 
-        if (Vector2.Distance(transform.position, _player.position) > _stoppingDistance)
-        {
-            _isBackToAPoint = true;
-            _isAngry = false;
-        }
+        distToPlayer = Vector2.Distance(transform.position, player.position);
 
-        if (_isIdle == true)
+        if(distToPlayer <= range)
         {
-            Idle();
-        }
-        else if (_isAngry == true)
-        {
-            Angry();
-        }
-        else if (_isBackToAPoint)
-        {
-            BackToAPoint();
-        }
+            if (player.position.x > transform.position.x && transform.localScale.x < 0
+            || player.position.x < transform.position.x && transform.localScale.x > 0)
+            {
+                Flip();
+            }
 
-    }
-
-    private void Idle()
-    {
-        if (transform.position.x > _pointOfRevert.position.x + _positionOfPatrol)
-        {
-            
-            _isMovingRight = false;
-            
-            _flipEnemy.transform.Rotate(0f, 180f, 0f);
-        }
-        else if (transform.position.x < _pointOfRevert.position.x - _positionOfPatrol)
-        {
-            _isMovingRight = true;
-            
-            _flipEnemy.transform.Rotate(0f, 180f, 0f);
-        }
-
-        if (_isMovingRight)
-        {
-            transform.position = new Vector2(transform.position.x + _speed * Time.deltaTime, transform.position.y);
-            
+            mustPatrol = false;
+            rb.velocity = Vector2.zero;
+            if(canShot)
+            StartCoroutine(Shoot());
         }
         else
         {
-            transform.position = new Vector2(transform.position.x - _speed * Time.deltaTime, transform.position.y);
+            mustPatrol = true;
         }
     }
 
-    private void Angry()
+    private void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
-
-         if (transform.position.x > _player.transform.position.x)
+        if (mustPatrol)
         {
-            
-            
-            _flipEnemy.transform.Rotate(0f, 180f, 0f);
+            mustTurn = !Physics2D.OverlapCircle(groundCheckPosition.position, 0.1f, groundLayer);
         }
-        else if (transform.position.x < _player.transform.position.x)
-        {
-            _flipEnemy.transform.Rotate(0f, 180f, 0f);
-        }
-
-        _speed = _currentSpeed * 1.2f;
-        CheakIfTimeToFire();
-        //GameObject _currentBullet = Instantiate(_bullet, _firePoint.position, _firePoint.rotation);
-
     }
 
-    private void BackToAPoint()
-    {        
-        transform.position = Vector2.MoveTowards(transform.position, _pointOfRevert.position, _speed * Time.deltaTime);
-        _speed = _currentSpeed;
-    }
-
-    private void CheakIfTimeToFire()
+    private void Patrol()
     {
-        if (Time.time > _nextFire)
+        if (mustTurn)
         {
-            Instantiate(_bullet, _firePoint.transform.position, Quaternion.identity);
-            _nextFire = Time.time + _fireRate;
+            Flip();
         }
+        rb.velocity = new Vector2(walkSpeed * Time.fixedDeltaTime, rb.velocity.y);
     }
 
+    private void Flip()
+    {
+        mustPatrol = false;
+        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+        walkSpeed *= -1;
+        mustPatrol = true;
+    }
+
+    IEnumerator Shoot()
+    {
+        canShot = false;
+        yield return new WaitForSeconds(timeBTWShoots);
+        GameObject newBullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
+
+        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * walkSpeed * Time.fixedDeltaTime, 0f);
+
+        canShot = true;
+
+    }
 }

@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpOffset;
     private bool fallDetector = false;
 
+    [SerializeField] private AudioSource sound;
+
     [SerializeField] private PlayerSettings _playerSettings;
 
 
@@ -52,7 +54,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update() 
     {
+        if (!facingRight)
+        {
+            if(!sound.isPlaying)
+            sound.Play();
 
+        }
+        else
+        {
+            sound.Stop();
+        }
     }
 
     public void Move(float direction, bool isJumpButtonPressed)
@@ -71,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             
         if (!facingRight && direction > 0)
         {
-            facingRight = !facingRight;
+            facingRight = !facingRight;         
             transform.Rotate(0f, 180f, 0f); 
         }
         else if (facingRight && direction < 0)
@@ -88,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             _animator.SetBool("IsRun", false);
+
         }
 
         if(_isGrounded == false)
@@ -105,7 +117,8 @@ public class PlayerMovement : MonoBehaviour
         if(_isGrounded)
         {
             canDoubleJump = true;
-            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);               
+            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce); 
+                        
             //_jumpSound.Play();    
         }
         else

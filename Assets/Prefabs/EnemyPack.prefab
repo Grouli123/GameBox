@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3056675607112295093}
   - component: {fileID: 3056675607112295090}
   - component: {fileID: 6411571820992539998}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,8 +34,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3056675608858175743}
+  - {fileID: 3056675608163044467}
   m_Father: {fileID: 3056675608461443979}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &3056675607112295095
 SpriteRenderer:
@@ -125,7 +126,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!114 &3056675607112295090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,16 +139,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2757e0b9743c26844804cddf81c260a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 0
-  _bullet: {fileID: 9220966992173392303, guid: fcf397a6ea7b2e14ca1762c270c97d21, type: 3}
-  _firePoint: {fileID: 3056675608858175743}
-  _flipEnemy: {fileID: 3056675607112295094}
-  _pointOfRevert: {fileID: 3056675608163044467}
-  _player: {fileID: 0}
-  _stoppingDistance: 4
-  _speed: 0
-  _positionOfPatrol: 4
-  _currentSpeed: 1
+  walkSpeed: 30
+  range: 3
+  timeBTWShoots: 0.5
+  shootSpeed: 1
+  mustPatrol: 0
+  rb: {fileID: 3056675607112295093}
+  groundCheckPosition: {fileID: 3056675608163044467}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  player: {fileID: 0}
+  shootPos: {fileID: 3056675608858175743}
+  bullet: {fileID: 9220966992173392303, guid: fcf397a6ea7b2e14ca1762c270c97d21, type: 3}
 --- !u!114 &6411571820992539998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917f78e434d92d24a87f76ff2c8be4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 0
   enemyController: {fileID: 3056675607112295090}
+  buttonForGame: {fileID: 0}
 --- !u!1 &3056675608163044464
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,10 +176,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3056675608163044467}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PointOfPatrol
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -184,13 +190,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3056675608163044464}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.012, y: -0.6980001, z: 0}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.229, y: -0.046, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3056675608461443979}
-  m_RootOrder: 0
+  m_Father: {fileID: 3056675607112295094}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3056675608461443976
 GameObject:
@@ -220,7 +226,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3056675608163044467}
   - {fileID: 3056675607112295094}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -234,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3056675608858175743}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyFirePoint
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -249,7 +254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3056675608858175740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.669, y: 0.255, z: 0}
+  m_LocalPosition: {x: -0.137, y: 0.077, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
