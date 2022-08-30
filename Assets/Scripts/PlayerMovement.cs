@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private HeroDeath heroDeath;
     private Rigidbody2D _rb;    
-    private AudioSource _jumpSound;
+    [SerializeField] private AudioSource stepSound;
     private bool facingRight;
     private bool canDoubleJump;
     public float jumpOffset;
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start() 
     {
-        _jumpSound = GetComponent<AudioSource>();
+        stepSound = GetComponent<AudioSource>();
         _animator.GetComponent<Animator>();
         
         _playerSettings.GetComponent<PlayerSettings>();
@@ -71,11 +71,13 @@ public class PlayerMovement : MonoBehaviour
             
         if (!facingRight && direction > 0)
         {
+            stepSound.Play();
             facingRight = !facingRight;
             transform.Rotate(0f, 180f, 0f); 
         }
         else if (facingRight && direction < 0)
         {
+            stepSound.Play();
             facingRight = !facingRight;
             transform.Rotate(0f, 180f, 0f);
         }
@@ -87,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            stepSound.Stop();
             _animator.SetBool("IsRun", false);
         }
 

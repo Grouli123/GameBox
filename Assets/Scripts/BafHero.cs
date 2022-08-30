@@ -42,7 +42,6 @@ public class BafHero : MonoBehaviour
             damageForEnemy.DoubleDamage = false;
         }
     }
-
     private void Speed()
     {
         if(DoubleSpeed == true & OnDoubleSpeed == true)
