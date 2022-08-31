@@ -25,6 +25,7 @@ TagManager:
   - ZoneAdvertisementTcepellin
   - ZoneAdvertisementOfeliya
   - ZoneAdvertisementPryanic
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - Action
   - 
   - 
   - 

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2855210729926565229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2887859506494199593}
+  m_Layer: 6
+  m_Name: OriginalPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2887859506494199593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855210729926565229}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.002, y: 0.127, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3056675607112295094}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3056675607112295091
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,10 +42,11 @@ GameObject:
   - component: {fileID: 3056675607112295094}
   - component: {fileID: 3056675607112295095}
   - component: {fileID: 3548525146953243482}
-  - component: {fileID: 3056675607112295092}
+  - component: {fileID: 1844789901715192979}
   - component: {fileID: 3056675607112295093}
   - component: {fileID: 3056675607112295090}
   - component: {fileID: 6411571820992539998}
+  - component: {fileID: 999228647641814339}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -36,6 +68,7 @@ Transform:
   m_Children:
   - {fileID: 3056675608858175743}
   - {fileID: 3056675608163044467}
+  - {fileID: 2887859506494199593}
   m_Father: {fileID: 3056675608461443979}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -80,7 +113,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 1282308857, guid: cef0d67a670f5d649a401f3873bc4229, type: 3}
+  m_Sprite: {fileID: -379337131, guid: 8d13ae6bbff4b974da17f7b7d7449423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,24 +134,24 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.027013302, y: 0.10181737}
+  m_Offset: {x: -0.08194792, y: 0.2904384}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31584454, y: 0.20363474}
+  m_Size: {x: 0.4098289, y: 0.04632187}
   m_EdgeRadius: 0
---- !u!58 &3056675607112295092
-CircleCollider2D:
+--- !u!70 &1844789901715192979
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -130,9 +163,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0915328}
-  serializedVersion: 2
-  m_Radius: 0.09861562
+  m_Offset: {x: -0.008122325, y: 0.29698685}
+  m_Size: {x: 0.14995503, y: 0.46401697}
+  m_Direction: 0
 --- !u!50 &3056675607112295093
 Rigidbody2D:
   serializedVersion: 4
@@ -166,20 +199,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2757e0b9743c26844804cddf81c260a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 30
-  range: 3
-  timeBTWShoots: 0.5
-  shootSpeed: 1
-  mustPatrol: 0
-  rb: {fileID: 3056675607112295093}
-  groundCheckPosition: {fileID: 3056675608163044467}
-  groundLayer:
+  _bullet: {fileID: 9220966992173392303, guid: fcf397a6ea7b2e14ca1762c270c97d21, type: 3}
+  _player: {fileID: 0}
+  _shootPos: {fileID: 3056675608858175743}
+  _groundCheckPosition: {fileID: 3056675608163044467}
+  _originalPoint: {fileID: 2887859506494199593}
+  _rb: {fileID: 3056675607112295093}
+  _bodyCollider: {fileID: 3548525146953243482}
+  _groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  bodyCollider: {fileID: 3548525146953243482}
-  player: {fileID: 0}
-  shootPos: {fileID: 3056675608858175743}
-  bullet: {fileID: 9220966992173392303, guid: fcf397a6ea7b2e14ca1762c270c97d21, type: 3}
+  _walkSpeed: 30
+  _range: 2
+  _timeBTWShoots: 0.5
+  _shootSpeed: 1
+  _groundLayerName: Ground
+  _objectCollisionTag: Player
+  _playerCollisionTag: Player
 --- !u!114 &6411571820992539998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +231,26 @@ MonoBehaviour:
   lives: 0
   enemyController: {fileID: 3056675607112295090}
   buttonForGame: {fileID: 0}
+--- !u!95 &999228647641814339
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3056675607112295091}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9fa037e12e508e84289c95062d905b37, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3056675608163044464
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3056675608163044464}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.229, y: -0.046, z: 0}
+  m_LocalPosition: {x: -0.229, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -282,7 +338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3056675608858175740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.137, y: 0.077, z: 0}
+  m_LocalPosition: {x: -0.173, y: 0.358, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

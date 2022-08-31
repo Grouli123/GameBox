@@ -1,92 +1,154 @@
 using UnityEngine;
 using System.Collections;
 public class EnemyController : MonoBehaviour
-{
-    public float walkSpeed, range, timeBTWShoots, shootSpeed;
-    private float distToPlayer;
-    private bool mustTurn, canShot;
+{    
+    [SerializeField] private GameObject _bullet;   
 
-    [HideInInspector]
-    public bool mustPatrol;
+    [SerializeField] private Transform _player;
+    [SerializeField] private Transform _shootPos;
+    [SerializeField] private Transform _groundCheckPosition;
+    [SerializeField] private Transform _originalPoint;
+    
+    [SerializeField] private Rigidbody2D _rb;
 
-    public Rigidbody2D rb;
+    [SerializeField] private Collider2D _bodyCollider;
 
-    public Transform groundCheckPosition;
+    [SerializeField] private LayerMask _groundLayer;
 
-    public LayerMask groundLayer;
-    public Collider2D bodyCollider;
+    [SerializeField] private float _walkSpeed;
+    [SerializeField] private float _range;
+    [SerializeField] private float _timeBTWShoots;
+    [SerializeField] private float _shootSpeed;
 
-    public Transform player, shootPos;
-    public GameObject bullet;
+    private float _castDist;
+
+    [SerializeField] private string _groundLayerName;
+    [SerializeField] private string _objectCollisionTag;
+    [SerializeField] private string _playerCollisionTag;
+
+    private bool _mustTurn;
+    private bool _canShot;
+    private bool _mustPatrol;
+    private bool _isAgro = false;
 
     private void Start()
     {
-        mustPatrol = true;
-        canShot = true;
+        _mustPatrol = true;
+        _canShot = true;
     }
 
     private void Update()
     {
-        if (mustPatrol)
+        if (_mustPatrol)
         {
             Patrol();
         }
 
-        distToPlayer = Vector2.Distance(transform.position, player.position);
-
-        if(distToPlayer <= range)
+        if (CanSeePlayer(_range))
         {
-            if (player.position.x > transform.position.x && transform.localScale.x < 0
-            || player.position.x < transform.position.x && transform.localScale.x > 0)
+            _isAgro = true;
+        }
+        else
+        {
+            _isAgro = false;
+        }
+
+        if (_isAgro)
+        {
+            if (_player.position.x > transform.position.x && transform.localScale.x < 0
+            || _player.position.x < transform.position.x && transform.localScale.x > 0)
             {
                 Flip();
             }
 
-            mustPatrol = false;
-            rb.velocity = Vector2.zero;
-            if(canShot)
-            StartCoroutine(Shoot());
+            EnemyStay();                
         }
         else
         {
-            mustPatrol = true;
+            _mustPatrol = true;                
         }
+    }
+
+    private bool CanSeePlayer(float distance)
+    {
+        bool val = false;
+        _castDist = distance;
+
+        Vector2 endPos = _originalPoint.position + Vector3.right * _castDist;
+        RaycastHit2D hit = Physics2D.Linecast(_originalPoint.position, endPos, 1 << LayerMask.NameToLayer(_groundLayerName));
+
+        if (hit.collider != null)
+        { 
+            if (!hit.transform.gameObject.CompareTag(_objectCollisionTag))
+            {
+                Debug.DrawLine(_originalPoint.position, hit.point, Color.yellow);
+            }
+            else
+            {
+                if (hit.collider.gameObject.CompareTag(_playerCollisionTag))
+                {
+                    val = true;
+                    EnemyStay();
+                }
+                else
+                {
+                    val = false;
+                    EnemyStay();
+                }
+
+                Debug.DrawLine(_originalPoint.position, hit.point, Color.yellow);       
+            }
+        }
+        else
+        {            
+            Debug.DrawLine(_originalPoint.position, endPos, Color.blue);
+        }
+
+        return val;
+    }
+
+    private void EnemyStay()
+    {
+        _mustPatrol = false;
+        _rb.velocity = Vector2.zero;
+        if(_canShot)
+        StartCoroutine(Shoot());                
     }
 
     private void FixedUpdate()
     {
-        if (mustPatrol)
+        if (_mustPatrol)
         {
-            mustTurn = !Physics2D.OverlapCircle(groundCheckPosition.position, 0.1f, groundLayer);
+            _mustTurn = !Physics2D.OverlapCircle(_groundCheckPosition.position, 0.1f, _groundLayer);
         }
+
     }
 
     private void Patrol()
     {
-        if (mustTurn || bodyCollider.IsTouchingLayers(groundLayer))
+        if (_mustTurn || _bodyCollider.IsTouchingLayers(_groundLayer))
         {
-            Flip();
+            Flip();     
         }
-        rb.velocity = new Vector2(walkSpeed * Time.fixedDeltaTime, rb.velocity.y);
+
+        _rb.velocity = new Vector2(_walkSpeed * Time.fixedDeltaTime, _rb.velocity.y);
     }
 
     private void Flip()
     {
-        mustPatrol = false;
+        _mustPatrol = false;                
         transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
-        walkSpeed *= -1;
-        mustPatrol = true;
+        _walkSpeed *= -1;
+        _range *= -1;
+        _mustPatrol = true;
     }
 
-    IEnumerator Shoot()
+    private IEnumerator Shoot()
     {
-        canShot = false;
-        yield return new WaitForSeconds(timeBTWShoots);
-        GameObject newBullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
-
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootSpeed * walkSpeed * Time.fixedDeltaTime, 0f);
-
-        canShot = true;
-
+        _canShot = false;
+        yield return new WaitForSeconds(_timeBTWShoots);
+        GameObject newBullet = Instantiate(_bullet, _shootPos.position, Quaternion.identity);
+        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(_shootSpeed * _walkSpeed * Time.fixedDeltaTime, 0f);
+        _canShot = true;
     }
 }
