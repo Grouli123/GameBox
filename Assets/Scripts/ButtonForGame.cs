@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonForGame : MonoBehaviour
@@ -17,7 +15,8 @@ public class ButtonForGame : MonoBehaviour
     private bool _freeze;
 
     private void Start()
-    {
+    {        
+        Time.timeScale = 1;
         _pauseActive = false;
         _freeze = false;
     }
@@ -41,17 +40,22 @@ public class ButtonForGame : MonoBehaviour
             }
             else
             {
-                helpPanel.SetActive(true);
-                _pauseActive = false;
-                Time.timeScale = 1;
-                pausePanel.SetActive(false);
+                ContinueGame();
             }
         }
     }
 
+    public void ContinueGame()
+    {
+        helpPanel.SetActive(true);
+        _pauseActive = false;
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
+    }
+
     public void OnClickFreeze()
     {
-        if(Input.GetKeyDown(KeyCode.B) & playerSettings.HairGel == 3)
+        if(Input.GetKeyDown(KeyCode.B) & playerSettings.HairGel == 3 )
         {
             _timeFreeze = 5;
             _freeze = true;

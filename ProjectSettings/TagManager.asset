@@ -26,6 +26,7 @@ TagManager:
   - ZoneAdvertisementOfeliya
   - ZoneAdvertisementPryanic
   - Ground
+  - FinishLevel
   layers:
   - Default
   - TransparentFX
@@ -35,7 +36,7 @@ TagManager:
   - UI
   - Enemy
   - Action
-  - 
+  - Finish
   - 
   - 
   - 
