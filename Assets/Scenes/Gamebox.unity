@@ -7782,13 +7782,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 370054352}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1978076187}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &370054354
 BoxCollider2D:
@@ -8022,7 +8022,7 @@ GameObject:
   - component: {fileID: 382714651}
   - component: {fileID: 382714653}
   - component: {fileID: 382714652}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: ZoneForPlatfomr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8042,7 +8042,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1978076187}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &382714652
 EdgeCollider2D:
@@ -10753,7 +10753,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.27171516, y: -0.0008200407, z: 0}
+  m_LocalPosition: {x: -0.41114664, y: -0.001240015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14024,7 +14024,7 @@ GameObject:
   - component: {fileID: 651820271}
   m_Layer: 0
   m_Name: Pryanic
-  m_TagString: Undefined
+  m_TagString: Pryanic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14615,7 +14615,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681548480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.26421928, y: -0.78790003, z: 0}
+  m_LocalPosition: {x: -0.40421915, y: -0.7279001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -40670,7 +40670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1918794906}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -40690,7 +40690,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1978076187}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1923275460 stripped
 Transform:
@@ -42168,13 +42168,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978076183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.52, y: -1.13, z: 0}
+  m_LocalPosition: {x: -5.66, y: -1.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 370054353}
   - {fileID: 1918794906}
   - {fileID: 382714651}
-  - {fileID: 370054353}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42245,8 +42245,8 @@ MonoBehaviour:
     m_Bits: 8
   _animator: {fileID: 1978076194}
   heroDeath: {fileID: 1978076201}
+  stepSound: {fileID: 0}
   jumpOffset: 0.5
-  sound: {fileID: 1978076204}
   _playerSettings: {fileID: 1978076191}
 --- !u!114 &1978076190
 MonoBehaviour:
@@ -42297,29 +42297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSettings: {fileID: 1978076191}
   PlayerMovement: {fileID: 1978076189}
-  NotHP: {fileID: 21300000, guid: 8782a2db0bef43f41bbb578bcc4376fd, type: 3}
-  hp:
-  - {fileID: 991312578}
-  - {fileID: 101408655}
-  - {fileID: 980452593}
-  - {fileID: 869627994}
-  - {fileID: 1296960971}
-  - {fileID: 1298019113}
-  - {fileID: 1767640605}
-  - {fileID: 979931555}
-  - {fileID: 1504393060}
-  - {fileID: 349576707}
-  colorHP:
-  - {fileID: 21300000, guid: 7d2cc824d5c8edf44b3d08e12df149e5, type: 3}
-  - {fileID: 21300000, guid: 7d94c214ccb100948ab1fba3a3e5d990, type: 3}
-  - {fileID: 21300000, guid: 757283612197fea4fb124889a2b34d5d, type: 3}
-  - {fileID: 21300000, guid: 753c2c79b4b2ac94e8d1a2c865a4eedf, type: 3}
-  - {fileID: 21300000, guid: 2d77fab39b2b85542a76f884503841bc, type: 3}
-  - {fileID: 21300000, guid: 4e9cec8107685b74e906a8bc7788556a, type: 3}
-  - {fileID: 21300000, guid: 546df79601be5494081bd5756adb1b9d, type: 3}
-  - {fileID: 21300000, guid: 95e8cb1df415c3c45a4dc5eab6bc57b6, type: 3}
-  - {fileID: 21300000, guid: 3ad7d650e598aac4e8185bbf43d2dc5c, type: 3}
-  - {fileID: 21300000, guid: 321c3635a8c05734b898ec78a8c8eab9, type: 3}
+  hpFull: {fileID: 0}
 --- !u!114 &1978076193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42338,6 +42316,7 @@ MonoBehaviour:
   weap2: {fileID: 990010264}
   weap3: {fileID: 870612592}
   weap4: {fileID: 885950343}
+  weap5: {fileID: 0}
   bafHero: {fileID: 1978076203}
 --- !u!95 &1978076194
 Animator:
@@ -42395,9 +42374,12 @@ MonoBehaviour:
   bafHero: {fileID: 1978076203}
   advertisement: {fileID: 1571212128}
   advertisementSprite:
-  - {fileID: 21300000, guid: 92460458c04096b40b201e792d6051f1, type: 3}
+  - {fileID: 21300000, guid: 460aa694e8c92c140873fbeb3496cbf3, type: 3}
   - {fileID: 21300000, guid: ff0ebb22d56550747a58e8071224b4a4, type: 3}
   - {fileID: 21300000, guid: aabcca7e8981aff429d8881c55308404, type: 3}
+  _catsCounter: {fileID: 11400000, guid: 47ea96d9cada51b4d93b9ebcfbd27488, type: 2}
+  _scoreForPickUpCats: 1000
+  _secondsToDestroy: 2
 --- !u!114 &1978076197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46063,7 +46045,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 92460458c04096b40b201e792d6051f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 460aa694e8c92c140873fbeb3496cbf3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

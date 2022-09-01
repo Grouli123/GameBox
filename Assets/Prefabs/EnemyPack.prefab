@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 9220966992173392303, guid: fcf397a6ea7b2e14ca1762c270c97d21, type: 3}
-  _player: {fileID: 0}
+  _player: {fileID: 8569518473856476287, guid: aef8654ea49b2eb469dc329faefe770b, type: 3}
   _shootPos: {fileID: 3056675608858175743}
   _groundCheckPosition: {fileID: 3056675608163044467}
   _originalPoint: {fileID: 2887859506494199593}
@@ -231,6 +231,8 @@ MonoBehaviour:
   lives: 0
   enemyController: {fileID: 3056675607112295090}
   buttonForGame: {fileID: 0}
+  _enemyCounter: {fileID: 11400000, guid: d4828b9a63cf9004d8a4aa6b16f95d82, type: 2}
+  _scoreForEnemyDeath: 25
 --- !u!95 &999228647641814339
 Animator:
   serializedVersion: 4

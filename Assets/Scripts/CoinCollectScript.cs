@@ -4,6 +4,9 @@ using UnityEngine;
 public class CoinCollectScript : MonoBehaviour
 {
     [SerializeField] private IntegerVariable _coinCounter;
+    [SerializeField] private int _scoreForPickUpCoin;
+    [SerializeField] private int _scoreForDoublePickUpCoin;
+
     // [SerializeField] private AudioSource _eatSound;
 
     private bool doubleCoins = false;
@@ -19,11 +22,11 @@ public class CoinCollectScript : MonoBehaviour
         {
             if (doubleCoins == true)
             {
-                _coinCounter.ApplyChange(2);
+                _coinCounter.ApplyChange(_scoreForDoublePickUpCoin);
             }
             else
             {
-                _coinCounter.ApplyChange(1);
+                _coinCounter.ApplyChange(_scoreForPickUpCoin);
             }
             // _eatSound.Play();
             Destroy(gameObject);
