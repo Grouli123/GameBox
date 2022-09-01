@@ -37,65 +37,48 @@ public class Weapons : MonoBehaviour
         {
             bafHero.doubleDamage = true;
             bafHero.doubleSpeed = false;
-            bafHero.doubleLives = false;
             bafHero.doubleJump = false;
             bafHero.doubleCoins = false;
             weap1.sprite = active;
             weap2.sprite = notActive;
             weap3.sprite = notActive;
             weap4.sprite = notActive;
-            weap5.sprite = notActive;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) & bafHero.onDoubleSpeed == true)
         {
             bafHero.doubleDamage = false;
             bafHero.doubleSpeed = true;
-            bafHero.doubleLives = false;
             bafHero.doubleJump = false;
             bafHero.doubleCoins = false;
             weap1.sprite = notActive;
             weap2.sprite = active;
             weap3.sprite = notActive;
             weap4.sprite = notActive;
-            weap5.sprite = notActive;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) & bafHero.onDobleLives == true)
+        else if (Input.GetKeyDown(KeyCode.Alpha3) & bafHero.doubleJump == true)
         {
             bafHero.doubleDamage = false;
             bafHero.doubleSpeed = false;
-            bafHero.doubleLives = true;
-            bafHero.doubleJump = false;
+            bafHero.doubleJump = true;
             bafHero.doubleCoins = false;
             weap1.sprite = notActive;
             weap2.sprite = notActive;
             weap3.sprite = active;
             weap4.sprite = notActive;
-            weap5.sprite = notActive;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4) & bafHero.onDoubleJump == true)
+        else if (Input.GetKeyDown(KeyCode.Alpha4) & bafHero.onDoubleCoins == true)
         {
             bafHero.doubleDamage = false;
             bafHero.doubleSpeed = false;
-            bafHero.doubleLives = false;
-            bafHero.doubleJump = true;
-            bafHero.doubleCoins = false;
-            weap1.sprite = notActive;
-            weap2.sprite = notActive;
-            weap3.sprite = notActive;
-            weap4.sprite = active;
-            weap5.sprite = notActive;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5) & bafHero.onDoubleCoins == true)
-        {
-            bafHero.doubleDamage = false;
-            bafHero.doubleSpeed = false;
-            bafHero.doubleLives = false;
             bafHero.doubleJump = false;
             bafHero.doubleCoins = true;
             weap1.sprite = notActive;
             weap2.sprite = notActive;
             weap3.sprite = notActive;
-            weap4.sprite = notActive;
+            weap4.sprite = active;
+        }
+        else if (bafHero.onDobleLives == true)
+        {
             weap5.sprite = active;
         }
     }

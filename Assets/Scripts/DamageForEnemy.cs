@@ -1,4 +1,5 @@
-using Scriptable;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageForEnemy : MonoBehaviour
@@ -6,36 +7,30 @@ public class DamageForEnemy : MonoBehaviour
     [SerializeField] private float lives;
     [SerializeField] private EnemyController enemyController;
     [SerializeField] private ButtonForGame buttonForGame;
-
-    [SerializeField] private IntegerVariable _enemyCounter;
-    [SerializeField] private int _scoreForEnemyDeath;
-
-    private bool doubleDamage;
+    [SerializeField] private DamageDealler damageDealler;
 
     private void Start()
     {
         lives = 10f;
-        doubleDamage = false;
     }
 
     private void Update()
     {
         if(lives <= 0)
         {
-            _enemyCounter.ApplyChange(_scoreForEnemyDeath);
             Destroy(gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("DamageEnemy") & doubleDamage == true)
+        if (collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == true)
         {
-            this.lives -= 10f;
+            lives -= damageDealler.Damage;
             Debug.Log("Double");
         }
-        else if(collision.gameObject.CompareTag("DamageEnemy") & doubleDamage == false)
+        else if(collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == false)
         {
-            this.lives -= 5f;
+            lives -= damageDealler.Damage * 2;
             Debug.Log("NonDouble");
         }
     }
@@ -55,11 +50,5 @@ public class DamageForEnemy : MonoBehaviour
         {
             enemyController.enabled = false;
         }
-    }
-
-    public bool DoubleDamage
-    {
-        get { return doubleDamage; }
-        set { doubleDamage = value; }
     }
 }

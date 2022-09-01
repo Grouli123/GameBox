@@ -8,12 +8,16 @@ public class PlayerSettings : MonoBehaviour
     [Header("Sprite")]
     [SerializeField] private Image Gel;
     [SerializeField] private Sprite[] _hairGel;
+
     [Header("Other")]
     [SerializeField] private float lives;
     [SerializeField] private float cassete;
     [SerializeField] private float hairGel;
     [SerializeField] private Text textCassete;
     [SerializeField] private Animator anim;
+
+    private bool onDoubleLives = false;
+
 
     private void Start()
     {
@@ -65,5 +69,11 @@ public class PlayerSettings : MonoBehaviour
     {
         get { return hairGel; }
         set { hairGel = value; }
+    }
+
+    public bool OnDoubleLives
+    {
+        get { return onDoubleLives; }
+        set { onDoubleLives = value; }
     }
 }

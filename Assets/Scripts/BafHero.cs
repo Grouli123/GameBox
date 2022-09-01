@@ -5,21 +5,20 @@ using UnityEngine;
 public class BafHero : MonoBehaviour
 {
     [Header("Scripts")]
-    [SerializeField] private DamageForEnemy damageForEnemy;
+    [SerializeField] private DamageDealler damageDealler;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private CoinCollectScript coinCollectScript;
     [SerializeField] private PlayerSettings playerSettings;
 
-    private bool OnDoubleDamage = false;
-    private bool OnDoubleSpeed = false;
-    private bool OnDoubleCoins = false;
-    private bool OnDoubleLives = false;
-    private bool OnDoubleJump = false;
+    private bool OnDoubleDamage = false; //1
+    private bool OnDoubleSpeed = false; //2
+    private bool OnDoubleCoins = false; //4
+    private bool OnDoubleLives = false; //5
+    private bool OnDoubleJump = false; //3
 
     private bool DoubleDamage = false;
     private bool DoubleSpeed = false;
     private bool DoubleCoins = false;
-    private bool DoubleLives = false;
     private bool DoubleJump = false;
 
     private void Update()
@@ -27,7 +26,6 @@ public class BafHero : MonoBehaviour
         Damage();
         Speed();
         Coins();
-        Lives();
         Jump();
     }
 
@@ -35,11 +33,11 @@ public class BafHero : MonoBehaviour
     {
         if(DoubleDamage == true & OnDoubleDamage == true)
         {
-            damageForEnemy.DoubleDamage = true;
+            damageDealler.DoubleDamage = true;
         }
         else
         {
-            damageForEnemy.DoubleDamage = false;
+            damageDealler.DoubleDamage = false;
         }
     }
     private void Speed()
@@ -63,14 +61,6 @@ public class BafHero : MonoBehaviour
         else
         {
             coinCollectScript.DoubleCoins = false;
-        }
-    }
-
-    private void Lives()
-    {
-        if(DoubleLives == true & playerSettings.Hp >= 10 & OnDoubleLives == true)
-        {
-            playerSettings.Hp = 15f;
         }
     }
 
@@ -126,12 +116,6 @@ public class BafHero : MonoBehaviour
     {
         get { return DoubleSpeed; }
         set { DoubleSpeed = value; }
-    }
-
-    public bool doubleLives
-    {
-        get { return DoubleLives; }
-        set { DoubleLives = value; }
     }
 
     public bool doubleJump

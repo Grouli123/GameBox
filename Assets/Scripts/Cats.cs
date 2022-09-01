@@ -7,11 +7,34 @@ public class Cats : MonoBehaviour
     private bool _tcepellin = false;
     private bool _ofeliya = false;
     private bool _pryanic = false;
+    private bool _vurdalak = false;
+    private bool _uri = false;
 
     private bool _tcepellinAdvertisement = false;
     private bool _ofeliyaAdvertisement = false;
     private bool _pryanicAdvertisement = false;
+    private bool _vurdalakAdvertisement = false;
+    private bool _uriAdvertisement = false;
 
+    private float catScrore;
+
+    public float CatScore
+    {
+        get { return catScrore; }
+        set { catScrore = value; }
+    }
+
+    public bool VurdalakCat
+    {
+        get { return _vurdalak; }
+        set { _vurdalak = value; }
+    }
+
+    public bool UriCat
+    {
+        get { return _uri; }
+        set { _uri = value; }
+    }
     public bool TcepellinCat
     {
         get { return _tcepellin; }
@@ -28,6 +51,18 @@ public class Cats : MonoBehaviour
     {
         get { return _pryanic; }
         set { _pryanic = value; }
+    }
+
+    public bool VurdalakAdvertisement
+    {
+        get { return _vurdalakAdvertisement; }
+        set { _vurdalakAdvertisement = value; }
+    }
+
+    public bool UriAdvertisement
+    {
+        get { return _uriAdvertisement; }
+        set { _uriAdvertisement = value; }
     }
 
     public bool TcepellinAdvertisement

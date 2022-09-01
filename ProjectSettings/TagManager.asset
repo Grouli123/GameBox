@@ -27,6 +27,12 @@ TagManager:
   - ZoneAdvertisementPryanic
   - Ground
   - FinishLevel
+  - ZoneAdvertisementVurdalak
+  - ZoneAdvertisementUri
+  - Vurdalak
+  - Uri
+  - Cat4
+  - Cat5
   layers:
   - Default
   - TransparentFX
