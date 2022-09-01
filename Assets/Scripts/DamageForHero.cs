@@ -9,9 +9,14 @@ public class DamageForHero : MonoBehaviour
     [SerializeField] private PlayerMovement PlayerMovement;
 
     [Header("ImagesHP")]
-    [SerializeField] private Sprite NotHP;
-    [SerializeField] private Image[] hp;
-    [SerializeField] private Sprite[] colorHP;
+    // [SerializeField] private Sprite NotHP;
+    //  [SerializeField] private Image[] hp;
+    //  [SerializeField] private Sprite[] colorHP;
+    [SerializeField] private Image hpFull;
+   // [SerializeField] private Image hpNull;
+   // private float score;
+
+
 
     
     public void OnCollisionEnter2D(Collision2D collision)
@@ -42,10 +47,16 @@ public class DamageForHero : MonoBehaviour
 
     private void Update()
     {
-        OnHealth();
+        // OnHealth();
+        Health();
     }
 
-    public void OnHealth()
+    private void Health()
+    {
+        hpFull.fillAmount = playerSettings.Hp / 10;
+    }
+
+   /* public void OnHealth()
     {
         switch (playerSettings.Hp)
         {
@@ -182,5 +193,5 @@ public class DamageForHero : MonoBehaviour
                 hp[0].sprite = colorHP[0];
                 break;
         }
-    }
+    }*/
 }
