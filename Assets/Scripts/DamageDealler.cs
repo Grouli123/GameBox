@@ -7,6 +7,8 @@ public class DamageDealler : MonoBehaviour
     [SerializeField] private float _fireSpeed;
     [SerializeField] private Rigidbody2D _rb;
 
+    private bool doubleDamage = false;
+
     private void Start() 
     {
         _rb.velocity = transform.right * _fireSpeed;
@@ -22,5 +24,17 @@ public class DamageDealler : MonoBehaviour
             // }
             Destroy(_bullet, 1.5f);     
         }   
+    }
+
+    public bool DoubleDamage
+    {
+        get { return doubleDamage; }
+        set { doubleDamage = value; }
+    }
+
+    public float Damage
+    {
+        get { return _damage; }
+        set { _damage = value; }
     }
 }

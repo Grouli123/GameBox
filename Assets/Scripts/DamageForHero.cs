@@ -9,14 +9,11 @@ public class DamageForHero : MonoBehaviour
     [SerializeField] private PlayerMovement PlayerMovement;
 
     [Header("ImagesHP")]
-    // [SerializeField] private Sprite NotHP;
-    //  [SerializeField] private Image[] hp;
-    //  [SerializeField] private Sprite[] colorHP;
     [SerializeField] private Image hpFull;
-   // [SerializeField] private Image hpNull;
-   // private float score;
+    [SerializeField] private Image hpFullDouble;
+    [SerializeField] private Image hpNulDouble;
 
-
+    private bool doubleHp = false;
 
     
     public void OnCollisionEnter2D(Collision2D collision)
@@ -47,151 +44,42 @@ public class DamageForHero : MonoBehaviour
 
     private void Update()
     {
-        // OnHealth();
-        Health();
+        HealthFill();
+        DoubleHp();
     }
 
-    private void Health()
+    private void HealthFill()
     {
-        hpFull.fillAmount = playerSettings.Hp / 10;
-    }
-
-   /* public void OnHealth()
-    {
-        switch (playerSettings.Hp)
+        if(doubleHp == false)
         {
-            case 0:
-                hp[9].sprite = NotHP;
-                hp[8].sprite = NotHP;
-                hp[7].sprite = NotHP;
-                hp[6].sprite = NotHP;
-                hp[5].sprite = NotHP;
-                hp[4].sprite = NotHP;
-                hp[3].sprite = NotHP;
-                hp[2].sprite = NotHP;
-                hp[1].sprite = NotHP;
-                hp[0].sprite = NotHP;
-                break;
-            case 1:
-                hp[9].sprite = NotHP;
-                hp[8].sprite = NotHP;
-                hp[7].sprite = NotHP;
-                hp[6].sprite = NotHP;
-                hp[5].sprite = NotHP;
-                hp[4].sprite = NotHP;
-                hp[3].sprite = NotHP;
-                hp[2].sprite = NotHP;
-                hp[1].sprite = NotHP;
-                hp[0].sprite = colorHP[0];
-                break;
-            case 2:
-                hp[9].sprite = NotHP;
-                hp[8].sprite = NotHP;
-                hp[7].sprite = NotHP;
-                hp[6].sprite = NotHP;
-                hp[5].sprite = NotHP;
-                hp[4].sprite = NotHP;
-                hp[3].sprite = NotHP;
-                hp[2].sprite = NotHP;
-                hp[1].sprite = colorHP[1];
-                hp[0].sprite = colorHP[0];
-                break;
-            case 3:
-                hp[9].sprite = NotHP;
-                hp[8].sprite = NotHP;
-                hp[7].sprite = NotHP;
-                hp[6].sprite = NotHP;
-                hp[5].sprite = NotHP;
-                hp[4].sprite = NotHP;
-                hp[3].sprite = NotHP;
-                hp[2].sprite = colorHP[2];
-                hp[1].sprite = colorHP[1];
-                hp[0].sprite = colorHP[0];
-                break;
-            case 4:
-                hp[9].sprite = NotHP;
-                hp[8].sprite = NotHP;
-                hp[7].sprite = NotHP;
-                hp[6].sprite = NotHP;
-                hp[5].sprite = NotHP;
-                hp[4].sprite = NotHP;
-                hp[3].sprite = colorHP[3];
-                hp[2].sprite = colorHP[2];
-                hp[1].sprite = colorHP[1];
-                hp[0].sprite = colorHP[0];
-                break;
-            case 5:
-                hp[9].sprite = NotHP;
-                hp[8].sprite = NotHP;
-                hp[7].sprite = NotHP;
-                hp[6].sprite = NotHP;
-                hp[5].sprite = NotHP;
-                hp[4].sprite = colorHP[4];
-                hp[3].sprite = colorHP[3];
-                hp[2].sprite = colorHP[2];
-                hp[1].sprite = colorHP[1];
-                hp[0].sprite = colorHP[0];
-                break;
-            case 6:
-                hp[9].sprite = NotHP;
-                hp[8].sprite = NotHP;
-                hp[7].sprite = NotHP;
-                hp[6].sprite = NotHP;
-                hp[5].sprite = colorHP[5];
-                hp[4].sprite = colorHP[4];
-                hp[3].sprite = colorHP[3];
-                hp[2].sprite = colorHP[2];
-                hp[1].sprite = colorHP[1];
-                hp[0].sprite = colorHP[0];
-                break;
-            case 7:
-                hp[9].sprite = NotHP;
-                hp[8].sprite = NotHP;
-                hp[7].sprite = NotHP;
-                hp[6].sprite = colorHP[6];
-                hp[5].sprite = colorHP[5];
-                hp[4].sprite = colorHP[4];
-                hp[3].sprite = colorHP[3];
-                hp[2].sprite = colorHP[2];
-                hp[1].sprite = colorHP[1];
-                hp[0].sprite = colorHP[0];
-                break;
-            case 8:
-                hp[9].sprite = NotHP;
-                hp[8].sprite = NotHP;
-                hp[7].sprite = colorHP[7];
-                hp[6].sprite = colorHP[6];
-                hp[5].sprite = colorHP[5];
-                hp[4].sprite = colorHP[4];
-                hp[3].sprite = colorHP[3];
-                hp[2].sprite = colorHP[2];
-                hp[1].sprite = colorHP[1];
-                hp[0].sprite = colorHP[0];
-                break;
-            case 9:
-                hp[9].sprite = NotHP;
-                hp[8].sprite = colorHP[8];
-                hp[7].sprite = colorHP[7];
-                hp[6].sprite = colorHP[6];
-                hp[5].sprite = colorHP[5];
-                hp[4].sprite = colorHP[4];
-                hp[3].sprite = colorHP[3];
-                hp[2].sprite = colorHP[2];
-                hp[1].sprite = colorHP[1];
-                hp[0].sprite = colorHP[0];
-                break;
-            case 10:
-                hp[9].sprite = colorHP[9];
-                hp[8].sprite = colorHP[8];
-                hp[7].sprite = colorHP[7];
-                hp[6].sprite = colorHP[6];
-                hp[5].sprite = colorHP[5];
-                hp[4].sprite = colorHP[4];
-                hp[3].sprite = colorHP[3];
-                hp[2].sprite = colorHP[2];
-                hp[1].sprite = colorHP[1];
-                hp[0].sprite = colorHP[0];
-                break;
+            hpFull.fillAmount = playerSettings.Hp / 10;
+            hpFullDouble.gameObject.SetActive(false);
+            hpNulDouble.gameObject.SetActive(false);
         }
-    }*/
+        else
+        {
+            if(playerSettings.Hp > 10)
+            {
+                hpFullDouble.fillAmount = (playerSettings.Hp - 5) / 10;
+            }
+            else if(playerSettings.Hp <= 10)
+            {
+                hpFull.fillAmount = playerSettings.Hp / 10;
+            }
+            hpFullDouble.gameObject.SetActive(true);
+            hpNulDouble.gameObject.SetActive(true);
+        }
+    }
+
+    private void DoubleHp()
+    {
+        if(playerSettings.OnDoubleLives == true)
+        {
+            doubleHp = true;
+        }
+        else
+        {
+            doubleHp = false;
+        }
+    }
 }
