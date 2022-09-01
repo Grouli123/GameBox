@@ -10,25 +10,30 @@ public class DamageForEnemy : MonoBehaviour
 
     private bool doubleDamage;
 
+    private void Start()
+    {
+        lives = 10f;
+        doubleDamage = false;
+    }
+
     private void Update()
     {
-        if(lives < 0)
+        if(lives <= 0)
         {
             Destroy(gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("DamageEnemy"))
+        if (collision.gameObject.CompareTag("DamageEnemy") & doubleDamage == true)
         {
-            if(doubleDamage == true)
-            {
-                lives -= 10f;
-            }
-            else
-            {
-                lives -= 5f;
-            }
+            this.lives -= 10f;
+            Debug.Log("Double");
+        }
+        else if(collision.gameObject.CompareTag("DamageEnemy") & doubleDamage == false)
+        {
+            this.lives -= 5f;
+            Debug.Log("NonDouble");
         }
     }
 

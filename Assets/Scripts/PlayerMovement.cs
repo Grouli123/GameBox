@@ -18,13 +18,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private HeroDeath heroDeath;
     private Rigidbody2D _rb;    
-    private AudioSource _jumpSound;
+    [SerializeField] private AudioSource stepSound;
     private bool facingRight;
     private bool canDoubleJump;
     public float jumpOffset;
     private bool fallDetector = false;
-
-    [SerializeField] private AudioSource sound;
 
     [SerializeField] private PlayerSettings _playerSettings;
 
@@ -33,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start() 
     {
-        _jumpSound = GetComponent<AudioSource>();
+        stepSound = GetComponent<AudioSource>();
         _animator.GetComponent<Animator>();
         
         _playerSettings.GetComponent<PlayerSettings>();
@@ -52,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
         _isGrounded = Physics2D.OverlapCircle(_overlapCirrcleTransform, jumpOffset, _groundMask);
     }
 
+    private void Update() 
+    {
+
+    }
+
     public void Move(float direction, bool isJumpButtonPressed)
     {
                    
@@ -68,27 +71,26 @@ public class PlayerMovement : MonoBehaviour
             
         if (!facingRight && direction > 0)
         {
-            sound.Play();
-            facingRight = !facingRight;         
+            stepSound.Play();
+            facingRight = !facingRight;
             transform.Rotate(0f, 180f, 0f); 
         }
         else if (facingRight && direction < 0)
         {
-            sound.Play();
+            stepSound.Play();
             facingRight = !facingRight;
             transform.Rotate(0f, 180f, 0f);
         }
 
         if(Mathf.Abs(direction) > 0.01f)
-        {            
+        {
             _animator.SetBool("IsRun", true);
             HorizontalMovement(direction);
         }
         else
         {
-            sound.Stop();
+            stepSound.Stop();
             _animator.SetBool("IsRun", false);
-
         }
 
         if(_isGrounded == false)
@@ -106,8 +108,7 @@ public class PlayerMovement : MonoBehaviour
         if(_isGrounded)
         {
             canDoubleJump = true;
-            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce); 
-                        
+            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);               
             //_jumpSound.Play();    
         }
         else
@@ -132,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) 
     {
-        if (collision.tag == "FallDetector")
+        if (collision.gameObject.CompareTag("FallDetector"))
         {
             fallDetector = true;
         }

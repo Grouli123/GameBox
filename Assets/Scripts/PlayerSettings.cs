@@ -24,7 +24,6 @@ public class PlayerSettings : MonoBehaviour
     {
         textCassete.text = cassete.ToString();
         GelUsed();
-        Debug.Log(hairGel);
     }
 
     private void GelUsed()
