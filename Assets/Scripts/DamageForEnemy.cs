@@ -20,6 +20,8 @@ public class DamageForEnemy : MonoBehaviour
 
     private void Update()
     {
+
+        Freeze();
         if(lives <= 0)
         {
             Destroy(gameObject);
@@ -31,21 +33,20 @@ public class DamageForEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == true)
         {
-            lives -= damageDealler.Damage;
-            Debug.Log("Double");
+            lives -= damageDealler.Damage * 2;
         }
         else if(collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == false)
         {
-            lives -= damageDealler.Damage * 2;
-            Debug.Log("NonDouble");
+            lives -= damageDealler.Damage;
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void Freeze()
     {
         if(buttonForGame.Freeze == true)
         {
-            enemyController.enabled = false;
+            gameObject.GetComponent<EnemyController>().enabled = false;
+            //enemyController.enabled = false;
         }
         else
         {

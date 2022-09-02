@@ -55,7 +55,7 @@ public class Weapons : MonoBehaviour
             weap3.sprite = notActive;
             weap4.sprite = notActive;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) & bafHero.doubleJump == true)
+        else if (Input.GetKeyDown(KeyCode.Alpha3) & bafHero.onDoubleJump == true)
         {
             bafHero.doubleDamage = false;
             bafHero.doubleSpeed = false;

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -18,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private HeroDeath heroDeath;
     private Rigidbody2D _rb;    
-    [SerializeField] private AudioSource stepSound;
     private bool facingRight;
     private bool canDoubleJump;
     public float jumpOffset;
@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start() 
     {
-        stepSound = GetComponent<AudioSource>();
         _animator.GetComponent<Animator>();
         
         _playerSettings.GetComponent<PlayerSettings>();
@@ -52,32 +51,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update() 
     {
-
     }
 
     public void Move(float direction, bool isJumpButtonPressed)
     {
-                   
-        if(isJumpButtonPressed)
+        if (_isGrounded == false)
         {
-            _animator.SetBool("IsJump", true);  
-            Jump();
+            _animator.SetBool("IsJump", true);
         }
         else
         {
-            if(_isGrounded == true)
-                _animator.SetBool("IsJump", false);  
+            _animator.SetBool("IsJump", false);
+        }
+
+        if (isJumpButtonPressed)
+        {
+            Jump();
         }
             
         if (!facingRight && direction > 0)
         {
-            stepSound.Play();
             facingRight = !facingRight;
             transform.Rotate(0f, 180f, 0f); 
         }
         else if (facingRight && direction < 0)
         {
-            stepSound.Play();
             facingRight = !facingRight;
             transform.Rotate(0f, 180f, 0f);
         }
@@ -89,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            stepSound.Stop();
             _animator.SetBool("IsRun", false);
         }
 
@@ -113,8 +110,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if(canDoubleJump)
-            {
+            if (canDoubleJump)
+            {              
                 _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);   
                 canDoubleJump = false;
             }

@@ -29,7 +29,7 @@ public class ButtonForGame : MonoBehaviour
     }
     public void OnClickPause()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (_pauseActive == false)
             {
