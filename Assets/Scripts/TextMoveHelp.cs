@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Scriptable;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,10 +18,19 @@ public class TextMoveHelp : MonoBehaviour
     [SerializeField] private Image advertisement;
     [SerializeField] private Sprite[] advertisementSprite; 
 
+    [SerializeField] private IntegerVariable _allOfScore;
+    [SerializeField] private IntegerVariable _scoreForCat;
+    [SerializeField] private IntegerVariable _catCounter;
+    [SerializeField] private int _scoreForPickUpCat;
+    [SerializeField] private float _timeToDestroyObject;
+    private bool _isCatPickUp = false;
+
     private void Start() 
     {
         _textBackground.GetComponent<GameObject>();
         FulText(true);  
+        _scoreForCat.SetValue(0);
+        _catCounter.SetValue(0);
     }
 
     private void Update()
@@ -44,8 +52,6 @@ public class TextMoveHelp : MonoBehaviour
             advertisement.gameObject.SetActive(false);
             FulText(false);
         }
-
-        catScoreText.text = cats.CatScore.ToString();
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -130,6 +136,7 @@ public class TextMoveHelp : MonoBehaviour
         if (collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == true)
         {
             Text.text = "Спасибо тебе, внучок! Держи усиление урона!";
+            CheckPickUpCat(true);
             FulText(true);
             bafHero.onDoubleDamage = true;
             cats.CatScore += 1;
@@ -138,6 +145,7 @@ public class TextMoveHelp : MonoBehaviour
         if(collision.gameObject.CompareTag("Cat2") & cats.OfeliyaCat == true)
         {
             Text.text = "Святой гигабайт, спасибо тебе! С меня ускоритель пушки!";
+            CheckPickUpCat(true);
             FulText(true);
             bafHero.onDoubleSpeed = true;
             cats.CatScore += 1;
@@ -146,6 +154,7 @@ public class TextMoveHelp : MonoBehaviour
         if (collision.gameObject.CompareTag("Cat3") & cats.PryanicCat == true)
         {
             Text.text = "Спасибо, внучек! Держи супер-прыжок!";
+            CheckPickUpCat(true);
             FulText(true);
             bafHero.onDoubleJump = true;
             cats.CatScore += 1;
@@ -154,6 +163,7 @@ public class TextMoveHelp : MonoBehaviour
         if (collision.gameObject.CompareTag("Cat4") & cats.VurdalakCat == true)
         {
             Text.text = "Божечки-кошечки, спасибо тебе! Теперь ты будешь богат!";
+            CheckPickUpCat(true);
             FulText(true);
             bafHero.onDoubleCoins = true;
             cats.CatScore += 1;
@@ -162,6 +172,7 @@ public class TextMoveHelp : MonoBehaviour
         if (collision.gameObject.CompareTag("Cat5") & cats.UriCat == true)
         {
             Text.text = "Моя дорогая Ури! Держи витаминку на 150% здоровья!";
+            CheckPickUpCat(true);
             FulText(true);
             bafHero.onDobleLives = true;
             cats.CatScore += 1;
@@ -173,40 +184,45 @@ public class TextMoveHelp : MonoBehaviour
         {
             cats.TcepellinCat = true;
             Text.text = "Кажется, ты нашел первого котика";
+            _isCatPickUp = true;
             FulText(true);
-            Destroy(collision.gameObject, 2);
+            Destroy(collision.gameObject, _timeToDestroyObject);
         }
 
         if (collision.gameObject.CompareTag("Ofeliya") & cats.OfeliyaAdvertisement == true)
         {
             cats.OfeliyaCat = true;
             Text.text = "Кажется, ты нашел второго котика";
+            _isCatPickUp = true;
             FulText(true);
-            Destroy(collision.gameObject, 2);
+            Destroy(collision.gameObject, _timeToDestroyObject);
         }
 
         if (collision.gameObject.CompareTag("Pryanic") & cats.PryanicAdvertisement == true)
         {
             cats.PryanicCat = true;
             Text.text = "Кажется, ты нашел третьего котика";
+            _isCatPickUp = true;
             FulText(true);
-            Destroy(collision.gameObject, 2);
+            Destroy(collision.gameObject, _timeToDestroyObject);
         }
 
         if (collision.gameObject.CompareTag("Vurdalak") & cats.VurdalakAdvertisement == true)
         {
             cats.VurdalakCat = true;
-            Text.text = "Кажется, ты нашел третьего котика";
+            Text.text = "Кажется, ты нашел четвертого котика";
+            _isCatPickUp = true;
             FulText(true);
-            Destroy(collision.gameObject, 2);
+            Destroy(collision.gameObject, _timeToDestroyObject);
         }
 
         if (collision.gameObject.CompareTag("Uri") & cats.VurdalakAdvertisement == true)
         {
             cats.VurdalakCat = true;
-            Text.text = "Кажется, ты нашел третьего котика";
+            Text.text = "Кажется, ты нашел пятого котика";
+            _isCatPickUp = true;
             FulText(true);
-            Destroy(collision.gameObject, 2);
+            Destroy(collision.gameObject, _timeToDestroyObject);
         }
     }
 
@@ -363,5 +379,19 @@ public class TextMoveHelp : MonoBehaviour
     {
         _textBackground.SetActive(active);
     }
-
+    
+    private void CheckPickUpCat(bool value)
+    {
+        if (value == true)
+        {
+            if (_isCatPickUp == true)
+            {
+                _scoreForCat.ApplyChange(_scoreForPickUpCat);
+                _allOfScore.ApplyChange(_scoreForPickUpCat);
+                _catCounter.ApplyChange(1);         
+                catScoreText.text = _catCounter.GetValue().ToString();
+                _isCatPickUp = false;
+            }
+        }
+    }
 }

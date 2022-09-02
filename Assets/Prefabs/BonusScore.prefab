@@ -148,8 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinCounter: {fileID: 11400000, guid: e9961b7eaf629d94689cf84bd7bdcf63, type: 2}
+  _allOfScore: {fileID: 11400000, guid: 7fae76fe02fa2854c905258178b396a7, type: 2}
   _scoreForPickUpCoin: 10
-  _scoreForDoublePickUpCoin: 2
+  _scoreForDoublePickUpCoin: 20
 --- !u!95 &3970990306198806560
 Animator:
   serializedVersion: 4

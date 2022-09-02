@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Scriptable;
 using UnityEngine;
 
 public class DamageForEnemy : MonoBehaviour
@@ -9,9 +8,14 @@ public class DamageForEnemy : MonoBehaviour
     [SerializeField] private ButtonForGame buttonForGame;
     [SerializeField] private DamageDealler damageDealler;
 
+    [SerializeField] private IntegerVariable _allOfScore;
+    [SerializeField] private IntegerVariable _enemyCounter;
+    [SerializeField] private int _scoreForEnemyDeath;
+
     private void Start()
     {
         lives = 10f;
+        _enemyCounter.SetValue(0);
     }
 
     private void Update()
@@ -19,6 +23,8 @@ public class DamageForEnemy : MonoBehaviour
         if(lives <= 0)
         {
             Destroy(gameObject);
+            _enemyCounter.ApplyChange(_scoreForEnemyDeath);
+            _allOfScore.ApplyChange(_scoreForEnemyDeath);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

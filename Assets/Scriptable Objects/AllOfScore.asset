@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73d68d72bc8b2b74d811dfc409c5e8da, type: 3}
-  m_Name: EnemyScore
+  m_Name: AllOfScore
   m_EditorClassIdentifier: 
-  _value: 0
+  _value: 100

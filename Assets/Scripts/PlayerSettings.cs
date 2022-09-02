@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Scriptable;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,18 +15,22 @@ public class PlayerSettings : MonoBehaviour
     [SerializeField] private Text textCassete;
     [SerializeField] private Animator anim;
 
-    private bool onDoubleLives = false;
+    [SerializeField] private IntegerVariable _coins;
+    [SerializeField] private int _countCoinsForCassete;
 
+    private bool onDoubleLives = false;
 
     private void Start()
     {
         hairGel = 0;
         anim.SetInteger("Coin", 0);
+        _coins.SetValue(0);
     }
     private void Update()
     {
         textCassete.text = cassete.ToString();
         GelUsed();
+        CheckCoinToAddCassete();
     }
 
     private void GelUsed()
@@ -75,5 +78,14 @@ public class PlayerSettings : MonoBehaviour
     {
         get { return onDoubleLives; }
         set { onDoubleLives = value; }
+    }
+
+    private void CheckCoinToAddCassete()
+    {
+        if (_coins.GetValue() >= _countCoinsForCassete)
+        {
+            _coins.ApplyChange(-_countCoinsForCassete);
+            Cassete += 1;
+        }
     }
 }

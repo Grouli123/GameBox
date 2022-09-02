@@ -20,11 +20,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float _timeBTWShoots;
     [SerializeField] private float _shootSpeed;
 
-    private float _castDist;
-
     [SerializeField] private string _groundLayerName;
     [SerializeField] private string _objectCollisionTag;
     [SerializeField] private string _playerCollisionTag;
+    
+    private float _castDist;
 
     private bool _mustTurn;
     private bool _canShot;

@@ -146,8 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239e994efb87be546ab1689ef3b9f8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSettings: {fileID: 0}
-  _coinCounter: {fileID: 11400000, guid: 90f63da776486104fad2af3a37ab78aa, type: 2}
+  playerSettings: {fileID: 8569518473856476283, guid: aef8654ea49b2eb469dc329faefe770b, type: 3}
+  _allOfScore: {fileID: 11400000, guid: 7fae76fe02fa2854c905258178b396a7, type: 2}
+  _casseteCounter: {fileID: 11400000, guid: 90f63da776486104fad2af3a37ab78aa, type: 2}
   _scoreForPickUpCassete: 1000
 --- !u!50 &400280408586559650
 Rigidbody2D:
