@@ -12038,7 +12038,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.27091455, y: -0.0008200407, z: 0}
+  m_LocalPosition: {x: -0.27171516, y: -0.0008200407, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16051,7 +16051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.52977073, y: 0.3512448}
   m_AnchorMax: {x: 0.7252083, y: 0.41787416}
-  m_AnchoredPosition: {x: -0.036209106, y: -1}
+  m_AnchoredPosition: {x: -0.036132812, y: -1}
   m_SizeDelta: {x: -0.64849854, y: -0.1118}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &651820269
@@ -16723,7 +16723,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6783217, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -19001,7 +19001,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.51783335, y: 0.3512448}
   m_AnchorMax: {x: 0.73552084, y: 0.41787416}
-  m_AnchoredPosition: {x: -0.38778687, y: -1.0117188}
+  m_AnchoredPosition: {x: -0.38781738, y: -1.0117188}
   m_SizeDelta: {x: -0.77557, y: -0.152}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &766397225
@@ -35049,10 +35049,10 @@ RectTransform:
   m_Father: {fileID: 1720403868}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.7994792, y: 0.024496507}
-  m_AnchorMax: {x: 0.8664792, y: 0.049000002}
-  m_AnchoredPosition: {x: 0.47998047, y: -0.075927734}
-  m_SizeDelta: {x: -0.119384766, y: 0.06896973}
+  m_AnchorMin: {x: 0.6374792, y: 0.024496507}
+  m_AnchorMax: {x: 0.87500006, y: 0.049000002}
+  m_AnchoredPosition: {x: -4, y: -0.075927734}
+  m_SizeDelta: {x: -0.9352112, y: 0.06899977}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1424386293
 MonoBehaviour:
@@ -35087,7 +35087,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041E\u0447\u043A\u0438:"
+  m_Text: "\u0414\u0435\u043B\u043E\u0432\u0430\u044F \u0440\u0435\u043F\u0443\u0442\u0430\u0446\u0438\u044F:"
 --- !u!222 &1424386294
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35689,7 +35689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.87500006, y: 0.024496507}
   m_AnchorMax: {x: 0.9924792, y: 0.049000002}
-  m_AnchoredPosition: {x: 0, y: -0.036132812}
+  m_AnchoredPosition: {x: -4.5, y: -0.036132812}
   m_SizeDelta: {x: 0.73950195, y: 0.10099983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1428684541

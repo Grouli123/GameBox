@@ -6,6 +6,8 @@ public class CoinCollectScript : MonoBehaviour
     [SerializeField] private IntegerVariable _coinCounter;
     [SerializeField] private IntegerVariable _allOfScore;
     [SerializeField] private int _scoreForPickUpCoin;
+    [SerializeField] private int _countCoin;
+    [SerializeField] private int _countDoubleCoin;
     [SerializeField] private int _scoreForDoublePickUpCoin;
 
     // [SerializeField] private AudioSource _eatSound;
@@ -24,12 +26,12 @@ public class CoinCollectScript : MonoBehaviour
         {
             if (doubleCoins == true)
             {
-                _coinCounter.ApplyChange(_scoreForDoublePickUpCoin);
+                _coinCounter.ApplyChange(_countDoubleCoin);
                 _allOfScore.ApplyChange(_scoreForDoublePickUpCoin);
             }
             else
             {
-                _coinCounter.ApplyChange(_scoreForPickUpCoin);
+                _coinCounter.ApplyChange(_countCoin);
                 _allOfScore.ApplyChange(_scoreForPickUpCoin);
             }
             // _eatSound.Play();
