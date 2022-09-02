@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Scripts")]
     [SerializeField] private HeroDeath heroDeath;
-    private Rigidbody2D _rb;    
+
+    [HideInInspector] public Rigidbody2D rb;    
     private bool facingRight;
     private bool canDoubleJump;
     public float jumpOffset;
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         facingRight = true;
     }
 
@@ -105,14 +106,14 @@ public class PlayerMovement : MonoBehaviour
         if(_isGrounded)
         {
             canDoubleJump = true;
-            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);               
+            rb.velocity = new Vector2(rb.velocity.x, _jumpForce);               
             //_jumpSound.Play();    
         }
         else
         {
             if (canDoubleJump)
             {              
-                _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);   
+                rb.velocity = new Vector2(rb.velocity.x, _jumpForce);   
                 canDoubleJump = false;
             }
         }
@@ -120,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HorizontalMovement(float direction)
     {
-        _rb.velocity = new Vector2(_curve.Evaluate(direction) * speed,_rb.velocity.y);
+        rb.velocity = new Vector2(_curve.Evaluate(direction) * speed,rb.velocity.y);
     }
 
     public void OnAnimator(string name, bool active)
