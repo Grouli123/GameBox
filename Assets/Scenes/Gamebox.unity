@@ -4360,7 +4360,6 @@ GameObject:
   - component: {fileID: 244109287}
   - component: {fileID: 244109286}
   - component: {fileID: 244109285}
-  - component: {fileID: 244109288}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -4445,18 +4444,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 244109288}
-        m_TargetAssemblyTypeName: ChangeLvl, Assembly-CSharp
-        m_MethodName: StartLevl
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &244109286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4495,19 +4482,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244109283}
   m_CullTransparentMesh: 1
---- !u!114 &244109288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244109283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff97a094a05fe734bad48b53446cce9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _level: 0
 --- !u!1001 &244374748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49437,6 +49411,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   jumpOffset: 0.5
   _playerSettings: {fileID: 1978076191}
+  _playerPosition: {fileID: 1978076187}
 --- !u!114 &1978076190
 MonoBehaviour:
   m_ObjectHideFlags: 0

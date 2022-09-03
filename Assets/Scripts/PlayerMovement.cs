@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private bool fallDetector = false;
 
     [SerializeField] private PlayerSettings _playerSettings;
+    [SerializeField] private Transform _playerPosition;
 
 
     private Vector3 respawnPoint;
@@ -133,11 +134,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("FallDetector"))
         {
+            _playerSettings.Hp = 0;
             fallDetector = true;
         }
         else if (collision.tag == "Checkpoint")
         {
-            respawnPoint = transform.position;
+            respawnPoint = _playerPosition.position;
         } 
     }
 
@@ -160,11 +162,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnClickContinueOnDeath()
     {
-        if (_playerSettings.Hp < 0 & _playerSettings.Cassete > 0)
+        if (_playerSettings.Hp <= 0 & _playerSettings.Cassete > 0)
         {
             fallDetector = false;
             heroDeath.PanelDeath(false);
-            transform.position = respawnPoint;
+            _playerPosition.position = respawnPoint;
             _playerSettings.Hp = 10;
             _playerSettings.Cassete -= 1;
         }
