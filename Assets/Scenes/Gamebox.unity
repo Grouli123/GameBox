@@ -8039,7 +8039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &353726769
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14822,7 +14822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &617870224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30328,7 +30328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1240346642
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36080,7 +36080,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1447488988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -45241,7 +45241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1840395032
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49580,6 +49580,12 @@ MonoBehaviour:
   _catCounter: {fileID: 11400000, guid: 6be9915520ddf7c4ba8158491d00b8f2, type: 2}
   _scoreForPickUpCat: 1000
   _timeToDestroyObject: 2
+  _bonuses:
+  - {fileID: 617870225}
+  - {fileID: 353726770}
+  - {fileID: 1240346643}
+  - {fileID: 1447488989}
+  - {fileID: 1840395033}
 --- !u!114 &1978076197
 MonoBehaviour:
   m_ObjectHideFlags: 0

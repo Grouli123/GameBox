@@ -25,6 +25,8 @@ public class TextMoveHelp : MonoBehaviour
     [SerializeField] private float _timeToDestroyObject;
     private bool _isCatPickUp = false;
 
+    [SerializeField] private Image[] _bonuses;
+
     private void Start() 
     {
         _textBackground.GetComponent<GameObject>();
@@ -138,6 +140,7 @@ public class TextMoveHelp : MonoBehaviour
             Text.text = "Спасибо тебе, внучок! Держи усиление урона!";
             CheckPickUpCat(true);
             FulText(true);
+            _bonuses[0].enabled = true;
             bafHero.onDoubleDamage = true;
             cats.CatScore += 1;
         }
@@ -147,6 +150,7 @@ public class TextMoveHelp : MonoBehaviour
             Text.text = "Святой гигабайт, спасибо тебе! С меня ускоритель пушки!";
             CheckPickUpCat(true);
             FulText(true);
+            _bonuses[1].enabled = true;
             bafHero.onDoubleSpeed = true;
             cats.CatScore += 1;
         }
@@ -156,6 +160,7 @@ public class TextMoveHelp : MonoBehaviour
             Text.text = "Спасибо, внучек! Держи супер-прыжок!";
             CheckPickUpCat(true);
             FulText(true);
+            _bonuses[2].enabled = true;
             bafHero.onDoubleJump = true;
             cats.CatScore += 1;
         }
@@ -165,6 +170,7 @@ public class TextMoveHelp : MonoBehaviour
             Text.text = "Божечки-кошечки, спасибо тебе! Теперь ты будешь богат!";
             CheckPickUpCat(true);
             FulText(true);
+            _bonuses[3].enabled = true;
             bafHero.onDoubleCoins = true;
             cats.CatScore += 1;
         }
@@ -174,6 +180,7 @@ public class TextMoveHelp : MonoBehaviour
             Text.text = "Моя дорогая Ури! Держи витаминку на 150% здоровья!";
             CheckPickUpCat(true);
             FulText(true);
+            _bonuses[4].enabled = true;
             bafHero.onDobleLives = true;
             cats.CatScore += 1;
             playerSettings.Hp = 15;
