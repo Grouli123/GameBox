@@ -33,6 +33,8 @@ TagManager:
   - Uri
   - Cat4
   - Cat5
+  - leftLiftDoor
+  - rightLiftDoor
   layers:
   - Default
   - TransparentFX
