@@ -13,8 +13,16 @@ public class DamageForHero : MonoBehaviour
     [SerializeField] private Image hpFullDouble;
     [SerializeField] private Image hpNulDouble;
 
+    [SerializeField] private GameObject _baseStickHp;
+    [SerializeField] private GameObject _doubleStickHp;
+
     private bool doubleHp = false;
 
+    private void Start() 
+    {
+        _baseStickHp.SetActive(true);
+        _doubleStickHp.SetActive(false);
+    }
     
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -75,11 +83,14 @@ public class DamageForHero : MonoBehaviour
     {
         if(playerSettings.OnDoubleLives == true)
         {
-            doubleHp = true;
+            doubleHp = true;            
+            _doubleStickHp.SetActive(false);
         }
         else
         {
             doubleHp = false;
+            _baseStickHp.SetActive(true);
+
         }
     }
 }

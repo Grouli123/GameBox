@@ -35,6 +35,7 @@ TagManager:
   - Cat5
   - leftLiftDoor
   - rightLiftDoor
+  - Car
   layers:
   - Default
   - TransparentFX
