@@ -74,8 +74,8 @@ public class BossController : MonoBehaviour
         bool val = false;
         _castDist = distance;
 
-        Vector2 endPos = _player.transform.position + Vector3.right * _castDist;
-        RaycastHit2D hit = Physics2D.Linecast(_player.transform.position, endPos, 1 << LayerMask.NameToLayer(_groundLayerName));
+        Vector2 endPos = _player.position + Vector3.right * _castDist;
+        RaycastHit2D hit = Physics2D.Linecast(_originalPoint.position, endPos, 1 << LayerMask.NameToLayer(_groundLayerName));
 
         if (hit.collider != null)
         { 
@@ -96,12 +96,12 @@ public class BossController : MonoBehaviour
                     EnemyStay();
                 }
 
-                Debug.DrawLine(_player.transform.position, hit.point, Color.yellow);       
+                Debug.DrawLine(_originalPoint.position, hit.point, Color.yellow);       
             }
         }
         else
         {            
-            Debug.DrawLine(_player.transform.position, endPos, Color.blue);
+            Debug.DrawLine(_originalPoint.position, endPos, Color.blue);
         }
 
         return val;
@@ -146,9 +146,11 @@ public class BossController : MonoBehaviour
     private IEnumerator Shoot()
     {
         _canShot = false;
+        Vector2 endPos2 = _player.position + Vector3.right * _castDist;
         yield return new WaitForSeconds(_timeBTWShoots);
         GameObject newBullet = Instantiate(_bullet, _shootPos.position, Quaternion.identity);
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(_shootSpeed * _walkSpeed * Time.fixedDeltaTime, 0f);
+        newBullet.GetComponent<Rigidbody2D>().velocity = endPos2;
+        //new Vector2(_shootSpeed * _walkSpeed * Time.fixedDeltaTime, 0f);
         _canShot = true;
     }
 }
