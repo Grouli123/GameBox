@@ -213,7 +213,7 @@ MonoBehaviour:
   _range: 2
   _timeBTWShoots: 0.5
   _shootSpeed: 1
-  _groundLayerName: Ground
+  _groundLayerName: Action
   _objectCollisionTag: Player
   _playerCollisionTag: Player
 --- !u!114 &6411571820992539998

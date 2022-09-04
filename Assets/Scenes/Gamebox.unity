@@ -11409,7 +11409,7 @@ GameObject:
   - component: {fileID: 382714651}
   - component: {fileID: 382714653}
   - component: {fileID: 382714652}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ZoneForPlatfomr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26263,7 +26263,7 @@ GameObject:
   - component: {fileID: 809697050}
   - component: {fileID: 809697052}
   - component: {fileID: 809697051}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FallingCheck
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -36660,7 +36660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1172515421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59388,7 +59388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1918794906}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -61243,7 +61243,7 @@ GameObject:
   - component: {fileID: 1978076201}
   - component: {fileID: 1978076206}
   - component: {fileID: 1978076203}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hero
   m_TagString: Player
   m_Icon: {fileID: 0}
