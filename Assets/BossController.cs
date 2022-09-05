@@ -2,7 +2,13 @@ using UnityEngine;
 using System.Collections;
 public class BossController : MonoBehaviour
 {    
-    [SerializeField] private GameObject _bullet;   
+    [SerializeField] private GameObject _bullet; 
+
+    [SerializeField] private GameObject[] _groundBoss;  
+    [SerializeField] private SliderJoint2D[] _sliderJooint;
+    [SerializeField] private SliderUp[] _sliderUp;
+
+    [SerializeField] private DamageForEnemy _damageForEnemy;
 
     [SerializeField] private Transform _player;
     [SerializeField] private Transform _shootPos;
@@ -35,14 +41,25 @@ public class BossController : MonoBehaviour
     {
         _mustPatrol = true;
         _canShot = true;
+        _damageForEnemy = GetComponent<DamageForEnemy>();
     }
 
     private void Update()
     {
-        if (_mustPatrol)
+        if (_damageForEnemy.lives <= 7)
         {
-            Patrol();
+            SecondState();
+ 
         }
+
+        if (_damageForEnemy.lives <= 5)
+        {
+            ThirdState();
+        }
+        // if (_mustPatrol)
+        // {
+        //     Patrol();
+        // }
 
         if (CanSeePlayer(_range))
         {
@@ -115,24 +132,24 @@ public class BossController : MonoBehaviour
         StartCoroutine(Shoot());                
     }
 
-    private void FixedUpdate()
-    {
-        // if (_mustPatrol)
-        // {
-        //     _mustTurn = !Physics2D.OverlapCircle(_groundCheckPosition.position, 0.1f, _groundLayer);
-        // }
+    // private void FixedUpdate()
+    // {
+    //     // if (_mustPatrol)
+    //     // {
+    //     //     _mustTurn = !Physics2D.OverlapCircle(_groundCheckPosition.position, 0.1f, _groundLayer);
+    //     // }
 
-    }
+    // }
 
-    private void Patrol()
-    {
-        if (_mustTurn || _bodyCollider.IsTouchingLayers(_groundLayer))
-        {
-            Flip();     
-        }
+    // private void Patrol()
+    // {
+    //     if (_mustTurn || _bodyCollider.IsTouchingLayers(_groundLayer))
+    //     {
+    //         Flip();     
+    //     }
 
-        _rb.velocity = new Vector2(_walkSpeed * Time.fixedDeltaTime, _rb.velocity.y);
-    }
+    //     _rb.velocity = new Vector2(_walkSpeed * Time.fixedDeltaTime, _rb.velocity.y);
+    // }
 
     private void Flip()
     {
@@ -146,11 +163,32 @@ public class BossController : MonoBehaviour
     private IEnumerator Shoot()
     {
         _canShot = false;
-        Vector2 endPos2 = _player.position + Vector3.right * _castDist;
         yield return new WaitForSeconds(_timeBTWShoots);
+        Vector2 endPos2 = _player.position + Vector3.up * _castDist;
         GameObject newBullet = Instantiate(_bullet, _shootPos.position, Quaternion.identity);
         newBullet.GetComponent<Rigidbody2D>().velocity = endPos2;
-        //new Vector2(_shootSpeed * _walkSpeed * Time.fixedDeltaTime, 0f);
         _canShot = true;
+    }
+
+    private void SecondState()
+    {
+        for (int i = 0; i < _groundBoss.Length; i++)
+        {
+            _groundBoss[i].SetActive(false);
+        }
+    }
+
+    private void ThirdState()
+    {
+        
+        for (int i = 0; i < _sliderJooint.Length; i++)
+        {
+            _sliderJooint[i].enabled = true;
+        }
+
+        for (int i = 0; i < _sliderUp.Length; i++)
+        {
+            _sliderUp[i].enabled = true;
+        }
     }
 }
