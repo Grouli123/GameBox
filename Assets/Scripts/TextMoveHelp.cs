@@ -382,7 +382,7 @@ public class TextMoveHelp : MonoBehaviour
         Text.text = text;
     }
 
-    private void FulText(bool active)
+    public void FulText(bool active)
     {
         _textBackground.SetActive(active);
     }

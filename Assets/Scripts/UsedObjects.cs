@@ -8,6 +8,7 @@ public class UsedObjects : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private PlayerSettings settings;
     [SerializeField] private MostActivated mostActivated;
+    [SerializeField] private Most2Activation mostActivated2;
     [SerializeField] private LiftActivated liftActivated;
     [SerializeField] private TextMoveHelp textMoveHelp;
 
@@ -15,6 +16,7 @@ public class UsedObjects : MonoBehaviour
     [SerializeField] private BoxCollider2D _rightDoorLift;
     [SerializeField] private BoxCollider2D _leftDoorLift;
     private bool activatedMost = false;
+    private bool activatedMost2 = false;
     private bool activatedLift = false;
     private bool _isUpLift = false;
 
@@ -34,12 +36,21 @@ public class UsedObjects : MonoBehaviour
         {
             activatedMost = true;
             textMoveHelp.Texting("Нажмите E");
+            textMoveHelp.FulText(true);
+        }
+
+        if (collision.gameObject.GetComponent<Most2Activation>())
+        {
+            activatedMost2 = true;
+            textMoveHelp.Texting("E - Активировать мост");
+            textMoveHelp.FulText(true);
         }
 
         if (collision.gameObject.GetComponent<LiftActivated>())
         {
             activatedLift = true;
             textMoveHelp.Texting("Нажмите E");
+            textMoveHelp.FulText(true);
         }
 
         if (collision.CompareTag("leftLiftDoor"))
@@ -60,7 +71,12 @@ public class UsedObjects : MonoBehaviour
             mostActivated.Activated("Most", true);
         }
 
-        if(Input.GetKey(KeyCode.E) & activatedLift == true)
+        if (Input.GetKey(KeyCode.E) & activatedMost2 == true)
+        {
+            mostActivated2.Animation("Activation", true);
+        }
+
+        if (Input.GetKey(KeyCode.E) & activatedLift == true)
         {
             liftActivated.Activated("Activated", true);            
             _leftDoorLift.isTrigger = false;
