@@ -364,7 +364,7 @@ public class TextMoveHelp : MonoBehaviour
             // Text.text = "Esc - закрыть";
             // FulText(true);
             advertisement.gameObject.SetActive(true);
-            //advertisement.sprite = advertisementSprite[3];
+            advertisement.sprite = advertisementSprite[3];
         }
 
         if (collision.gameObject.CompareTag("ZoneAdvertisementUri") & Input.GetKeyDown(KeyCode.E))
@@ -382,7 +382,7 @@ public class TextMoveHelp : MonoBehaviour
         Text.text = text;
     }
 
-    private void FulText(bool active)
+    public void FulText(bool active)
     {
         _textBackground.SetActive(active);
     }
