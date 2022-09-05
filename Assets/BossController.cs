@@ -75,7 +75,7 @@ public class BossController : MonoBehaviour
             if (_player.position.x > transform.position.x && transform.localScale.x < 0
             || _player.position.x < transform.position.x && transform.localScale.x > 0)
             {
-                Flip();
+               // Flip();
             }
 
             EnemyStay();                
@@ -162,11 +162,22 @@ public class BossController : MonoBehaviour
 
     private IEnumerator Shoot()
     {
+        
+       // var Test = Vector3.MoveTowards(transform.position, _player.transform.position, 1f);
+
+        //Vector3 targetDir = _player.position - transform.position;
+        //float angle = Vector3.Angle(targetDir, transform.forward);
+
+        Vector2 endPos = _player.position + Vector3.right * _castDist;
+
+        
         _canShot = false;
         yield return new WaitForSeconds(_timeBTWShoots);
-        Vector2 endPos2 = _player.position + Vector3.up * _castDist;
         GameObject newBullet = Instantiate(_bullet, _shootPos.position, Quaternion.identity);
-        newBullet.GetComponent<Rigidbody2D>().velocity = endPos2;
+        transform.position = Vector2.MoveTowards(transform.position, endPos, _shootSpeed * Time.deltaTime);
+        //newBullet.GetComponent<Rigidbody2D>().velocity = endPos;
+
+
         _canShot = true;
     }
 
@@ -180,7 +191,6 @@ public class BossController : MonoBehaviour
 
     private void ThirdState()
     {
-        
         for (int i = 0; i < _sliderJooint.Length; i++)
         {
             _sliderJooint[i].enabled = true;

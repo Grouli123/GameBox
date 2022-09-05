@@ -1,38 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SliderUp : MonoBehaviour
 {
-    [SerializeField] private float distance;
-    [SerializeField] private Vector2 _lastPosition;
-    [SerializeField] private SliderJoint2D _platform;
-    private float speedMove;
-    public Vector2 StartPosition;
-    
-    private void Start()
+   [SerializeField] private GameObject[] waypoints;
+    private int currentWaypointIndex = 0;
+    private SpriteRenderer spriteRenderer;
+    private bool currentRotation;
+
+    [SerializeField] private float speed = -2f;
+
+    private void Start() 
     {
-        _platform = GetComponent<SliderJoint2D>();
-        StartPosition = transform.position;        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        currentRotation = false;
     }
-     
     private void Update()
     {
-        JointMotor2D motor = _platform.motor;
-        motor.motorSpeed = speedMove;
-        _platform.motor = motor;
+        if (Vector2.Distance(waypoints[currentWaypointIndex].transform.position, transform.position) < .1f)
+        {
+            currentWaypointIndex++;
+            ChangeDirection();
 
-        if(Vector2.Distance(transform.position, StartPosition) < distance)
-        {
-            _platform.angle *= -1;
-            speedMove = -0.3f;
+            if (currentWaypointIndex >= waypoints.Length)
+            {
+                currentWaypointIndex = 0;
+            }
         }
-        else if(Vector2.Distance(transform.position, _lastPosition) < distance)
-        {
-           _platform.angle *= -1;
-            speedMove = 0.3f;
-        }
-    }   
+        transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, Time.deltaTime * speed);
+    }
+    private void ChangeDirection()
+    {
+        currentRotation = !currentRotation;
+        //spriteRenderer.flipX = currentRotation;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

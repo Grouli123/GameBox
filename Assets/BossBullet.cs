@@ -5,6 +5,10 @@ public class BossBullet : MonoBehaviour
     private float _moveSpeed = 7f;
     private Rigidbody2D _rb;
     [SerializeField] private PlayerMovement _target;
+
+    [SerializeField] private GameObject _firePoint;
+
+    private Transform _player;
     private Vector2 _moveDirection;
 
     
@@ -15,18 +19,35 @@ public class BossBullet : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _target = GameObject.FindObjectOfType<PlayerMovement>();
-        _playerSettings = GameObject.FindObjectOfType<PlayerSettings>();
+        _firePoint = GameObject.FindGameObjectWithTag("FirePoint");
         _playerRb = _target.rb;
-        _moveDirection = (_target.transform.position - transform.position).normalized * _moveSpeed;
-        _rb.velocity = new Vector2(_moveDirection.x, _moveDirection.y);
+
+
+        // _moveDirection = (_target.transform.position - transform.position);
+        // _rb.velocity = new Vector2(_moveDirection.x, _moveDirection.y);
+
         Destroy(gameObject, 3f);
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        _moveDirection = new Vector2(_player.position.x, _player.position.y);
+
+    }
+
+    private void Update() 
+    {
+        transform.position = Vector2.MoveTowards(_firePoint.transform.position, _moveDirection, _moveSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player"))
+        if (other.GetComponent<PlayerMovement>() != null)
         {
-            _playerRb.AddForce(_moveDirection * 7, ForceMode2D.Impulse);
+            Debug.Log("получен");
+            //_playerRb.AddForce(  * 2, ForceMode2D.Impulse);
             Destroy(gameObject, 0);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
    }
 }

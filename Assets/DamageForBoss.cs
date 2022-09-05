@@ -1,11 +1,9 @@
 using Scriptable;
 using UnityEngine;
 
-public class DamageForEnemy : MonoBehaviour
+public class DamageForBoss : MonoBehaviour
 {
     public float lives;
-    [SerializeField] private EnemyController enemyController;
-    [SerializeField] private ButtonForGame buttonForGame;
     [SerializeField] private DamageDealler damageDealler;
 
     [SerializeField] private IntegerVariable _allOfScore;
@@ -14,14 +12,12 @@ public class DamageForEnemy : MonoBehaviour
 
     private void Start()
     {
-        //lives = 10f;
+        lives = 10f;
         _enemyCounter.SetValue(0);
     }
 
     private void Update()
     {
-
-        Freeze();
         if(lives <= 0)
         {
             Destroy(gameObject);
@@ -38,24 +34,6 @@ public class DamageForEnemy : MonoBehaviour
         else if(collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == false)
         {
             lives -= damageDealler.Damage;
-        }
-    }
-
-    private void Freeze()
-    {
-        if(buttonForGame.Freeze == true)
-        {
-            gameObject.GetComponent<EnemyController>().enabled = false;
-            //enemyController.enabled = false;
-        }
-        else
-        {
-            enemyController.enabled = true;
-        }
-
-        if(buttonForGame.Lives < 0)
-        {
-            enemyController.enabled = false;
         }
     }
 }

@@ -36,6 +36,7 @@ TagManager:
   - leftLiftDoor
   - rightLiftDoor
   - Car
+  - FirePoint
   layers:
   - Default
   - TransparentFX
