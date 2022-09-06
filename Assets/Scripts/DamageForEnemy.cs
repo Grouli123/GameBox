@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageForEnemy : MonoBehaviour
 {
-    [SerializeField] private float lives;
+    public float lives;
     [SerializeField] private EnemyController enemyController;
     [SerializeField] private ButtonForGame buttonForGame;
     [SerializeField] private DamageDealler damageDealler;

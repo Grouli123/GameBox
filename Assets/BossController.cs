@@ -2,7 +2,13 @@ using UnityEngine;
 using System.Collections;
 public class BossController : MonoBehaviour
 {    
-    [SerializeField] private GameObject _bullet;   
+    [SerializeField] private GameObject _bullet; 
+
+    [SerializeField] private GameObject[] _groundBoss;  
+    [SerializeField] private SliderJoint2D[] _sliderJooint;
+    [SerializeField] private SliderUp[] _sliderUp;
+
+    [SerializeField] private DamageForBoss _damageForBoss;
 
     [SerializeField] private Transform _player;
     [SerializeField] private Transform _shootPos;
@@ -23,6 +29,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private string _groundLayerName;
     [SerializeField] private string _objectCollisionTag;
     [SerializeField] private string _playerCollisionTag;
+
+    [HideInInspector] public Vector2 endPos;
     
     private float _castDist;
 
@@ -35,14 +43,25 @@ public class BossController : MonoBehaviour
     {
         _mustPatrol = true;
         _canShot = true;
+        _damageForBoss = GetComponent<DamageForBoss>();
     }
 
     private void Update()
     {
-        if (_mustPatrol)
+        if (_damageForBoss.lives <= 7)
         {
-            Patrol();
+            SecondState();
+ 
         }
+
+        if (_damageForBoss.lives <= 5)
+        {
+            ThirdState();
+        }
+        // if (_mustPatrol)
+        // {
+        //     Patrol();
+        // }
 
         if (CanSeePlayer(_range))
         {
@@ -58,7 +77,7 @@ public class BossController : MonoBehaviour
             if (_player.position.x > transform.position.x && transform.localScale.x < 0
             || _player.position.x < transform.position.x && transform.localScale.x > 0)
             {
-                Flip();
+               // Flip();
             }
 
             EnemyStay();                
@@ -110,29 +129,29 @@ public class BossController : MonoBehaviour
     private void EnemyStay()
     {
         _mustPatrol = false;
-        _rb.velocity = Vector2.zero;
+//        _rb.velocity = Vector2.zero;
         if(_canShot)
         StartCoroutine(Shoot());                
     }
 
-    private void FixedUpdate()
-    {
-        // if (_mustPatrol)
-        // {
-        //     _mustTurn = !Physics2D.OverlapCircle(_groundCheckPosition.position, 0.1f, _groundLayer);
-        // }
+    // private void FixedUpdate()
+    // {
+    //     // if (_mustPatrol)
+    //     // {
+    //     //     _mustTurn = !Physics2D.OverlapCircle(_groundCheckPosition.position, 0.1f, _groundLayer);
+    //     // }
 
-    }
+    // }
 
-    private void Patrol()
-    {
-        if (_mustTurn || _bodyCollider.IsTouchingLayers(_groundLayer))
-        {
-            Flip();     
-        }
+    // private void Patrol()
+    // {
+    //     if (_mustTurn || _bodyCollider.IsTouchingLayers(_groundLayer))
+    //     {
+    //         Flip();     
+    //     }
 
-        _rb.velocity = new Vector2(_walkSpeed * Time.fixedDeltaTime, _rb.velocity.y);
-    }
+    //     _rb.velocity = new Vector2(_walkSpeed * Time.fixedDeltaTime, _rb.velocity.y);
+    // }
 
     private void Flip()
     {
@@ -145,12 +164,45 @@ public class BossController : MonoBehaviour
 
     private IEnumerator Shoot()
     {
+        
+       // var Test = Vector3.MoveTowards(transform.position, _player.transform.position, 1f);
+
+        //Vector3 targetDir = _player.position - transform.position;
+        //float angle = Vector3.Angle(targetDir, transform.forward);
+
+        endPos = _player.position + Vector3.right * _castDist;
+
+        
         _canShot = false;
-        Vector2 endPos2 = _player.position + Vector3.right * _castDist;
         yield return new WaitForSeconds(_timeBTWShoots);
-        GameObject newBullet = Instantiate(_bullet, _shootPos.position, Quaternion.identity);
-        newBullet.GetComponent<Rigidbody2D>().velocity = endPos2;
-        //new Vector2(_shootSpeed * _walkSpeed * Time.fixedDeltaTime, 0f);
+        GameObject newBullet = Instantiate(_bullet, _originalPoint.position, Quaternion.identity);
+        transform.position = Vector2.MoveTowards(transform.position, endPos, _shootSpeed * Time.deltaTime);
+        //newBullet.GetComponent<Rigidbody2D>().velocity = endPos;
+
+        // Instantiate(_bullet, _shootPos.position, Quaternion.identity);
+
+
         _canShot = true;
+    }
+
+    private void SecondState()
+    {
+        for (int i = 0; i < _groundBoss.Length; i++)
+        {
+            _groundBoss[i].SetActive(false);
+        }
+    }
+
+    private void ThirdState()
+    {
+        for (int i = 0; i < _sliderJooint.Length; i++)
+        {
+            _sliderJooint[i].enabled = true;
+        }
+
+        for (int i = 0; i < _sliderUp.Length; i++)
+        {
+            _sliderUp[i].enabled = true;
+        }
     }
 }
