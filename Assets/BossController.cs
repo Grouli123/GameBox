@@ -82,10 +82,10 @@ public class BossController : MonoBehaviour
 
             EnemyStay();                
         }
-        else
-        {
-            _mustPatrol = true;                
-        }
+        // else
+        // {
+        //     _mustPatrol = true;                
+        // }
     }
 
     private bool CanSeePlayer(float distance)
@@ -128,7 +128,7 @@ public class BossController : MonoBehaviour
 
     private void EnemyStay()
     {
-        _mustPatrol = false;
+      //  _mustPatrol = false;
 //        _rb.velocity = Vector2.zero;
         if(_canShot)
         StartCoroutine(Shoot());                
@@ -153,14 +153,14 @@ public class BossController : MonoBehaviour
     //     _rb.velocity = new Vector2(_walkSpeed * Time.fixedDeltaTime, _rb.velocity.y);
     // }
 
-    private void Flip()
-    {
-        _mustPatrol = false;                
-        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
-        _walkSpeed *= -1;
-        _range *= -1;
-        _mustPatrol = true;
-    }
+    // private void Flip()
+    // {
+    //     _mustPatrol = false;                
+    //     transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
+    //     _walkSpeed *= -1;
+    //     _range *= -1;
+    //     _mustPatrol = true;
+    // }
 
     private IEnumerator Shoot()
     {

@@ -11,6 +11,10 @@ public class BossBullet : MonoBehaviour
     private Transform _player;
     private Vector2 _moveTargetDirection;
 
+    private Vector2 _movePlayerFromBullet;
+
+    [SerializeField] private float _forseImpulse;
+
     
     [SerializeField] private Rigidbody2D _playerRb;
     // [SerializeField] private PlayerSettings _playerSettings;
@@ -19,12 +23,14 @@ public class BossBullet : MonoBehaviour
     {
         // _rb = GetComponent<Rigidbody2D>();
        _target = GameObject.FindObjectOfType<PlayerMovement>();
+
+       _playerRb = GetComponent<Rigidbody2D>();
         //_firePoint = GameObject.FindGameObjectWithTag("FirePoint");
         _playerRb = _target.rb;
 
 
-        // _moveTargetDirection = (_target.transform.position - transform.position);
-        // _rb.velocity = new Vector2(_moveTargetDirection.x, _moveTargetDirection.y);
+        _movePlayerFromBullet = (_playerRb.transform.position - transform.position);
+        // _rb.velocity = new Vector2(_test.x, _test.y);
 
         // Destroy(gameObject, 1f);
 
@@ -51,7 +57,7 @@ public class BossBullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //выместо вектор ап написать направление куда полетит главный герой
-            _playerRb.AddForce(Vector2.up  * 3, ForceMode2D.Impulse);
+            _playerRb.AddForce(_movePlayerFromBullet  * _forseImpulse, ForceMode2D.Impulse);
             DestroyBossBullet();
         }
    }

@@ -137,3 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 2
+  _target: {fileID: 0}
+  _forseImpulse: 3
+  _playerRb: {fileID: 0}
