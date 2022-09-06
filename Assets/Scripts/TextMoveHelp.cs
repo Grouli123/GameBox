@@ -25,7 +25,7 @@ public class TextMoveHelp : MonoBehaviour
     [SerializeField] private float _timeToDestroyObject;
     private bool _isCatPickUp = false;
 
-    [SerializeField] private Image[] _bonuses;
+    [SerializeField] private GameObject[] _bonuses;
 
     private void Start() 
     {
@@ -37,10 +37,11 @@ public class TextMoveHelp : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Space))
         {
             Text.text = " ";            
-            _textBackground.SetActive(false);    
+            _textBackground.SetActive(false);
+            advertisement.gameObject.SetActive(false);
         }
 
         if(Input.GetKeyDown(KeyCode.B) & playerSettings.HairGel < 3)
@@ -137,40 +138,40 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Cat1") & cats.TcepellinCat == true)
         {
-            Text.text = "Спасибо тебе, внучок! Держи усиление урона!";
+            Text.text = "Спасибо тебе, внучок! Держи усиление урона! (Нажмите 1)";
             CheckPickUpCat(true);
             FulText(true);
-            _bonuses[0].enabled = true;
+            _bonuses[0].SetActive(true);
             bafHero.onDoubleDamage = true;
             cats.CatScore += 1;
         }
 
         if(collision.gameObject.CompareTag("Cat2") & cats.OfeliyaCat == true)
         {
-            Text.text = "Святой гигабайт, спасибо тебе! С меня ускоритель пушки!";
+            Text.text = "Святой гигабайт, спасибо тебе! С меня ускоритель пушки! (Нажмите 2)";
             CheckPickUpCat(true);
             FulText(true);
-            _bonuses[1].enabled = true;
+            _bonuses[1].SetActive(true);
             bafHero.onDoubleSpeed = true;
             cats.CatScore += 1;
         }
 
         if (collision.gameObject.CompareTag("Cat3") & cats.PryanicCat == true)
         {
-            Text.text = "Спасибо, внучек! Держи супер-прыжок!";
+            Text.text = "Спасибо, внучек! Держи супер-прыжок! (Нажмите 3)";
             CheckPickUpCat(true);
             FulText(true);
-            _bonuses[2].enabled = true;
+            _bonuses[2].SetActive(true);
             bafHero.onDoubleJump = true;
             cats.CatScore += 1;
         }
 
         if (collision.gameObject.CompareTag("Cat4") & cats.VurdalakCat == true)
         {
-            Text.text = "Божечки-кошечки, спасибо тебе! Теперь ты будешь богат!";
+            Text.text = "Божечки-кошечки, спасибо тебе! Теперь ты будешь богат! (Нажмите 4)";
             CheckPickUpCat(true);
             FulText(true);
-            _bonuses[3].enabled = true;
+            _bonuses[3].SetActive(true);
             bafHero.onDoubleCoins = true;
             cats.CatScore += 1;
         }
@@ -180,7 +181,7 @@ public class TextMoveHelp : MonoBehaviour
             Text.text = "Моя дорогая Ури! Держи витаминку на 150% здоровья!";
             CheckPickUpCat(true);
             FulText(true);
-            _bonuses[4].enabled = true;
+            _bonuses[4].SetActive(true);
             bafHero.onDobleLives = true;
             cats.CatScore += 1;
             playerSettings.Hp = 15;
@@ -373,7 +374,7 @@ public class TextMoveHelp : MonoBehaviour
             // Text.text = "Esc - закрыть";
             // FulText(true);
             advertisement.gameObject.SetActive(true);
-           // advertisement.sprite = advertisementSprite[4];
+            advertisement.sprite = advertisementSprite[4];
         }
     }
 

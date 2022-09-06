@@ -151,4 +151,16 @@ public class EnemyController : MonoBehaviour
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(_shootSpeed * _walkSpeed * Time.fixedDeltaTime, 0f);
         _canShot = true;
     }
+
+    public float WalkSpeed
+    {
+        get { return _walkSpeed; }
+        set { _walkSpeed = value; }
+    }
+
+    public float Range
+    {
+        get { return _range; }
+        set { _range = value; }
+    }
 }

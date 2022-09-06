@@ -4,6 +4,7 @@ public class ButtonForGame : MonoBehaviour
 {
     [Header("scripts")]
     [SerializeField] private PlayerSettings playerSettings;
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private EnemyController enemyController;
 
     [Header("Objects")]
@@ -12,6 +13,7 @@ public class ButtonForGame : MonoBehaviour
 
     private bool _pauseActive;
     private float _timeFreeze;
+    private float _timeAnim;
     private bool _freeze;
 
     private void Start()
@@ -24,6 +26,7 @@ public class ButtonForGame : MonoBehaviour
     private void Update()
     {
         _timeFreeze -= Time.deltaTime;
+        _timeAnim -= Time.deltaTime;
         OnClickPause();
         OnClickFreeze();
     }
@@ -57,9 +60,16 @@ public class ButtonForGame : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.B) & playerSettings.HairGel == 3 )
         {
+            playerMovement.OnAnimator("Stun", true);
+            _timeAnim = 1;
             _timeFreeze = 5;
             _freeze = true;
             playerSettings.HairGel = 0;
+        }
+
+        if(_timeAnim < 0)
+        {
+            playerMovement.OnAnimator("Stun", false);
         }
 
         if (_timeFreeze < 0)
