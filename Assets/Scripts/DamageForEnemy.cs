@@ -65,9 +65,9 @@ public class DamageForEnemy : MonoBehaviour
 
     private IEnumerator Speed()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<EnemyController>().WalkSpeed = 0;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         gameObject.GetComponent<EnemyController>().enabled = false;
         yield return new WaitForSeconds(3);
         if (gameObject.GetComponent<EnemyController>().Range > 0)
