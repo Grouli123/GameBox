@@ -14,7 +14,7 @@ public class DamageForEnemy : MonoBehaviour
 
     private void Start()
     {
-        //lives = 10f;
+        lives = 10f;
         _enemyCounter.SetValue(0);
     }
 

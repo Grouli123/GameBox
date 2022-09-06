@@ -8,7 +8,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private SliderJoint2D[] _sliderJooint;
     [SerializeField] private SliderUp[] _sliderUp;
 
-    [SerializeField] private DamageForEnemy _damageForEnemy;
+    [SerializeField] private DamageForBoss _damageForBoss;
 
     [SerializeField] private Transform _player;
     [SerializeField] private Transform _shootPos;
@@ -29,6 +29,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private string _groundLayerName;
     [SerializeField] private string _objectCollisionTag;
     [SerializeField] private string _playerCollisionTag;
+
+    [HideInInspector] public Vector2 endPos;
     
     private float _castDist;
 
@@ -41,18 +43,18 @@ public class BossController : MonoBehaviour
     {
         _mustPatrol = true;
         _canShot = true;
-        _damageForEnemy = GetComponent<DamageForEnemy>();
+        _damageForBoss = GetComponent<DamageForBoss>();
     }
 
     private void Update()
     {
-        if (_damageForEnemy.lives <= 7)
+        if (_damageForBoss.lives <= 7)
         {
             SecondState();
  
         }
 
-        if (_damageForEnemy.lives <= 5)
+        if (_damageForBoss.lives <= 5)
         {
             ThirdState();
         }
@@ -127,7 +129,7 @@ public class BossController : MonoBehaviour
     private void EnemyStay()
     {
         _mustPatrol = false;
-        _rb.velocity = Vector2.zero;
+//        _rb.velocity = Vector2.zero;
         if(_canShot)
         StartCoroutine(Shoot());                
     }
@@ -168,14 +170,16 @@ public class BossController : MonoBehaviour
         //Vector3 targetDir = _player.position - transform.position;
         //float angle = Vector3.Angle(targetDir, transform.forward);
 
-        Vector2 endPos = _player.position + Vector3.right * _castDist;
+        endPos = _player.position + Vector3.right * _castDist;
 
         
         _canShot = false;
         yield return new WaitForSeconds(_timeBTWShoots);
-        GameObject newBullet = Instantiate(_bullet, _shootPos.position, Quaternion.identity);
+        GameObject newBullet = Instantiate(_bullet, _originalPoint.position, Quaternion.identity);
         transform.position = Vector2.MoveTowards(transform.position, endPos, _shootSpeed * Time.deltaTime);
         //newBullet.GetComponent<Rigidbody2D>().velocity = endPos;
+
+        // Instantiate(_bullet, _shootPos.position, Quaternion.identity);
 
 
         _canShot = true;
