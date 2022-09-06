@@ -1,4 +1,5 @@
 using Scriptable;
+using System.Collections;
 using UnityEngine;
 
 public class DamageForEnemy : MonoBehaviour
@@ -12,9 +13,10 @@ public class DamageForEnemy : MonoBehaviour
     [SerializeField] private IntegerVariable _enemyCounter;
     [SerializeField] private int _scoreForEnemyDeath;
 
+    [SerializeField] private Animator _anim;
+
     private void Start()
     {
-        lives = 10f;
         _enemyCounter.SetValue(0);
     }
 
@@ -22,7 +24,7 @@ public class DamageForEnemy : MonoBehaviour
     {
 
         Freeze();
-        if(lives <= 0)
+        if (lives <= 0)
         {
             Destroy(gameObject);
             _enemyCounter.ApplyChange(_scoreForEnemyDeath);
@@ -33,29 +35,49 @@ public class DamageForEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == true)
         {
+            _anim.SetBool("Damage", true);
             lives -= damageDealler.Damage * 2;
         }
-        else if(collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == false)
+        else if (collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == false)
         {
+            _anim.SetBool("Damage", true);
             lives -= damageDealler.Damage;
+        }
+        else
+        {
+            _anim.SetBool("Damage", false);
         }
     }
 
     private void Freeze()
     {
-        if(buttonForGame.Freeze == true)
+        if (buttonForGame.Freeze == true)
         {
-            gameObject.GetComponent<EnemyController>().enabled = false;
-            //enemyController.enabled = false;
+            _anim.SetBool("Idle", true);
+            StartCoroutine(Speed());
         }
         else
         {
-            enemyController.enabled = true;
-        }
-
-        if(buttonForGame.Lives < 0)
-        {
-            enemyController.enabled = false;
+            _anim.SetBool("Idle", false);
+            gameObject.GetComponent<EnemyController>().enabled = true;
         }
     }
+
+    private IEnumerator Speed()
+    {
+        yield return new WaitForSeconds(1);
+        gameObject.GetComponent<EnemyController>().WalkSpeed = 0;
+        yield return new WaitForSeconds(2);
+        gameObject.GetComponent<EnemyController>().enabled = false;
+        yield return new WaitForSeconds(3);
+        if (gameObject.GetComponent<EnemyController>().Range > 0)
+        {
+            gameObject.GetComponent<EnemyController>().WalkSpeed = 30;
+        }
+        else
+        {
+            gameObject.GetComponent<EnemyController>().WalkSpeed = -30;
+        }
+    } 
 }
+
