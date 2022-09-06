@@ -13,21 +13,12 @@ public class UsedObjects : MonoBehaviour
     [SerializeField] private TextMoveHelp textMoveHelp;
 
     [Header("Objects")]
-    [SerializeField] private BoxCollider2D _rightDoorLift;
-    [SerializeField] private BoxCollider2D _leftDoorLift;
     private bool activatedMost = false;
     private bool activatedMost2 = false;
     private bool activatedLift = false;
     private bool _isUpLift = false;
 
     [SerializeField] private float _timeMoveLift;
-
-// Сделать тригер левой двери и тригер правой.
-// Когда герой входит в первую дверь и нажимает Е
-// дверь закрывается и лифт едет вниз. Внизу открывается вторая дверь.
-// Когда герой входит во вторую дверь и нажимает Е
-// вторая дверь закрывается и лифт поднимается наверх.
-// Наверху первая дверь открывается
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -49,71 +40,82 @@ public class UsedObjects : MonoBehaviour
         if (collision.gameObject.GetComponent<LiftActivated>())
         {
             activatedLift = true;
-            textMoveHelp.Texting("Нажмите E");
+            textMoveHelp.Texting("E - Запуск       R - Двери");
             textMoveHelp.FulText(true);
-        }
-
-        if (collision.CompareTag("leftLiftDoor"))
-        {
-            activatedLift = true;
-        }
-
-        if (collision.CompareTag("rightLiftDoor"))
-        {
-            _isUpLift = true;
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKey(KeyCode.E) & activatedMost == true)
+
+        if (collision.gameObject.GetComponent<LiftActivated>())
+        {
+            activatedLift = true;
+            textMoveHelp.Texting("E - Запуск    R - Двери");
+            textMoveHelp.FulText(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) & activatedMost == true)
         {
             mostActivated.Activated("Most", true);
         }
 
-        if (Input.GetKey(KeyCode.E) & activatedMost2 == true)
+        if (Input.GetKeyDown(KeyCode.E) & activatedMost2 == true)
         {
             mostActivated2.Animation("Activation", true);
         }
 
-        if (Input.GetKey(KeyCode.E) & activatedLift == true)
+        if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false & 
+            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
         {
-            liftActivated.Activated("Activated", true);            
-            _leftDoorLift.isTrigger = false;
-            _rightDoorLift.isTrigger = false;
-
-            Debug.Log("едем вниз");
-            StartCoroutine(WaitForRightDoorOpen());
-            //Destroy(DoorLift, 10);
+            liftActivated.ActivatedLift("Activated", true);
+            StartCoroutine(Lift());
         }
 
-        if(Input.GetKey(KeyCode.E) & _isUpLift == true)
+        if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true &
+            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
         {
-            liftActivated.Activated("IsUp", true);            
-            _leftDoorLift.isTrigger = false;
-            _rightDoorLift.isTrigger = false;
-            
-            Debug.Log("едем вверх");
-            StartCoroutine(WaitForLeftDoorOpen());
+            liftActivated.ActivatedLift("Activated", false);
+            StartCoroutine(Lift());
+        }
+
+        if(Input.GetKeyDown(KeyCode.R) & activatedLift == true & liftActivated.LiftPositionDown == false &
+            liftActivated.LeftDoor == true & liftActivated.RightDoor == false)
+        {
+            liftActivated.ActivatedLeftDoor("Door", false);
+            liftActivated.LeftDoor = false;
+        }
+        else if(Input.GetKeyDown(KeyCode.R) & activatedLift == true & liftActivated.LiftPositionDown == false &
+            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
+        {
+            liftActivated.ActivatedLeftDoor("Door", true);
+            liftActivated.LeftDoor = true;
+        }
+
+        if(Input.GetKeyDown(KeyCode.R) & activatedLift == true & liftActivated.LiftPositionDown == true &
+            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
+        {
+            liftActivated.ActivatedRightDoor("Door", true);
+            liftActivated.RightDoor = true;
+        }
+        else if(Input.GetKeyDown(KeyCode.R) & activatedLift == true & liftActivated.LiftPositionDown == true &
+            liftActivated.LeftDoor == false & liftActivated.RightDoor == true)
+        {
+            liftActivated.ActivatedRightDoor("Door", false);
+            liftActivated.RightDoor = false;
         }
     }
 
-    private IEnumerator WaitForRightDoorOpen()
+    private IEnumerator Lift()
     {
-        yield return new WaitForSeconds(_timeMoveLift);
-        _rightDoorLift.isTrigger = true;
-        _leftDoorLift.isTrigger = false;
-        activatedLift = false;
-        liftActivated.Activated("Activated", false);            
-
-    }
-
-    private IEnumerator WaitForLeftDoorOpen()
-    {
-        yield return new WaitForSeconds(_timeMoveLift);
-        _rightDoorLift.isTrigger = false;
-        _leftDoorLift.isTrigger = true;
-        _isUpLift = false;
-        liftActivated.Activated("IsUp", false);            
+        yield return new WaitForSeconds(20);
+        if(liftActivated.LiftPositionDown == false)
+        {
+            liftActivated.LiftPositionDown = true;
+        }
+        else
+        {
+            liftActivated.LiftPositionDown = false;
+        }
     }
 }
