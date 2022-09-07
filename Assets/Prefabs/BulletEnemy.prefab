@@ -137,3 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 8569518473856476281, guid: aef8654ea49b2eb469dc329faefe770b, type: 3}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _groundLayerName: 

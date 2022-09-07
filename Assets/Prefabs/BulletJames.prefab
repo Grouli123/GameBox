@@ -106,7 +106,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &3376473252067169147
 CircleCollider2D:
@@ -121,9 +121,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.0075599104}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.053965345
 --- !u!114 &2256001719567662295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  timeBetweenShoots: 1
   _bullet: {fileID: 2607981575678786707}
   _fireSpeed: 8
   _rb: {fileID: 3050998971387666642}

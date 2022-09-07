@@ -6,10 +6,7 @@ public class EnemyDamage : MonoBehaviour
     private Rigidbody2D _rb;
     [SerializeField] private PlayerMovement _target;
     
-    [SerializeField] private LayerMask _groundLayer;
     private Vector2 _moveDirection;
-    [SerializeField] private string _groundLayerName;
-
     private void Start() 
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -24,5 +21,6 @@ public class EnemyDamage : MonoBehaviour
         {
             Destroy(gameObject, 0);
         }
+        
    }
 }
