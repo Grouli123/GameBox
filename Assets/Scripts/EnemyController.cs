@@ -74,14 +74,14 @@ public class EnemyController : MonoBehaviour
         bool val = false;
         _castDist = distance;
 
-        Vector2 endPos = _originalPoint.position + Vector3.right * _castDist;
-        RaycastHit2D hit = Physics2D.Linecast(_originalPoint.position, endPos, 1 << LayerMask.NameToLayer(_groundLayerName));
+        Vector2 endPos = _shootPos.position + Vector3.right * _castDist;
+        RaycastHit2D hit = Physics2D.Linecast(_shootPos.position, endPos, 1 << LayerMask.NameToLayer(_groundLayerName));
 
         if (hit.collider != null)
         { 
             if (!hit.transform.gameObject.CompareTag(_objectCollisionTag))
             {
-                Debug.DrawLine(_originalPoint.position, hit.point, Color.yellow);
+                Debug.DrawLine(_shootPos.position, hit.point, Color.yellow);
             }
             else
             {
@@ -96,12 +96,12 @@ public class EnemyController : MonoBehaviour
                     EnemyStay();
                 }
 
-                Debug.DrawLine(_originalPoint.position, hit.point, Color.yellow);       
+                Debug.DrawLine(_shootPos.position, hit.point, Color.yellow);       
             }
         }
         else
         {            
-            Debug.DrawLine(_originalPoint.position, endPos, Color.blue);
+            Debug.DrawLine(_shootPos.position, endPos, Color.blue);
         }
 
         return val;

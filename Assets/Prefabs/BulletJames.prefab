@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  timeBetweenShoots: 1
   _bullet: {fileID: 2607981575678786707}
   _fireSpeed: 8
   _rb: {fileID: 3050998971387666642}

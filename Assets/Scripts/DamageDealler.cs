@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class DamageDealler : MonoBehaviour
 {
     [SerializeField] private float _damage;
+    // public float timeBetweenShoots;
     [SerializeField] private GameObject _bullet;
     [SerializeField] private float _fireSpeed;
     [SerializeField] private Rigidbody2D _rb;
@@ -11,7 +13,8 @@ public class DamageDealler : MonoBehaviour
 
     private void Start() 
     {
-        _rb.velocity = transform.right * _fireSpeed;
+       _rb.velocity = transform.right * _fireSpeed;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 
@@ -25,6 +28,13 @@ public class DamageDealler : MonoBehaviour
             Destroy(_bullet, 1.5f);     
         }   
     }
+
+    // private IEnumerator Cooldown()
+    // {
+    //     yield return new WaitForSeconds(timeBetweenShoots);
+    //     _rb.velocity = transform.right * _fireSpeed;
+
+    // }
 
     public bool DoubleDamage
     {

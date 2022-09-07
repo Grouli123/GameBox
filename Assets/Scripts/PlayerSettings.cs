@@ -18,10 +18,13 @@ public class PlayerSettings : MonoBehaviour
     [SerializeField] private IntegerVariable _coins;
     [SerializeField] private int _countCoinsForCassete;
 
+    public bool isAddCassete = false;
+
     private bool onDoubleLives = false;
 
     private void Start()
     {
+
         hairGel = 0;
         anim.SetInteger("Coin", 0);
         _coins.SetValue(0);
@@ -30,7 +33,17 @@ public class PlayerSettings : MonoBehaviour
     {
         textCassete.text = cassete.ToString();
         GelUsed();
-        CheckCoinToAddCassete();
+
+        if(isAddCassete == false)
+        {
+
+            CheckCoinToAddCassete();
+        }
+
+        if (_coins.GetValue() == 0)
+        {
+            cassete = 0;
+        }
     }
 
     private void GelUsed()
@@ -82,10 +95,13 @@ public class PlayerSettings : MonoBehaviour
 
     private void CheckCoinToAddCassete()
     {
-        if (_coins.GetValue() >= _countCoinsForCassete)
+        //float allOfCoins = _coins.GetValue() / _countCoinsForCassete;
+
+        if (_coins.GetValue() % _countCoinsForCassete == 0)
         {
-            _coins.ApplyChange(-_countCoinsForCassete);
+            //_coins.ApplyChange(-_countCoinsForCassete);
             Cassete += 1;
+            isAddCassete = true;
         }
     }
 }

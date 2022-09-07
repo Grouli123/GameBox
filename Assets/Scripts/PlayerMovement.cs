@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement vars")]   
     [SerializeField] private float _jumpForce;
     [SerializeField] private bool _isGrounded = false;
+
+    //Элемент статичный, может из-за этого не получается через гет и сет увеличить скорость передвижения?
     public static float speed = 0.5f;
 
     [Header("Settings")]
@@ -49,6 +51,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 _overlapCirrcleTransform = _groundColliderTransform.position;
         _isGrounded = Physics2D.OverlapCircle(_overlapCirrcleTransform, jumpOffset, _groundMask);
+        
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(_groundColliderTransform.position, jumpOffset);
     }
 
     private void Update() 
