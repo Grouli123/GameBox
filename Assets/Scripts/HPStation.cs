@@ -14,6 +14,13 @@ public class HPStation : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Light light;
     [SerializeField] private Collider2D collider;
+    [SerializeField] private Material emission;
+
+    private Renderer ren;
+    private void Start()
+    {
+        ren = GetComponent<Renderer>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -29,6 +36,7 @@ public class HPStation : MonoBehaviour
             int clipIndex = Random.Range(0, audioClip.Length - 1);
             audioSource.clip = audioClip[clipIndex];
             audioSource.Play();
+            StartCoroutine(Emission());
 
             if (bafHero.onDobleLives == false)
             {
@@ -38,8 +46,15 @@ public class HPStation : MonoBehaviour
             {
                 playerSettings.Hp = 15;
             }
+            
             Destroy(collider);
             Destroy(light, 20);
         }
+    }
+
+    private IEnumerator Emission()
+    {
+        yield return new WaitForSeconds(15);
+        ren.material.DisableKeyword("_EMISSION");
     }
 }
