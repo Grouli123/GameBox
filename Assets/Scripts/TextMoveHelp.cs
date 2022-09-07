@@ -224,9 +224,9 @@ public class TextMoveHelp : MonoBehaviour
             Destroy(collision.gameObject, _timeToDestroyObject);
         }
 
-        if (collision.gameObject.CompareTag("Uri") & cats.VurdalakAdvertisement == true)
+        if (collision.gameObject.CompareTag("Uri") & cats.UriAdvertisement == true)
         {
-            cats.VurdalakCat = true;
+            cats.UriCat = true;
             Text.text = "Кажется, ты нашел пятого котика";
             _isCatPickUp = true;
             FulText(true);
