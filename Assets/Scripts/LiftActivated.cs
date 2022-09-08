@@ -8,6 +8,12 @@ public class LiftActivated : MonoBehaviour
     [SerializeField] private Animator leftDoor;
     [SerializeField] private Animator rightDoor;
 
+    [SerializeField] private BafHero _bafHero;
+
+    public GameObject heroDontMoveInsideLift;
+
+    [SerializeField] private DontMoveHeroLift _heroDontMove;
+
     private bool _liftPositionDown;
     private bool _leftDoor = true;
     private bool _rightDoor = false;
@@ -43,5 +49,18 @@ public class LiftActivated : MonoBehaviour
     {
         set { _rightDoor = value; }
         get { return _rightDoor; }
+    }
+
+    public void StickToTheFloor()
+    {
+        _heroDontMove.timeDontMoveHero = 19f;
+        heroDontMoveInsideLift.SetActive(true);
+        _bafHero.heroForceJump = 0;
+    }
+
+    public void DetachToTheFloor()
+    {
+        heroDontMoveInsideLift.SetActive(false);
+        _bafHero.heroForceJump = 3.5f;
     }
 }

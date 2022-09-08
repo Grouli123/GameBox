@@ -12,6 +12,8 @@ public class BafHero : MonoBehaviour
 
     [SerializeField] private float _speedMove;
 
+    public float heroForceJump;
+
     private bool OnDoubleDamage = false; //1
     private bool OnDoubleSpeed = false; //2
     private bool OnDoubleCoins = false; //4
@@ -78,7 +80,7 @@ public class BafHero : MonoBehaviour
         }
         else
         {
-            playerMovement.JumpForce = 3.5f;
+            playerMovement.JumpForce = heroForceJump;
         }
     }
 

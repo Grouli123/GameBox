@@ -84,7 +84,7 @@ public class DamageForHero : MonoBehaviour
         if(playerSettings.OnDoubleLives == true)
         {
             doubleHp = true;            
-            _doubleStickHp.SetActive(false);
+            _doubleStickHp.SetActive(true);
         }
         else
         {

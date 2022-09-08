@@ -18,6 +18,8 @@ public class TextMoveHelp : MonoBehaviour
     [SerializeField] private Image advertisement;
     [SerializeField] private Sprite[] advertisementSprite; 
 
+    // [SerializeField] private GameObject _healthStick;
+    // [SerializeField] private GameObject _healthDoubleStick;
     [SerializeField] private IntegerVariable _allOfScore;
     [SerializeField] private IntegerVariable _scoreForCat;
     [SerializeField] private IntegerVariable _catCounter;
@@ -29,6 +31,8 @@ public class TextMoveHelp : MonoBehaviour
 
     private void Start() 
     {
+        // _healthDoubleStick.SetActive(false);
+        // _healthStick.SetActive(true);
         _textBackground.GetComponent<GameObject>();
         FulText(true);  
         _scoreForCat.SetValue(0);
@@ -182,6 +186,8 @@ public class TextMoveHelp : MonoBehaviour
             CheckPickUpCat(true);
             FulText(true);
             _bonuses[4].SetActive(true);
+            // _healthStick.SetActive(false);
+            // _healthDoubleStick.SetActive(true);
             bafHero.onDobleLives = true;
             cats.CatScore += 1;
             playerSettings.Hp = 15;
