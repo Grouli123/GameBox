@@ -29,6 +29,9 @@ public class TextMoveHelp : MonoBehaviour
 
     [SerializeField] private GameObject[] _bonuses;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSource catsUp;
+
     private void Start() 
     {
         // _healthDoubleStick.SetActive(false);
@@ -196,6 +199,7 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Tcepellin") & cats.TcepellinAdvertisement == true)
         {
+            catsUp.Play();
             cats.TcepellinCat = true;
             Text.text = "Кажется, ты нашел первого котика";
             _isCatPickUp = true;
@@ -205,6 +209,7 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Ofeliya") & cats.OfeliyaAdvertisement == true)
         {
+            catsUp.Play();
             cats.OfeliyaCat = true;
             Text.text = "Кажется, ты нашел второго котика";
             _isCatPickUp = true;
@@ -214,6 +219,7 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Pryanic") & cats.PryanicAdvertisement == true)
         {
+            catsUp.Play();
             cats.PryanicCat = true;
             Text.text = "Кажется, ты нашел третьего котика";
             _isCatPickUp = true;
@@ -223,6 +229,7 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Vurdalak") & cats.VurdalakAdvertisement == true)
         {
+            catsUp.Play();
             cats.VurdalakCat = true;
             Text.text = "Кажется, ты нашел четвертого котика";
             _isCatPickUp = true;
@@ -232,6 +239,7 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Uri") & cats.UriAdvertisement == true)
         {
+            catsUp.Play();
             cats.UriCat = true;
             Text.text = "Кажется, ты нашел пятого котика";
             _isCatPickUp = true;

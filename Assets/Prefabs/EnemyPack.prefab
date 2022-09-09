@@ -209,16 +209,13 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  _animEnemy: {fileID: 999228647641814339}
   _walkSpeed: 30
   _range: 2
   _timeBTWShoots: 0.5
-  _timeIdle: 2
   _shootSpeed: 1
   _groundLayerName: Action
   _objectCollisionTag: Player
   _playerCollisionTag: Player
-  _saveWalkSpeed: 0
 --- !u!114 &6411571820992539998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917f78e434d92d24a87f76ff2c8be4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 10
+  lives: 15
   enemyController: {fileID: 3056675607112295090}
   buttonForGame: {fileID: 0}
   damageDealler: {fileID: 2256001719567662295, guid: d0b70a5b554b6194b9733ccafecd2208, type: 3}
@@ -239,6 +236,7 @@ MonoBehaviour:
   _enemyCounter: {fileID: 11400000, guid: d4828b9a63cf9004d8a4aa6b16f95d82, type: 2}
   _scoreForEnemyDeath: 25
   _anim: {fileID: 999228647641814339}
+  damageSound: {fileID: 0}
 --- !u!95 &999228647641814339
 Animator:
   serializedVersion: 4

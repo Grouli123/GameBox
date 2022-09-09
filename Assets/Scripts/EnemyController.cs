@@ -23,6 +23,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private string _groundLayerName;
     [SerializeField] private string _objectCollisionTag;
     [SerializeField] private string _playerCollisionTag;
+
+    [SerializeField] private AudioSource shootSound;
     
     private float _castDist;
 

@@ -37,6 +37,8 @@ TagManager:
   - rightLiftDoor
   - Car
   - FirePoint
+  - Box
+  - Metall
   layers:
   - Default
   - TransparentFX
