@@ -9,12 +9,18 @@ public class FirstLvlStartCutscene : MonoBehaviour
     [SerializeField] private GameObject _James;
     [SerializeField] private GameObject _Shef;
 
+    [SerializeField] private GameObject _firstSlide;
+    [SerializeField] private GameObject _secondSlide;
+
     private string _dialog;
     private void Start() 
     {
-        _dialog = "Добрый вечер, шеф. Вы хотели меня видеть?";
-        _James.SetActive(true);
-        _Shef.SetActive(false);       
+        _firstSlide.SetActive(true);
+        _secondSlide.SetActive(false);
+
+        // _dialog = "Добрый вечер, шеф. Вы хотели меня видеть?";
+        // _James.SetActive(true);
+        // _Shef.SetActive(false);       
         StartCoroutine(Test());
     }
 
@@ -29,7 +35,14 @@ public class FirstLvlStartCutscene : MonoBehaviour
     }
 
     IEnumerator Test ()
-    {        
+    {   
+        yield return new WaitForSeconds(7);
+        _firstSlide.SetActive(false);
+        _secondSlide.SetActive(true);
+        _James.SetActive(true);
+        _Shef.SetActive(false);
+        _text.text = "";
+        _dialog = "Добрый вечер, шеф. Вы хотели меня видеть?";
         StartCoroutine(OutputText(_dialog, 0.1f));
 
         yield return new WaitForSeconds(7);
@@ -116,5 +129,11 @@ public class FirstLvlStartCutscene : MonoBehaviour
         _text.text = "";
         _dialog = "Выполню всё в лучшем виде, шеф.";
         StartCoroutine(OutputText(_dialog, 0.1f));
+
+        yield return new WaitForSeconds(7);
+        _James.SetActive(false);
+        _Shef.SetActive(false);
+        _text.text = "";
+        _secondSlide.SetActive(false);
     }
 }
