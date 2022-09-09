@@ -216,6 +216,9 @@ MonoBehaviour:
   _groundLayerName: Action
   _objectCollisionTag: Player
   _playerCollisionTag: Player
+  shootSound: {fileID: 0}
+  _anim: {fileID: 999228647641814339}
+  _time: 0
 --- !u!114 &6411571820992539998
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,6 +25,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private string _playerCollisionTag;
 
     [SerializeField] private AudioSource shootSound;
+
+    [SerializeField] private Animator _anim;
+
+
     
     private float _castDist;
 
@@ -41,6 +45,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+
         if (_mustPatrol)
         {
             Patrol();
@@ -91,11 +96,18 @@ public class EnemyController : MonoBehaviour
                 {
                     val = true;
                     EnemyStay();
+                    
+                    if(_canShot)
+                    StartCoroutine(Shoot());
                 }
                 else
                 {
                     val = false;
                     EnemyStay();
+
+                    
+                    if(_canShot)
+                    StartCoroutine(Shoot());
                 }
 
                 Debug.DrawLine(_shootPos.position, hit.point, Color.yellow);       
@@ -112,24 +124,26 @@ public class EnemyController : MonoBehaviour
     private void EnemyStay()
     {
         _mustPatrol = false;
-        _rb.velocity = Vector2.zero;
-        if(_canShot)
-        StartCoroutine(Shoot());                
+        _rb.velocity = Vector2.zero;                
     }
 
     private void FixedUpdate()
     {
         if (_mustPatrol)
-        {
+        {       
+
             _mustTurn = !Physics2D.OverlapCircle(_groundCheckPosition.position, 0.1f, _groundLayer);
         }
-
     }
 
     private void Patrol()
     {
         if (_mustTurn || _bodyCollider.IsTouchingLayers(_groundLayer))
-        {
+        {   
+            _rb.bodyType = RigidbodyType2D.Static;
+            EnemyStay();
+            _anim.SetBool("Idle", true);  
+            StartCoroutine(Idle());     
             Flip();     
         }
 
@@ -153,6 +167,13 @@ public class EnemyController : MonoBehaviour
         shootSound.Play();
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(_shootSpeed * _walkSpeed * Time.fixedDeltaTime, 0f);
         _canShot = true;
+    }
+
+    private IEnumerator Idle()
+    {
+        yield return new WaitForSeconds(1);
+        _anim.SetBool("Idle", false); 
+        _rb.bodyType = RigidbodyType2D.Dynamic;     
     }
 
     public float WalkSpeed
