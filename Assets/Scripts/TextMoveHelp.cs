@@ -97,7 +97,7 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("JumpZone"))
         {
-            Text.text = "Space - Прыжок";
+            Text.text = "Пробел - Прыжок";
             FulText(true);
         }
 
@@ -109,7 +109,7 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("2JumpZone"))
         {
-            Text.text = "Space+Space - Двойной прыжок";
+            Text.text = "Пробел+пробел - Двойной прыжок";
             FulText(true);
         }
 
