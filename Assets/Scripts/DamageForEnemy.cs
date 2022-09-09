@@ -35,21 +35,21 @@ public class DamageForEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == true)
         {
-            _anim.SetTrigger("IsHit");
+            _anim.SetBool("Damage", true);
             lives -= damageDealler.Damage * 2;
            enemyController.WalkSpeed = 0;
            StartCoroutine(Hit());
         }
         else if (collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == false)
         {
-            _anim.SetTrigger("IsHit");
+            _anim.SetBool("Damage", true);
             lives -= damageDealler.Damage;
             enemyController.WalkSpeed = 0;
            StartCoroutine(Hit());
         }
         else
         {
-            // _anim.SetBool("Damage", false);
+            _anim.SetBool("Damage", false);
 
             // _animatorHit.SetTrigger("IsHit");
         }

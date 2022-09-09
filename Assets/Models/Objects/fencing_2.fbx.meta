@@ -5,6 +5,16 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: e_shield_glass_mat
+    second: {fileID: 2100000, guid: b76d981400edf8f4db65b6cc9b00367e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fencing_2_mat
+    second: {fileID: 2100000, guid: 4b1328ef2681e244e867c6fd24d56853, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: fencing_2_alpha

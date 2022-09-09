@@ -40,7 +40,8 @@ public class UsedObjects : MonoBehaviour
         if (collision.gameObject.GetComponent<LiftActivated>())
         {
             activatedLift = true;
-            textMoveHelp.Texting("E - Запуск       R - Двери");
+            textMoveHelp.Texting("E - Запуск       " +
+                "R - Двери");
             textMoveHelp.FulText(true);
         }
     }
@@ -108,7 +109,7 @@ public class UsedObjects : MonoBehaviour
 
     private IEnumerator Lift()
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(19);
         if(liftActivated.LiftPositionDown == false)
         {
             liftActivated.LiftPositionDown = true;
