@@ -18,6 +18,8 @@ public class DamageForHero : MonoBehaviour
     [SerializeField] private GameObject _baseStickHp;
     [SerializeField] private GameObject _doubleStickHp;
 
+    [SerializeField] private bool _damageFromEnemiesCollision;
+
     private bool doubleHp = false;
 
     private void Start() 
@@ -28,14 +30,17 @@ public class DamageForHero : MonoBehaviour
     
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyController>())
+        if (_damageFromEnemiesCollision == true)
         {
-            anim.SetTrigger("IsHit");
-            playerSettings.Hp -= 1;
-        }
-        else
-        {
-            // PlayerMovement.OnAnimator("IsDamage", false);
+            if (collision.gameObject.GetComponent<EnemyController>())
+            {
+                anim.SetTrigger("IsHit");
+                playerSettings.Hp -= 1;
+            }
+            else
+            {
+                // PlayerMovement.OnAnimator("IsDamage", false);
+            }
         }
     }
 
