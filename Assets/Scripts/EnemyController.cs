@@ -150,6 +150,7 @@ public class EnemyController : MonoBehaviour
         _canShot = false;
         yield return new WaitForSeconds(_timeBTWShoots);
         GameObject newBullet = Instantiate(_bullet, _shootPos.position, Quaternion.identity);
+        shootSound.Play();
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(_shootSpeed * _walkSpeed * Time.fixedDeltaTime, 0f);
         _canShot = true;
     }

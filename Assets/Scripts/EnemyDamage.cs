@@ -19,8 +19,13 @@ public class EnemyDamage : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player"))
         {
-            Destroy(gameObject, 0);
+            Destroy(gameObject);
         }
-        
-   }
+
+        if (other.gameObject.layer == 3)
+        {
+            Destroy(gameObject);
+        }
+
+    }
 }
