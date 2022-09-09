@@ -13,6 +13,8 @@ public class DamageForHero : MonoBehaviour
     [SerializeField] private Image hpFullDouble;
     [SerializeField] private Image hpNulDouble;
 
+    public Animator anim;
+
     [SerializeField] private GameObject _baseStickHp;
     [SerializeField] private GameObject _doubleStickHp;
 
@@ -28,12 +30,12 @@ public class DamageForHero : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<EnemyController>())
         {
-            PlayerMovement.OnAnimator("IsDamage", true);
+            anim.SetTrigger("IsHit");
             playerSettings.Hp -= 1;
         }
         else
         {
-            PlayerMovement.OnAnimator("IsDamage", false);
+            // PlayerMovement.OnAnimator("IsDamage", false);
         }
     }
 
@@ -42,11 +44,11 @@ public class DamageForHero : MonoBehaviour
         if (collision.gameObject.GetComponent<EnemyDamage>())
         {
             playerSettings.Hp -= 1f;
-            PlayerMovement.OnAnimator("IsDamage", true);
+            anim.SetTrigger("IsHit");
         }
         else
         {
-            PlayerMovement.OnAnimator("IsDamage", false);
+            // PlayerMovement.OnAnimator("IsDamage", false);
         }
     }
 

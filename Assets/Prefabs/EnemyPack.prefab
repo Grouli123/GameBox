@@ -209,13 +209,16 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  _animEnemy: {fileID: 999228647641814339}
   _walkSpeed: 30
   _range: 2
   _timeBTWShoots: 0.5
+  _timeIdle: 2
   _shootSpeed: 1
   _groundLayerName: Action
   _objectCollisionTag: Player
   _playerCollisionTag: Player
+  _saveWalkSpeed: 0
 --- !u!114 &6411571820992539998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3056675608163044464}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.277, y: 0.08, z: 0}
+  m_LocalPosition: {x: -0.382, y: 0.052, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

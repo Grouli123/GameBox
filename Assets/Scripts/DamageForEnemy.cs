@@ -23,7 +23,7 @@ public class DamageForEnemy : MonoBehaviour
     private void Update()
     {
 
-        Freeze();
+//        Freeze();
         if (lives <= 0)
         {
             Destroy(gameObject);
@@ -35,17 +35,23 @@ public class DamageForEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == true)
         {
-            _anim.SetBool("Damage", true);
+            _anim.SetTrigger("IsHit");
             lives -= damageDealler.Damage * 2;
+           enemyController.WalkSpeed = 0;
+           StartCoroutine(Hit());
         }
         else if (collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == false)
         {
-            _anim.SetBool("Damage", true);
+            _anim.SetTrigger("IsHit");
             lives -= damageDealler.Damage;
+            enemyController.WalkSpeed = 0;
+           StartCoroutine(Hit());
         }
         else
         {
-            _anim.SetBool("Damage", false);
+            // _anim.SetBool("Damage", false);
+
+            // _animatorHit.SetTrigger("IsHit");
         }
     }
 
@@ -79,5 +85,11 @@ public class DamageForEnemy : MonoBehaviour
             gameObject.GetComponent<EnemyController>().WalkSpeed = -30;
         }
     } 
+
+    private IEnumerator Hit()
+    {
+        yield return new WaitForSeconds(0.35f);
+        enemyController.WalkSpeed = 30;
+    }
 }
 
