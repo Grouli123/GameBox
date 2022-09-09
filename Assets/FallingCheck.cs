@@ -19,12 +19,12 @@ public class FallingCheck : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Ground"))
         {
-            Debug.Log(_playerMovement.rb.velocity.y);
+            //Debug.Log(_playerMovement.rb.velocity.y);
         }
 
         if (collision.gameObject.tag.Equals("Ground") && _playerMovement.rb.velocity.y < _fallingDistanseToDamage)
         {
-            Debug.Log("Damage");
+           // Debug.Log("Damage");
             _playerSettings.Hp -= 2;
         }
 

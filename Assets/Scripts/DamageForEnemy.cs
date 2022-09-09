@@ -15,6 +15,8 @@ public class DamageForEnemy : MonoBehaviour
 
     [SerializeField] private Animator _anim;
 
+    [SerializeField] private AudioSource damageSound;
+
     private void Start()
     {
         _enemyCounter.SetValue(0);
@@ -35,6 +37,7 @@ public class DamageForEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == true)
         {
+            damageSound.Play();
             _anim.SetBool("Damage", true);
             lives -= damageDealler.Damage * 2;
            enemyController.WalkSpeed = 0;
@@ -42,6 +45,7 @@ public class DamageForEnemy : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("DamageEnemy") & damageDealler.DoubleDamage == false)
         {
+            damageSound.Play();
             _anim.SetBool("Damage", true);
             lives -= damageDealler.Damage;
             enemyController.WalkSpeed = 0;

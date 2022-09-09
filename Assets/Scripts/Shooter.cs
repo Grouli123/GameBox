@@ -9,13 +9,14 @@ public class Shooter : MonoBehaviour
 
   [SerializeField] private float _timeBetweenShoots;
 
-  //[SerializeField] private AudioSource _shootSound; 
+    [Header("Sound")]
+  [SerializeField] private AudioSource _shootSound; 
   //[SerializeField] private Animator _animator;
 
   private void Start() 
   {
     _damageDealler = GetComponent<DamageDealler>();
-    //_shootSound = _shootSound.GetComponent<AudioSource>();    
+    _shootSound = _shootSound.GetComponent<AudioSource>();    
 //    _animator.GetComponent<Animator>();
 
   }
@@ -25,7 +26,7 @@ public class Shooter : MonoBehaviour
       StartCoroutine(CreateCooldown());
      // _animator.SetTrigger("IsAttack");
 
-      //_shootSound.Play();
+      _shootSound.Play();
   }
 
   private IEnumerator CreateCooldown()

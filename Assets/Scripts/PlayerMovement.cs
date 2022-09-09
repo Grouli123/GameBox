@@ -30,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerSettings _playerSettings;
     [SerializeField] private Transform _playerPosition;
 
+    [Header("Sound")]
+    [SerializeField] private AudioSource jump;
+    [SerializeField] private AudioSource downJump;
+
 
     private Vector3 respawnPoint;
 
@@ -56,10 +60,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmos() {
         Gizmos.DrawWireSphere(_groundColliderTransform.position, jumpOffset);
-    }
-
-    private void Update() 
-    {
     }
 
     public void Move(float direction, bool isJumpButtonPressed)
@@ -98,24 +98,15 @@ public class PlayerMovement : MonoBehaviour
         {
             _animator.SetBool("IsRun", false);
         }
-
-        if(_isGrounded == false)
-        {
-            // _animator.SetBool("IsFall", true);
-        }
-        else
-        {
-            // _animator.SetBool("IsFall", false);
-        }
     }
 
     private void Jump()
     {
         if(_isGrounded)
         {
+            jump.Play();
             canDoubleJump = true;
-            rb.velocity = new Vector2(rb.velocity.x, _jumpForce);               
-            //_jumpSound.Play();    
+            rb.velocity = new Vector2(rb.velocity.x, _jumpForce);                 
         }
         else
         {

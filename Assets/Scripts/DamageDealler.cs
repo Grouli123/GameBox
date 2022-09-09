@@ -29,6 +29,14 @@ public class DamageDealler : MonoBehaviour
         }   
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 3)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // private IEnumerator Cooldown()
     // {
     //     yield return new WaitForSeconds(timeBetweenShoots);

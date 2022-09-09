@@ -19,6 +19,7 @@ public class DamageForHero : MonoBehaviour
     [SerializeField] private GameObject _doubleStickHp;
 
     [SerializeField] private bool _damageFromEnemiesCollision;
+    [SerializeField] private AudioSource damageSound;
 
     private bool doubleHp = false;
 
@@ -48,6 +49,7 @@ public class DamageForHero : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<EnemyDamage>())
         {
+            damageSound.Play();
             playerSettings.Hp -= 1f;
             anim.SetTrigger("IsHit");
         }
