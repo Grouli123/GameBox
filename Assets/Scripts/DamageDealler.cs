@@ -26,12 +26,9 @@ public class DamageDealler : MonoBehaviour
             //    // collision.gameObject.GetComponent<Health>().TakeDamage(_damage);
             // }
             Destroy(_bullet, 1.5f);     
-        }   
-    }
+        }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.layer == 3)
+        if (collision.gameObject.layer == 3)
         {
             Destroy(gameObject);
         }
