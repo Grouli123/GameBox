@@ -1,4 +1,5 @@
 using UnityEngine;
+using Scriptable;
 
 public class MenuController : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject _loadLevelsAndDossier;
     [SerializeField] private GameObject _loadLevelSelectPanel;
     [SerializeField] private GameObject _loadCatsDosiePanel;
+
+    [SerializeField] private IntegerVariable _cassete;
 
     private void Start() 
     {
@@ -53,7 +56,13 @@ public class MenuController : MonoBehaviour
     }
 
     private void Update() 
-    {        
+    {   
+        if (AgainStartMenu.startMainMenu == true)
+        {
+            _startPannel.SetActive(false);
+            _mainMenu.SetActive(true);
+        }     
+
         if (Input.GetKey(KeyCode.Return)) 
         {      
             _startPannel.SetActive(false);

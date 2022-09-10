@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class DamageForBoss : MonoBehaviour
 {
+    [SerializeField] private GameObject _finishCutscene;
+
     public float lives;
     [SerializeField] private DamageDealler damageDealler;
 
@@ -12,6 +14,7 @@ public class DamageForBoss : MonoBehaviour
 
     private void Start()
     {
+        _finishCutscene.SetActive(false);
         lives = 10f;
         _enemyCounter.SetValue(0);
     }
@@ -23,6 +26,7 @@ public class DamageForBoss : MonoBehaviour
             Destroy(gameObject);
             _enemyCounter.ApplyChange(_scoreForEnemyDeath);
             _allOfScore.ApplyChange(_scoreForEnemyDeath);
+            _finishCutscene.SetActive(true);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

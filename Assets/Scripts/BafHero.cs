@@ -9,6 +9,7 @@ public class BafHero : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private CoinCollectScript coinCollectScript;
     [SerializeField] private PlayerSettings playerSettings;
+    [SerializeField] private Shooter _shooter;
 
     [SerializeField] private float _speedMove;
 
@@ -52,11 +53,11 @@ public class BafHero : MonoBehaviour
     {
         if(DoubleSpeed == true & OnDoubleSpeed == true)
         {
-            playerMovement.Speed = _speedMove * 2;
+            _shooter.timeBetweenShoots = _speedMove / 2;
         }
         else
         {
-            playerMovement.Speed = _speedMove;
+            _shooter.timeBetweenShoots = _speedMove;
         }
     }
 

@@ -31,6 +31,7 @@ public class HeroDeath : MonoBehaviour
         {
             playerMovement.Speed = 0f;
             deathPanel.SetActive(true);
+            AgainStartMenu.startMainMenu = true;
         }
         else
         {

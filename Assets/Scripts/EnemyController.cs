@@ -140,10 +140,10 @@ public class EnemyController : MonoBehaviour
     {
         if (_mustTurn || _bodyCollider.IsTouchingLayers(_groundLayer))
         {   
-            _rb.bodyType = RigidbodyType2D.Static;
-            EnemyStay();
-            _anim.SetBool("Idle", true);  
-            StartCoroutine(Idle());     
+            // _rb.bodyType = RigidbodyType2D.Static;
+            // EnemyStay();
+            // _anim.SetBool("Idle", true);  
+            // StartCoroutine(Idle());     
             Flip();     
         }
 

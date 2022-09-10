@@ -7,7 +7,7 @@ public class Shooter : MonoBehaviour
   [SerializeField] private Transform _firePoint;
   [SerializeField] private DamageDealler _damageDealler;
 
-  [SerializeField] private float _timeBetweenShoots;
+  public float timeBetweenShoots;
 
     [Header("Sound")]
   [SerializeField] private AudioSource _shootSound; 
@@ -31,7 +31,7 @@ public class Shooter : MonoBehaviour
 
   private IEnumerator CreateCooldown()
   {
-    yield return new WaitForSeconds(_timeBetweenShoots);
+    yield return new WaitForSeconds(timeBetweenShoots);
     GameObject _currentBullet = Instantiate(_bullet, _firePoint.position, _firePoint.rotation);
   }
 }
