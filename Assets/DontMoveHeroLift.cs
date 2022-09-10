@@ -8,7 +8,8 @@ public class DontMoveHeroLift : MonoBehaviour
 
     public float timeDontMoveHero;
 
-    private void Update() {
+    private void Update() 
+    {
 
         timeDontMoveHero -= Time.deltaTime;
     }

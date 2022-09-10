@@ -1,3 +1,5 @@
+using Move.Inputs;
+using System.Collections;
 using UnityEngine;
 
 public class ButtonForGame : MonoBehaviour
@@ -6,7 +8,7 @@ public class ButtonForGame : MonoBehaviour
     [SerializeField] private PlayerSettings playerSettings;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private EnemyController enemyController;
-
+    [SerializeField] private PlayerInput playerInput;
     [Header("Objects")]
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject helpPanel;
@@ -36,10 +38,11 @@ public class ButtonForGame : MonoBehaviour
         {
             if (_pauseActive == false)
             {
+                playerInput.enabled = false;
                 helpPanel.SetActive(false);
                 _pauseActive = true;
-                Time.timeScale = 0;
                 pausePanel.SetActive(true);
+                Time.timeScale = 0;
             }
             else
             {
@@ -50,6 +53,7 @@ public class ButtonForGame : MonoBehaviour
 
     public void ContinueGame()
     {
+        playerInput.enabled = true;
         helpPanel.SetActive(true);
         _pauseActive = false;
         Time.timeScale = 1;

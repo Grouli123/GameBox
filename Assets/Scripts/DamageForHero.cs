@@ -31,6 +31,15 @@ public class DamageForHero : MonoBehaviour
     
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.GetComponent<ShowCar>())
+        {
+            anim.SetBool("Damage", true);
+        }
+        else
+        {
+            anim.SetBool("Damage", false);
+        }
+
         if (_damageFromEnemiesCollision == true)
         {
             if (collision.gameObject.GetComponent<EnemyController>())
