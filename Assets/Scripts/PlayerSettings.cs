@@ -25,7 +25,7 @@ public class PlayerSettings : MonoBehaviour
 
     private void Start()
     {
-        cassete = 0;
+        cassete = 3;
         hairGel = 0;
         anim.SetInteger("Coin", 0);
         _coins.SetValue(0);

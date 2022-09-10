@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DontMoveHeroLift : MonoBehaviour
 {
-    [SerializeField] private LiftActivated _liftActivated;
 
     public float timeDontMoveHero;
 

@@ -31,7 +31,7 @@ public class DamageForEnemy : MonoBehaviour
             Destroy(gameObject);
             _enemyCounter.ApplyChange(_scoreForEnemyDeath);
             _allOfScore.ApplyChange(_scoreForEnemyDeath);
-            dialogPanel.OnActivePanelEnemy(true);
+            //dialogPanel.OnActivePanelEnemy(true);
         }
         else if(lives <= 0 && dialogPanel.Enemy == false)
         {

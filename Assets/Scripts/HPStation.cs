@@ -12,8 +12,8 @@ public class HPStation : MonoBehaviour
     [Header("Other")]
     [SerializeField] private AudioClip[] audioClip;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private Light light;
-    [SerializeField] private Collider2D collider;
+    [SerializeField] private new Light light;
+    [SerializeField] private new Collider2D collider;
     [SerializeField] private Material emission;
 
     private Renderer ren;

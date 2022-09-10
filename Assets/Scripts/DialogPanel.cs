@@ -53,11 +53,7 @@ public class DialogPanel : MonoBehaviour
 
     private void EnemyPanel()
     {
-        if (_enemy == true && enemyPanelMain.activeSelf == true)
-        {
-            //Time.timeScale = 0;
-        }
-        else if (_enemy == true && enemyPanelMain.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0)
+        if (_enemy == true && enemyPanelMain.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0)
             && enemyPanelJames.activeSelf == true)
         {
             enemyPanelJames.SetActive(false);

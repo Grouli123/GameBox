@@ -22,7 +22,7 @@ public class EnemyDamage : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.gameObject.layer == 3)
+        if (other.gameObject.layer == 3 && other.gameObject.layer == 0)
         {
             Destroy(gameObject);
         }
