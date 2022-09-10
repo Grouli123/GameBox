@@ -5,7 +5,6 @@ public class Shooter : MonoBehaviour
 {
   [SerializeField] private GameObject _bullet;  
   [SerializeField] private Transform _firePoint;
-  [SerializeField] private DamageDealler _damageDealler;
 
   public float timeBetweenShoots;
 
@@ -15,7 +14,6 @@ public class Shooter : MonoBehaviour
 
   private void Start() 
   {
-    _damageDealler = GetComponent<DamageDealler>();
     _shootSound = _shootSound.GetComponent<AudioSource>();    
 //    _animator.GetComponent<Animator>();
 

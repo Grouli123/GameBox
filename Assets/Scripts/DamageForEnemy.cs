@@ -8,6 +8,7 @@ public class DamageForEnemy : MonoBehaviour
     [SerializeField] private EnemyController enemyController;
     [SerializeField] private ButtonForGame buttonForGame;
     [SerializeField] private DamageDealler damageDealler;
+    [SerializeField] private DialogPanel dialogPanel;
 
     [SerializeField] private IntegerVariable _allOfScore;
     [SerializeField] private IntegerVariable _enemyCounter;
@@ -24,9 +25,15 @@ public class DamageForEnemy : MonoBehaviour
 
     private void Update()
     {
-
-//        Freeze();
-        if (lives <= 0)
+        Freeze();
+        if (lives <= 0 && dialogPanel.Enemy == true)
+        {
+            Destroy(gameObject);
+            _enemyCounter.ApplyChange(_scoreForEnemyDeath);
+            _allOfScore.ApplyChange(_scoreForEnemyDeath);
+            dialogPanel.OnActivePanelEnemy(true);
+        }
+        else if(lives <= 0 && dialogPanel.Enemy == false)
         {
             Destroy(gameObject);
             _enemyCounter.ApplyChange(_scoreForEnemyDeath);
@@ -93,7 +100,15 @@ public class DamageForEnemy : MonoBehaviour
     private IEnumerator Hit()
     {
         yield return new WaitForSeconds(0.35f);
-        enemyController.WalkSpeed = 30;
+        // enemyController.WalkSpeed = 30;
+        if (gameObject.GetComponent<EnemyController>().Range > 0)
+        {
+            gameObject.GetComponent<EnemyController>().WalkSpeed = 30;
+        }
+        else
+        {
+            gameObject.GetComponent<EnemyController>().WalkSpeed = -30;
+        }
     }
 }
 

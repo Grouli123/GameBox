@@ -26,6 +26,7 @@ public class TextMoveHelp : MonoBehaviour
     [SerializeField] private int _scoreForPickUpCat;
     [SerializeField] private float _timeToDestroyObject;
     private bool _isCatPickUp = false;
+    private bool _mostOpen = true;
 
     [SerializeField] private GameObject[] _bonuses;
 
@@ -104,6 +105,12 @@ public class TextMoveHelp : MonoBehaviour
         if (collision.gameObject.CompareTag("AttackZone"))
         {
             Text.text = "ЛКМ - Стрелять";
+            FulText(true);
+        }
+
+        if(collision.gameObject.CompareTag("MostTextOpen") && _mostOpen == true)
+        {
+            Text.text = "Нужно открыть мост";
             FulText(true);
         }
 
@@ -415,5 +422,11 @@ public class TextMoveHelp : MonoBehaviour
                 _isCatPickUp = false;
             }
         }
+    }
+
+    public bool MostOpen
+    {
+        get { return _mostOpen; }
+        set { _mostOpen = value; }
     }
 }
