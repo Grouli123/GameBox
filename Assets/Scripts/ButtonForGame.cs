@@ -18,6 +18,13 @@ public class ButtonForGame : MonoBehaviour
     private float _timeAnim;
     private bool _freeze;
 
+    private float _stopAttack;
+
+    private void Awake() 
+    {
+       _stopAttack = enemyController.timeBTWShoots;
+    }
+
     private void Start()
     {        
         Time.timeScale = 1;
@@ -67,6 +74,7 @@ public class ButtonForGame : MonoBehaviour
             playerMovement.OnAnimator("Stun", true);
             _timeAnim = 1;
             _timeFreeze = 5;
+            _stopAttack = 5;
             _freeze = true;
             playerSettings.HairGel = 0;
         }
@@ -78,7 +86,8 @@ public class ButtonForGame : MonoBehaviour
 
         if (_timeFreeze < 0)
         {
-            _freeze = false;
+            _freeze = false;            
+            _stopAttack = 0.5f;
         }
     }
 

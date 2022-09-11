@@ -211,14 +211,13 @@ MonoBehaviour:
     m_Bits: 8
   _walkSpeed: 30
   _range: 2
-  _timeBTWShoots: 0.5
+  timeBTWShoots: 0.5
   _shootSpeed: 1
   _groundLayerName: Action
   _objectCollisionTag: Player
   _playerCollisionTag: Player
   shootSound: {fileID: 0}
   _anim: {fileID: 999228647641814339}
-  _time: 0
 --- !u!114 &6411571820992539998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +234,7 @@ MonoBehaviour:
   enemyController: {fileID: 3056675607112295090}
   buttonForGame: {fileID: 0}
   damageDealler: {fileID: 2256001719567662295, guid: d0b70a5b554b6194b9733ccafecd2208, type: 3}
+  dialogPanel: {fileID: 0}
   _allOfScore: {fileID: 11400000, guid: 7fae76fe02fa2854c905258178b396a7, type: 2}
   _enemyCounter: {fileID: 11400000, guid: d4828b9a63cf9004d8a4aa6b16f95d82, type: 2}
   _scoreForEnemyDeath: 25

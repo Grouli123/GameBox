@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float _walkSpeed;
     [SerializeField] private float _range;
-    [SerializeField] private float _timeBTWShoots;
+    public float timeBTWShoots;
     [SerializeField] private float _shootSpeed;
 
     [SerializeField] private string _groundLayerName;
@@ -162,7 +162,7 @@ public class EnemyController : MonoBehaviour
     private IEnumerator Shoot()
     {
         _canShot = false;
-        yield return new WaitForSeconds(_timeBTWShoots);
+        yield return new WaitForSeconds(timeBTWShoots);
         GameObject newBullet = Instantiate(_bullet, _shootPos.position, Quaternion.identity);
         shootSound.Play();
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(_shootSpeed * _walkSpeed * Time.fixedDeltaTime, 0f);
