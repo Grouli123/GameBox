@@ -29,25 +29,25 @@ public class DialogPanel : MonoBehaviour
         if (collision.gameObject.GetComponent<HairGelObject>() && _hairGel == true)
         {
             hairGelPanel.SetActive(true);
-           // Time.timeScale = 0;
+           Time.timeScale = 0;
         }
 
         if(collision.gameObject.GetComponent<CoinCollectScript>() && _coins == true)
         {
             coinsPanel.SetActive(true);
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
         }
 
         if(collision.gameObject.CompareTag("ZoneAdvertisementTcepellin") && _cat == true)
         {
             catPanel.SetActive(true);
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
         }
 
         if(collision.gameObject.GetComponent<HPStation>() && _hpStation == true)
         {
             hpStationPanel.SetActive(true);
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
         }
     }
 
