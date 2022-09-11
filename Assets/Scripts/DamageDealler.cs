@@ -28,7 +28,7 @@ public class DamageDealler : MonoBehaviour
             Destroy(_bullet, 1.5f);     
         }
 
-        if (collision.gameObject.layer == 3)
+        if (collision.gameObject.layer >= 3)
         {
             Destroy(gameObject);
         }

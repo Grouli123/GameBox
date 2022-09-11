@@ -1,5 +1,4 @@
-namespace Move.Inputs
-{    
+ 
     public class GlobalStringVars
     {
         #region Movement
@@ -9,4 +8,3 @@ namespace Move.Inputs
             public const string Fire_1 = "Fire1";
         #endregion
     }
-}

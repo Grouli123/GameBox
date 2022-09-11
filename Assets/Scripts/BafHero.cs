@@ -28,7 +28,7 @@ public class BafHero : MonoBehaviour
 
     private void Start()
     {
-        _speedMove = 0.5f;
+        _speedMove = _shooter.timeBetweenShoots;
     }
     private void Update()
     {
@@ -57,7 +57,7 @@ public class BafHero : MonoBehaviour
         }
         else
         {
-            _shooter.timeBetweenShoots = _speedMove;
+            _speedMove = _shooter.timeBetweenShoots;;
         }
     }
 
