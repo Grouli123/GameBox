@@ -75,12 +75,20 @@ public class DialogPanel : MonoBehaviour
         if (_enemy == true && enemyPanelMain.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0)
             && enemyPanelJames.activeSelf == true)
         {
+            playerInput.enabled = false;
+            _anim.SetBool("IsRun", false);
+            _anim.SetBool("IsJump", false);
+            Time.timeScale = 0;
             enemyPanelJames.SetActive(false);
             enemyPanelCapitain.SetActive(true);
         }
         else if(_enemy == true && enemyPanelMain.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0)
             && enemyPanelCapitain.activeSelf == true)
         {
+            playerInput.enabled = false;
+            _anim.SetBool("IsRun", false);
+            _anim.SetBool("IsJump", false);
+            Time.timeScale = 0;
             enemyPanelCapitain.SetActive(false);
             enemyPanelJames2.SetActive(true);
         }
@@ -88,10 +96,15 @@ public class DialogPanel : MonoBehaviour
             && enemyPanelJames2.activeSelf == true)
         {
             _enemy = false;
+            playerInput.enabled = true;
+            Time.timeScale = 1;
+            _enemy = false;
             enemyPanelMain.SetActive(false);
         }
         else if(enemyPanelMain.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse1))
         {
+            playerInput.enabled = true;
+            Time.timeScale = 1;
             _enemy = false;
             enemyPanelMain.SetActive(false);
         }

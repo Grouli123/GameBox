@@ -66,6 +66,12 @@ public class TextMoveHelp : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            Text.text = "Сохранение записано";
+            FulText(true);
+        }
+
         if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin"))
         {
             Text.text = "Нажмите Е";

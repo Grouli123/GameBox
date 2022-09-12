@@ -30,7 +30,7 @@ public class HeroDeath : MonoBehaviour
     private void Update()
     {
         casseteText.text = playerSettings.Cassete.ToString();
-        Death();
+       // Death();
         ClickOnContinue();
     }
     public void Death()
