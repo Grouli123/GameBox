@@ -24,6 +24,7 @@ public class HeroDeath : MonoBehaviour
     private void Start() 
     {
         _shootSound.SetActive(true);
+        Time.timeScale = 1;    
     }  
     private void Update()
     {
@@ -38,11 +39,13 @@ public class HeroDeath : MonoBehaviour
             playerMovement.Speed = 0f;
             deathPanel.SetActive(true);
             AgainStartMenu.startMainMenu = true;
-            _shootSound.SetActive(false);
+            _shootSound.SetActive(false);            
+            Time.timeScale = 0;    
         }
         else
         {
-            playerMovement.Speed = 0.5f;
+            playerMovement.Speed = 0.5f;            
+            Time.timeScale = 1;    
         }
     }
 
