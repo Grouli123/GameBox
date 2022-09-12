@@ -6,16 +6,16 @@ public class Shooter : MonoBehaviour
   [SerializeField] private GameObject _bullet;  
   [SerializeField] private Transform _firePoint;
 
-[SerializeField] private PlayerInput _playerInput;
+  [SerializeField] private PlayerInput _playerInput;
   public float timeBetweenShoots;
 
     [Header("Sound")]
-  [SerializeField] private AudioSource _shootSound; 
+  public AudioSource shootSound; 
   //[SerializeField] private Animator _animator;
 
   private void Start() 
   {
-    _shootSound = _shootSound.GetComponent<AudioSource>();    
+    shootSound = shootSound.GetComponent<AudioSource>();    
     _playerInput = GetComponent<PlayerInput>();
 //    _animator.GetComponent<Animator>();
 
@@ -26,7 +26,7 @@ public class Shooter : MonoBehaviour
       GameObject _currentBullet = Instantiate(_bullet, _firePoint.position, _firePoint.rotation);
       StartCoroutine(CreateCooldown());
      // _animator.SetTrigger("IsAttack");
-      _shootSound.Play();
+      shootSound.Play();
   }
 
   private IEnumerator CreateCooldown()

@@ -10,6 +10,8 @@ public class HeroDeath : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private EnemyController enemyController;
 
+    [SerializeField] private GameObject _shootSound;
+
     [Header("Objects")]
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private Image colorPanel;
@@ -19,6 +21,10 @@ public class HeroDeath : MonoBehaviour
     [SerializeField] private Image clickImage;
     [SerializeField] private Button ClickedButton;
 
+    private void Start() 
+    {
+        _shootSound.SetActive(true);
+    }  
     private void Update()
     {
         casseteText.text = playerSettings.Cassete.ToString();
@@ -32,6 +38,7 @@ public class HeroDeath : MonoBehaviour
             playerMovement.Speed = 0f;
             deathPanel.SetActive(true);
             AgainStartMenu.startMainMenu = true;
+            _shootSound.SetActive(false);
         }
         else
         {

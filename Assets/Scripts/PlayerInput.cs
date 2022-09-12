@@ -29,7 +29,7 @@ using UnityEngine;
                     _shooter.Shoot(_horizontalDidection);
                     bulletOnTheScene = true;
                 }
-            }                
+            }  
             _playerMovement.Move(_horizontalDidection, _isJumpButtonPressed);
         }
 
