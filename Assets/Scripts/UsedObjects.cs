@@ -12,10 +12,14 @@ public class UsedObjects : MonoBehaviour
     [SerializeField] private LiftActivated liftActivated;
     [SerializeField] private TextMoveHelp textMoveHelp;
 
+    [SerializeField] private CallLift _callLift;
+
     [Header("Objects")]
     private bool activatedMost = false;
     private bool activatedMost2 = false;
     private bool activatedLift = false;
+
+    private bool _isLiftUp = false;
 
     private float horizontal;
 
@@ -73,6 +77,13 @@ public class UsedObjects : MonoBehaviour
             textMoveHelp.Texting("E - Запуск, R - Двери");
             textMoveHelp.FulText(true);
         }
+
+        if (collision.gameObject.GetComponent<CallLift>())
+        {
+            _isLiftUp = true;
+            textMoveHelp.Texting("E - Вызов лифта");
+            textMoveHelp.FulText(true);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -108,6 +119,24 @@ public class UsedObjects : MonoBehaviour
             liftActivated.ActivatedLift("Activated", false);
             StartCoroutine(Lift());
         }
+
+
+        if (Input.GetKeyDown(KeyCode.E) & _isLiftUp == true & liftActivated.LiftPositionDown == false & 
+            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
+        {
+            liftActivated.ActivatedLift("Activated", true);
+            StartCoroutine(Lift());
+        }
+
+        if(Input.GetKeyDown(KeyCode.E) & _isLiftUp == true & liftActivated.LiftPositionDown == true &
+            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
+        {
+            liftActivated.ActivatedLift("Activated", false);
+            StartCoroutine(Lift());
+        }
+
+
+
 
         if(Input.GetKeyDown(KeyCode.R) & activatedLift == true & liftActivated.LiftPositionDown == false &
             liftActivated.LeftDoor == true & liftActivated.RightDoor == false)
