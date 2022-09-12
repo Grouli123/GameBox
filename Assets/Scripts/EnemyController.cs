@@ -88,7 +88,7 @@ public class EnemyController : MonoBehaviour
         { 
             if (!hit.transform.gameObject.CompareTag(_objectCollisionTag))
             {
-                Debug.DrawLine(_shootPos.position, hit.point, Color.yellow);
+                Debug.DrawLine(_shootPos.position, hit.point, Color.yellow);    
             }
             else
             {
@@ -98,12 +98,13 @@ public class EnemyController : MonoBehaviour
                     EnemyStay();
                     
                     if(_canShot)
-                    StartCoroutine(Shoot());
+                    StartCoroutine(Shoot());                    
+                    _anim.SetBool("Idle", true); 
                 }
                 else
                 {
                     val = false;
-                    EnemyStay();
+                    _anim.SetBool("Idle", false); 
 
                     
                     if(_canShot)

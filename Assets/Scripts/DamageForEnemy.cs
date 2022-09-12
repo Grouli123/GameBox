@@ -103,10 +103,13 @@ public class DamageForEnemy : MonoBehaviour
         // enemyController.WalkSpeed = 30;
         if (gameObject.GetComponent<EnemyController>().Range > 0)
         {
+            _anim.SetBool("Damage", false);
             gameObject.GetComponent<EnemyController>().WalkSpeed = 30;
+            
         }
         else
         {
+            _anim.SetBool("Damage", false);
             gameObject.GetComponent<EnemyController>().WalkSpeed = -30;
         }
     }
