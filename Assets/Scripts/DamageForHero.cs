@@ -33,11 +33,11 @@ public class DamageForHero : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<ShowCar>())
         {
-            anim.SetBool("Damage", true);
+            anim.SetBool("IsDamage", true);
         }
         else
         {
-            anim.SetBool("Damage", false);
+            anim.SetBool("IsDamage", false);
         }
 
         if (_damageFromEnemiesCollision == true)

@@ -14,7 +14,7 @@ public class DamageForBoss : MonoBehaviour
 
     private void Start()
     {
-        _finishCutscene.SetActive(false);
+        // _finishCutscene.SetActive(false);
         lives = 10f;
         _enemyCounter.SetValue(0);
     }

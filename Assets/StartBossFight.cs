@@ -20,9 +20,12 @@ public class StartBossFight : MonoBehaviour
 
     [SerializeField] private BossController _bossController;
 
+    
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private Animator _anim;
+
     private void Start() 
     {
-        
         _bossController.enabled = false;
     }
 
@@ -48,6 +51,9 @@ public class StartBossFight : MonoBehaviour
 
     private IEnumerator Test ()
     {   
+        playerInput.enabled = false;
+        _anim.SetBool("IsRun", false);            
+        _anim.SetBool("IsJump", false);
         _James.SetActive(true);
         _boss.SetActive(false);
         _text.text = "";
@@ -94,6 +100,7 @@ public class StartBossFight : MonoBehaviour
         _boss.SetActive(false);
         _text.text = "";
         _cutscene.SetActive(false);           
-        _firstSlide.SetActive(false);
+        _firstSlide.SetActive(false);        
+        playerInput.enabled = true;
     }
 }

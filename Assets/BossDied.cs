@@ -17,10 +17,11 @@ public class BossDied : MonoBehaviour
 
     
     [SerializeField] private GameObject _finishScene;
-    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerInput playerInput;
+
+    [SerializeField] private Animator _anim;
 
     private string _dialog;
-
 
 
 
@@ -53,6 +54,7 @@ public class BossDied : MonoBehaviour
 
     private IEnumerator Test ()
     {   
+        playerInput.enabled = false;
         _James.SetActive(false);
         _boss.SetActive(true);
         _text.text = "";
@@ -89,6 +91,7 @@ public class BossDied : MonoBehaviour
 
 //начать менять цвет.
         yield return new WaitForSeconds(20);
+        _anim.SetBool("IsCutsceneOn", true);
 
         // _imageColor.a = 100;
         // _imageColor.b = 245;
@@ -122,7 +125,6 @@ public class BossDied : MonoBehaviour
         _text.text = "";
         _cutscene.SetActive(false);           
         _firstSlide.SetActive(false);
-        _playerMovement.Speed = 0f;
         _finishScene.SetActive(true);
     }
 }

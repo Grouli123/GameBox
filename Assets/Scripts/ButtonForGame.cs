@@ -26,7 +26,6 @@ public class ButtonForGame : MonoBehaviour
 
     private void Start()
     {        
-        Time.timeScale = 1;
         _pauseActive = false;
         _freeze = false;
     }

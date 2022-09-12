@@ -10,6 +10,8 @@ public class FirstLvlStartCutscene : MonoBehaviour
     [SerializeField] private GameObject _cutscene;
     [SerializeField] private GameObject _firstSlide;
     [SerializeField] private GameObject _secondSlide;
+    
+    [SerializeField] private PlayerInput playerInput;
 
     [SerializeField] private float _textSpeed;
 
@@ -18,8 +20,11 @@ public class FirstLvlStartCutscene : MonoBehaviour
     {
         _cutscene.SetActive(true);
         _firstSlide.SetActive(true);
-        _secondSlide.SetActive(false);      
+        _secondSlide.SetActive(false);    
+
+                
         StartCoroutine(Test());
+          
     }
 
     private IEnumerator OutputText(string str, float delay)
@@ -34,6 +39,7 @@ public class FirstLvlStartCutscene : MonoBehaviour
 
     private IEnumerator Test ()
     {   
+        playerInput.enabled = false;
         yield return new WaitForSeconds(5);
         _firstSlide.SetActive(false);
         _secondSlide.SetActive(true);
@@ -134,5 +140,6 @@ public class FirstLvlStartCutscene : MonoBehaviour
         _text.text = "";
         _secondSlide.SetActive(false);
         _cutscene.SetActive(false);
+        playerInput.enabled = true;
     }
 }
