@@ -14,6 +14,7 @@ public class HeroDeath : MonoBehaviour
 
     [Header("Objects")]
     [SerializeField] private GameObject deathPanel;
+    [SerializeField] private GameObject deathPanelGoose;
     [SerializeField] private Image colorPanel;
     [SerializeField] private Text casseteText;
     [SerializeField] private Animator deathAnimImage;
@@ -36,8 +37,16 @@ public class HeroDeath : MonoBehaviour
     {
         if(playerSettings.Hp <= 0 || playerMovement.FallDetector == true)
         {
+            if (playerSettings.Cassete <= 0)
+            {                
+               deathPanelGoose.SetActive(true);
+            }
+            else
+            {
+                deathPanel.SetActive(true);
+            }
+            
             playerMovement.Speed = 0f;
-            deathPanel.SetActive(true);
             AgainStartMenu.startMainMenu = true;
             _shootSound.SetActive(false);            
             Time.timeScale = 0;    
