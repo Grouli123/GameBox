@@ -3,7 +3,27 @@ guid: a533fab4ad3eafa42982d50f8a450e71
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pl_end_left_base_color
+    second: {fileID: 2800000, guid: ee97ff580251d2d46bd0313a17d93b15, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pl_end_left_metalness
+    second: {fileID: 2800000, guid: 98984aea6672de24984c416b26716b25, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pl_end_left_normal
+    second: {fileID: 2800000, guid: 1b9650e71312aec4094cbc4d3d52517c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pl_end_left_roughness
+    second: {fileID: 2800000, guid: 51b8f51d540f74240ab4fa8758b4b320, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

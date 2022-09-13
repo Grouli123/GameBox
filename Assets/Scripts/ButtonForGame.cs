@@ -12,6 +12,9 @@ public class ButtonForGame : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject helpPanel;
 
+    [Header("Sound")]
+    [SerializeField] private AudioSource _hairGelSound;
+
     private bool _pauseActive;
     private float _timeFreeze;
     private float _timeAnim;
@@ -69,6 +72,7 @@ public class ButtonForGame : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q) & playerSettings.HairGel >= 3 )
         {
+            _hairGelSound.Play();
             playerMovement.OnAnimator("Stun", true);
             _timeAnim = 1;
             _timeFreeze = 5;
