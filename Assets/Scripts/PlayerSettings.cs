@@ -10,6 +10,7 @@ public class PlayerSettings : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] private float lives;
+    [SerializeField] private float livesDouble;
     [SerializeField] private float cassete;
     [SerializeField] private float hairGel;
     [SerializeField] private Text textCassete;
@@ -84,6 +85,12 @@ public class PlayerSettings : MonoBehaviour
     {
         get { return lives; }
         set { lives = value; }
+    }
+
+    public float LivesDouble
+    {
+        get { return livesDouble; }
+        set { livesDouble = value; }
     }
 
     public float Cassete

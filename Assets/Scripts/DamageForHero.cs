@@ -22,20 +22,11 @@ public class DamageForHero : MonoBehaviour
     [SerializeField] private AudioSource damageSound;
 
     private bool doubleHp = false;
-    private float _fillAmountDouble;
 
     private void Start() 
     {
         _baseStickHp.SetActive(true);
         _doubleStickHp.SetActive(false);
-    }
-
-    private void FixedUpdate()
-    {
-        if(doubleHp == true)
-        {
-            _fillAmountDouble = playerSettings.Hp - 5;
-        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -56,29 +47,29 @@ public class DamageForHero : MonoBehaviour
                 anim.SetTrigger("IsHit");
                 playerSettings.Hp -= 1;
             }
-            else
-            {
-                // PlayerMovement.OnAnimator("IsDamage", false);
-            }
         }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyDamage>())
+        if (collision.gameObject.GetComponent<EnemyDamage>() & doubleHp == false)
         {
             damageSound.Play();
             playerSettings.Hp -= 1f;
             anim.SetTrigger("IsHit");
         }
-        else
+        else if(collision.gameObject.GetComponent<EnemyDamage>() & doubleHp == true)
         {
-            // PlayerMovement.OnAnimator("IsDamage", false);
+            damageSound.Play();
+            anim.SetTrigger("IsHit");
+            playerSettings.Hp -= 1;
+            playerSettings.LivesDouble -= 1;
         }
     }
 
     private void Update()
     {
+        Debug.Log("Double hp^ " + doubleHp);
         HealthFill();
         DoubleHp();
     }
@@ -93,14 +84,8 @@ public class DamageForHero : MonoBehaviour
         }
         else
         {
-            if(playerSettings.Hp > 10)
-            {
-                hpFullDouble.fillAmount = _fillAmountDouble / 10;
-            }
-            else if(playerSettings.Hp <= 10)
-            {
-                hpFull.fillAmount = playerSettings.Hp / 10;
-            }
+            hpFullDouble.fillAmount = playerSettings.LivesDouble / 10;
+            hpFull.fillAmount = playerSettings.Hp / 10;
             hpFullDouble.gameObject.SetActive(true);
             hpNulDouble.gameObject.SetActive(true);
         }
