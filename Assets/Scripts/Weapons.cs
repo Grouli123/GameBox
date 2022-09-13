@@ -17,6 +17,9 @@ public class Weapons : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private BafHero bafHero;
 
+    [Header("Sound")]
+    [SerializeField] private AudioSource _weaponsBaf;
+
     private void Start()
     {
         weap1.sprite = notActive;
@@ -35,6 +38,7 @@ public class Weapons : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) & bafHero.onDoubleDamage == true)
         {
+            _weaponsBaf.Play();
             bafHero.doubleDamage = true;
             bafHero.doubleSpeed = false;
             bafHero.doubleJump = false;
@@ -46,6 +50,7 @@ public class Weapons : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) & bafHero.onDoubleSpeed == true)
         {
+            _weaponsBaf.Play();
             bafHero.doubleDamage = false;
             bafHero.doubleSpeed = true;
             bafHero.doubleJump = false;
@@ -57,6 +62,7 @@ public class Weapons : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) & bafHero.onDoubleJump == true)
         {
+            _weaponsBaf.Play();
             bafHero.doubleDamage = false;
             bafHero.doubleSpeed = false;
             bafHero.doubleJump = true;
@@ -68,6 +74,7 @@ public class Weapons : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) & bafHero.onDoubleCoins == true)
         {
+            _weaponsBaf.Play();
             bafHero.doubleDamage = false;
             bafHero.doubleSpeed = false;
             bafHero.doubleJump = false;

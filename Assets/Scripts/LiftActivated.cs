@@ -14,7 +14,7 @@ public class LiftActivated : MonoBehaviour
 
     [SerializeField] private DontMoveHeroLift _heroDontMove;
 
-    private bool _liftPositionDown;
+    [SerializeField] private bool _liftPositionDown;
     private bool _leftDoor = true;
     private bool _rightDoor = false;
 
