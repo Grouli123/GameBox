@@ -66,6 +66,21 @@ public class TextMoveHelp : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.GetComponent<CasseteObject>())
+        {
+            if(playerSettings.CasseteText == true)
+            {
+                Text.text = "Собери 100 ГусьКоинов для дополнительной жизни";
+                FulText(true);
+                playerSettings.CasseteText = false;
+            }
+            else
+            {
+                Text.text = " ";
+                FulText(false);
+            }
+        }
+
         if (collision.gameObject.CompareTag("Checkpoint"))
         {
             Text.text = "Сохранение записано";
@@ -74,37 +89,37 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin"))
         {
-            Text.text = "Нажмите Е";
+            Text.text = "Е - посмотреть объявление";
             FulText(true);
         }
 
         if (collision.gameObject.CompareTag("ZoneAdvertisementVurdalak"))
         {
-            Text.text = "Нажмите Е";
+            Text.text = "Е - посмотреть объявление";
             FulText(true);
         }
 
         if (collision.gameObject.CompareTag("ZoneAdvertisementUri"))
         {
-            Text.text = "Нажмите Е";
+            Text.text = "Е - посмотреть объявление";
             FulText(true);
         }
 
         if (collision.gameObject.CompareTag("ZoneAdvertisementOfeliya"))
         {
-            Text.text = "Нажмите Е";
+            Text.text = "Е - посмотреть объявление";
             FulText(true);
         }
 
         if (collision.gameObject.CompareTag("ZoneAdvertisementPryanic"))
         {
-            Text.text = "Нажмите Е";
+            Text.text = "Е - посмотреть объявление";
             FulText(true);
         }
 
         if (collision.gameObject.CompareTag("JumpZone"))
         {
-            Text.text = "Пробел - Прыжок";
+            Text.text = "Space - Прыжок";
             FulText(true);
         }
 
@@ -116,13 +131,13 @@ public class TextMoveHelp : MonoBehaviour
 
         if(collision.gameObject.CompareTag("MostTextOpen") && _mostOpen == true)
         {
-            Text.text = "Нужно открыть мост";
+            Text.text = "Нужно включить мост";
             FulText(true);
         }
 
         if (collision.gameObject.CompareTag("2JumpZone"))
         {
-            Text.text = "Пробел+пробел - Двойной прыжок";
+            Text.text = "Пробел + пробел - Прыжок в стиле Диско";
             FulText(true);
         }
 

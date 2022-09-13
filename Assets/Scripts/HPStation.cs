@@ -58,7 +58,7 @@ public class HPStation : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            textMoveHelp.Texting("Нажмите Е");
+            textMoveHelp.Texting("E - пополнить здоровье");
             textMoveHelp.FulText(true);
         }
     }

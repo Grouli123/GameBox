@@ -67,7 +67,7 @@ public class ButtonForGame : MonoBehaviour
 
     public void OnClickFreeze()
     {
-        if(Input.GetKeyDown(KeyCode.B) & playerSettings.HairGel >= 3 )
+        if(Input.GetKeyDown(KeyCode.Q) & playerSettings.HairGel >= 3 )
         {
             playerMovement.OnAnimator("Stun", true);
             _timeAnim = 1;

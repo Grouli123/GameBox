@@ -22,6 +22,7 @@ public class PlayerSettings : MonoBehaviour
     public bool isAddCassete = false;
 
     private bool onDoubleLives = false;
+    private bool casseteText = true;
 
     private void Start()
     {
@@ -74,6 +75,11 @@ public class PlayerSettings : MonoBehaviour
         }
     }
 
+    public bool CasseteText
+    {
+        get { return casseteText; }
+        set { casseteText = value; }
+    }
     public float Hp
     {
         get { return lives; }

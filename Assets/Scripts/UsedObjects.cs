@@ -11,6 +11,7 @@ public class UsedObjects : MonoBehaviour
     [SerializeField] private Most2Activation mostActivated2;
     [SerializeField] private LiftActivated liftActivated;
     [SerializeField] private TextMoveHelp textMoveHelp;
+    [SerializeField] private PlayerInput playerInput;
 
     [SerializeField] private CallLift _callLift;
 
@@ -37,12 +38,11 @@ public class UsedObjects : MonoBehaviour
     private void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
-        Debug.Log(horizontal);
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Cat1") || collision.gameObject.CompareTag("Cat2") || collision.gameObject.CompareTag("Cat3")
-            || collision.gameObject.CompareTag("Cat4") || collision.gameObject.CompareTag("Cat5"))
+        if(collision.gameObject.CompareTag("Cat1") | collision.gameObject.CompareTag("Cat2") | collision.gameObject.CompareTag("Cat3")
+            | collision.gameObject.CompareTag("Cat4") | collision.gameObject.CompareTag("Cat5"))
         {
             grandMatherSound.Play();
         }
@@ -52,7 +52,7 @@ public class UsedObjects : MonoBehaviour
             coinSound.Play();
         }
 
-        if (collision.gameObject.GetComponent<HairGelObject>() || collision.gameObject.GetComponent<CasseteObject>())
+        if (collision.gameObject.GetComponent<HairGelObject>() | collision.gameObject.GetComponent<CasseteObject>())
         {
             artefactSound.Play();
         }
@@ -60,7 +60,7 @@ public class UsedObjects : MonoBehaviour
         if (collision.gameObject.GetComponent<MostActivated>())
         {
             activatedMost = true;
-            textMoveHelp.Texting("Нажмите E");
+            textMoveHelp.Texting("E - Активировать мост");
             textMoveHelp.FulText(true);
         }
 
@@ -74,7 +74,7 @@ public class UsedObjects : MonoBehaviour
         if (collision.gameObject.GetComponent<LiftActivated>())
         {
             activatedLift = true;
-            textMoveHelp.Texting("E - Запуск, R - Двери");
+            textMoveHelp.Texting("E - Запуск");
             textMoveHelp.FulText(true);
         }
 
@@ -92,7 +92,7 @@ public class UsedObjects : MonoBehaviour
         if (collision.gameObject.GetComponent<LiftActivated>())
         {
             activatedLift = true;
-            textMoveHelp.Texting("E - Запуск    R - Двери");
+            textMoveHelp.Texting("E - Запуск");
             textMoveHelp.FulText(true);
         }
 
@@ -107,67 +107,40 @@ public class UsedObjects : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false & 
-            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
+            liftActivated.LeftDoor == true & liftActivated.RightDoor == false)
         {
+            liftActivated.ActivatedRightDoor("Door", false);
+            liftActivated.ActivatedLeftDoor("Door", false);
             liftActivated.ActivatedLift("Activated", true);
             StartCoroutine(Lift());
+            playerInput.enabled = false;
         }
 
         if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true &
-            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
-        {
-            liftActivated.ActivatedLift("Activated", false);
-            StartCoroutine(Lift());
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.E) & _isLiftUp == true & liftActivated.LiftPositionDown == false & 
-            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
-        {
-            liftActivated.ActivatedLift("Activated", true);
-            StartCoroutine(Lift());
-        }
-
-        if(Input.GetKeyDown(KeyCode.E) & _isLiftUp == true & liftActivated.LiftPositionDown == true &
-            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
-        {
-            liftActivated.ActivatedLift("Activated", false);
-            StartCoroutine(Lift());
-        }
-
-
-
-
-        if(Input.GetKeyDown(KeyCode.R) & activatedLift == true & liftActivated.LiftPositionDown == false &
-            liftActivated.LeftDoor == true & liftActivated.RightDoor == false)
-        {
-            liftActivated.ActivatedLeftDoor("Door", false);
-            liftActivated.LeftDoor = false;
-        }
-        else if(Input.GetKeyDown(KeyCode.R) & activatedLift == true & liftActivated.LiftPositionDown == false &
-            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
-        {
-            liftActivated.ActivatedLeftDoor("Door", true);
-            liftActivated.LeftDoor = true;
-        }
-
-        if(Input.GetKeyDown(KeyCode.R) & activatedLift == true & liftActivated.LiftPositionDown == true &
-            liftActivated.LeftDoor == false & liftActivated.RightDoor == false)
-        {
-            liftActivated.ActivatedRightDoor("Door", true);
-            liftActivated.RightDoor = true;
-        }
-        else if(Input.GetKeyDown(KeyCode.R) & activatedLift == true & liftActivated.LiftPositionDown == true &
             liftActivated.LeftDoor == false & liftActivated.RightDoor == true)
         {
             liftActivated.ActivatedRightDoor("Door", false);
+            liftActivated.ActivatedLeftDoor("Door", false);
+            liftActivated.ActivatedLift("Activated", false);
+            StartCoroutine(Lift());
+            playerInput.enabled = false;
+        }
+
+        if(Input.GetKeyDown(KeyCode.E) 
+            & _isLiftUp == true & liftActivated.LiftPositionDown == true)
+        {
+            liftActivated.LeftDoor = false;
             liftActivated.RightDoor = false;
+            _callLift.LeftDoor("Door", false);
+            _callLift.RightDoor("Door", false);
+            StartCoroutine(LiftUp());
+            StartCoroutine(Lift());
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(horizontal > 0.1 && collision.gameObject.CompareTag("Ground") || horizontal < -0.1 && collision.gameObject.CompareTag("Ground"))
+        if(horizontal > 0.1 & collision.gameObject.CompareTag("Ground") || horizontal < -0.1 & collision.gameObject.CompareTag("Ground"))
         {
            // runStone.Play();
         }
@@ -176,7 +149,7 @@ public class UsedObjects : MonoBehaviour
            // runStone.Stop();
         }
 
-        if(horizontal > 0.1 && collision.gameObject.CompareTag("Metall") || horizontal < -0.1 && collision.gameObject.CompareTag("Metall"))
+        if(horizontal > 0.1 & collision.gameObject.CompareTag("Metall") || horizontal < -0.1 & collision.gameObject.CompareTag("Metall"))
         {
            // runMetall.Play();
         }
@@ -195,16 +168,32 @@ public class UsedObjects : MonoBehaviour
         }
     }
 
+    private IEnumerator LiftUp()
+    {
+        yield return new WaitForSeconds(2);
+        liftActivated.ActivatedLift("Activated", false);
+    }
+
+
     private IEnumerator Lift()
     {
-        yield return new WaitForSeconds(19);
-        if(liftActivated.LiftPositionDown == false)
+        yield return new WaitForSeconds(20);
+        liftActivated.LiftPositionDown = !liftActivated.LiftPositionDown;
+        yield return new WaitForSeconds(1);
+        playerInput.enabled = true;
+        if (liftActivated.LiftPositionDown == false)
         {
-            liftActivated.LiftPositionDown = true;
+            liftActivated.ActivatedRightDoor("Door", false);
+            liftActivated.ActivatedLeftDoor("Door", true);
+            liftActivated.LeftDoor = true;
+            liftActivated.RightDoor = false;
         }
         else
         {
-            liftActivated.LiftPositionDown = false;
+            liftActivated.ActivatedRightDoor("Door", true);
+            liftActivated.ActivatedLeftDoor("Door", false);
+            liftActivated.LeftDoor = false;
+            liftActivated.RightDoor = true;
         }
     }
 }
