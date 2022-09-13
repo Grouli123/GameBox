@@ -34,11 +34,11 @@ public class HPStation : MonoBehaviour
 
     private void HpPlayer()
     {
-        if(bafHero.onDobleLives == false)
+        if(bafHero.onDobleLives == false & playerSettings.Hp < 10)
         {
             _hpPlayer = 10 - playerSettings.Hp;
         }
-        else
+        else if(bafHero.onDobleLives == true & playerSettings.Hp < 15)
         {
            _hpPlayer = 15 - playerSettings.Hp;
         }
@@ -46,7 +46,7 @@ public class HPStation : MonoBehaviour
 
     private void Sound()
     {
-        if (audioSource.isPlaying)
+        if (audioSource.isPlaying!)
         {
             int clipIndex = Random.Range(0, audioClip.Length - 1);
             audioSource.clip = audioClip[clipIndex];
@@ -67,22 +67,22 @@ public class HPStation : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") & Input.GetKey(KeyCode.E))
         {
-            if (bafHero.onDobleLives == false & livesStation >= _hpPlayer)
+            if (bafHero.onDobleLives == false & livesStation >= _hpPlayer & playerSettings.Hp < 10)
             {
                 playerSettings.Hp += _hpPlayer;
                 livesStation -= _hpPlayer;
             }
-            else if(bafHero.onDobleLives == true & livesStation >= _hpPlayer)
+            else if(bafHero.onDobleLives == true & livesStation >= _hpPlayer & playerSettings.Hp < 15)
             {
                 playerSettings.Hp += _hpPlayer;
                 livesStation -= _hpPlayer;
             }
-            else if(bafHero.onDobleLives == false & livesStation < _hpPlayer & livesStation > 0)
+            else if(bafHero.onDobleLives == false & livesStation < _hpPlayer & livesStation > 0 & playerSettings.Hp < 10)
             {
                 playerSettings.Hp += livesStation;
                 livesStation -= livesStation;
             }
-            else if(bafHero.onDobleLives == true & livesStation < _hpPlayer & livesStation > 0)
+            else if(bafHero.onDobleLives == true & livesStation < _hpPlayer & livesStation > 0 & playerSettings.Hp < 15)
             {
                 playerSettings.Hp += livesStation;
                 livesStation -= livesStation;
