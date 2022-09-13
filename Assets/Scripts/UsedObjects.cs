@@ -11,7 +11,6 @@ public class UsedObjects : MonoBehaviour
     [SerializeField] private Most2Activation mostActivated2;
     [SerializeField] private LiftActivated liftActivated;
     [SerializeField] private TextMoveHelp textMoveHelp;
-    [SerializeField] private PlayerInput playerInput;
 
     [SerializeField] private CallLift _callLift;
 
@@ -77,12 +76,20 @@ public class UsedObjects : MonoBehaviour
             textMoveHelp.Texting("E - Запуск");
             textMoveHelp.FulText(true);
         }
+        else
+        {
+            activatedLift = false;
+        }
 
         if (collision.gameObject.GetComponent<CallLift>())
         {
             _isLiftUp = true;
             textMoveHelp.Texting("E - Вызов лифта");
             textMoveHelp.FulText(true);
+        }
+        else
+        {
+            _isLiftUp = false;
         }
     }
 
@@ -94,6 +101,10 @@ public class UsedObjects : MonoBehaviour
             activatedLift = true;
             textMoveHelp.Texting("E - Запуск");
             textMoveHelp.FulText(true);
+        }
+        else
+        {
+            activatedLift = false;
         }
 
         if (Input.GetKeyDown(KeyCode.E) & activatedMost == true)
@@ -113,7 +124,6 @@ public class UsedObjects : MonoBehaviour
             liftActivated.ActivatedLeftDoor("Door", false);
             liftActivated.ActivatedLift("Activated", true);
             StartCoroutine(Lift());
-            playerInput.enabled = false;
         }
 
         if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true &
@@ -123,7 +133,6 @@ public class UsedObjects : MonoBehaviour
             liftActivated.ActivatedLeftDoor("Door", false);
             liftActivated.ActivatedLift("Activated", false);
             StartCoroutine(Lift());
-            playerInput.enabled = false;
         }
 
         if(Input.GetKeyDown(KeyCode.E) 
@@ -179,8 +188,8 @@ public class UsedObjects : MonoBehaviour
     {
         yield return new WaitForSeconds(20);
         liftActivated.LiftPositionDown = !liftActivated.LiftPositionDown;
+
         yield return new WaitForSeconds(1);
-        playerInput.enabled = true;
         if (liftActivated.LiftPositionDown == false)
         {
             liftActivated.ActivatedRightDoor("Door", false);

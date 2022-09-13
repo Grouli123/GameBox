@@ -22,13 +22,22 @@ public class DamageForHero : MonoBehaviour
     [SerializeField] private AudioSource damageSound;
 
     private bool doubleHp = false;
+    private float _fillAmountDouble;
 
     private void Start() 
     {
         _baseStickHp.SetActive(true);
         _doubleStickHp.SetActive(false);
     }
-    
+
+    private void FixedUpdate()
+    {
+        if(doubleHp == true)
+        {
+            _fillAmountDouble = playerSettings.Hp - 5;
+        }
+    }
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<ShowCar>())
@@ -86,7 +95,7 @@ public class DamageForHero : MonoBehaviour
         {
             if(playerSettings.Hp > 10)
             {
-                hpFullDouble.fillAmount = (playerSettings.Hp - 5) / 10;
+                hpFullDouble.fillAmount = _fillAmountDouble / 10;
             }
             else if(playerSettings.Hp <= 10)
             {

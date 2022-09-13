@@ -67,22 +67,22 @@ public class HPStation : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") & Input.GetKey(KeyCode.E))
         {
-            if (bafHero.onDobleLives == false && livesStation >= _hpPlayer)
+            if (bafHero.onDobleLives == false & livesStation >= _hpPlayer)
             {
                 playerSettings.Hp += _hpPlayer;
                 livesStation -= _hpPlayer;
             }
-            else if(bafHero.onDobleLives == true && livesStation >= _hpPlayer)
+            else if(bafHero.onDobleLives == true & livesStation >= _hpPlayer)
             {
                 playerSettings.Hp += _hpPlayer;
                 livesStation -= _hpPlayer;
             }
-            else if(bafHero.onDobleLives == false && livesStation < _hpPlayer && livesStation > 0)
+            else if(bafHero.onDobleLives == false & livesStation < _hpPlayer & livesStation > 0)
             {
                 playerSettings.Hp += livesStation;
                 livesStation -= livesStation;
             }
-            else if(bafHero.onDobleLives == true && livesStation < _hpPlayer && livesStation > 0)
+            else if(bafHero.onDobleLives == true & livesStation < _hpPlayer & livesStation > 0)
             {
                 playerSettings.Hp += livesStation;
                 livesStation -= livesStation;

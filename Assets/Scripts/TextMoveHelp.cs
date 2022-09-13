@@ -70,7 +70,7 @@ public class TextMoveHelp : MonoBehaviour
         {
             if(playerSettings.CasseteText == true)
             {
-                Text.text = "Собери 100 ГусьКоинов для дополнительной жизни";
+                Text.text = "Собери 100 ГусьКоинов для дополнительной     жизни";
                 FulText(true);
                 playerSettings.CasseteText = false;
             }
