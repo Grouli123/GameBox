@@ -63,7 +63,7 @@ public class BafHero : MonoBehaviour
 
     private void Coins()
     {
-        if (DoubleCoins == true & OnDoubleCoins == true)
+        if (OnDoubleCoins == true) //DoubleCoins == true & 
         {
             coinCollectScript.DoubleCoins = true;
         }
