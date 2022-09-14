@@ -53,7 +53,7 @@ public class TextMoveHelp : MonoBehaviour
             advertisement.gameObject.SetActive(false);
         }
 
-        if(Input.GetKeyDown(KeyCode.B) & playerSettings.HairGel < 3)
+        if(Input.GetKeyDown(KeyCode.Q) & playerSettings.HairGel < 3)
         {
             Text.text = "Недостаточно геля";
             _textBackground.SetActive(true);

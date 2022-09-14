@@ -83,7 +83,6 @@ public class DamageForHero : MonoBehaviour
         }
         else
         {
-            hpFullDouble.fillAmount = playerSettings.LivesDouble / 10;
             hpFull.fillAmount = playerSettings.Hp / 10;
             hpFullDouble.gameObject.SetActive(true);
             hpNulDouble.gameObject.SetActive(true);
@@ -102,6 +101,28 @@ public class DamageForHero : MonoBehaviour
             doubleHp = false;
             _baseStickHp.SetActive(true);
 
+        }
+
+        switch (playerSettings.Hp)
+        {
+            case 15:
+                hpFullDouble.fillAmount = 1;
+                break;
+            case 14:
+                hpFullDouble.fillAmount = 0.8f;
+                break;
+            case 13:
+                hpFullDouble.fillAmount = 0.6f;
+                break;
+            case 12:
+                hpFullDouble.fillAmount = 0.4f;
+                break;
+            case 11:
+                hpFullDouble.fillAmount = 0.2f;
+                break;
+            case 10:
+                hpFullDouble.fillAmount = 0;
+                break;
         }
     }
 }

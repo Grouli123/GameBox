@@ -32,12 +32,17 @@ public class DialogPanel : MonoBehaviour
     }
     private void Update()
     {
+        if(enemyPanelMain.activeSelf == true)
+        {
+            source.clip = sound[4];
+            source.Play();
+        }
         EnemyPanel();
         OnClickMouse();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<HairGelObject>() && _hairGel == true)
+        if (collision.gameObject.GetComponent<HairGelObject>() & _hairGel == true)
         {
             source.clip = sound[1];
             source.Play();
@@ -48,7 +53,7 @@ public class DialogPanel : MonoBehaviour
            Time.timeScale = 0;
         }
 
-        if(collision.gameObject.GetComponent<CoinCollectScript>() && _coins == true)
+        if(collision.gameObject.GetComponent<CoinCollectScript>() & _coins == true)
         {
             source.clip = sound[0];
             source.Play();
@@ -59,7 +64,7 @@ public class DialogPanel : MonoBehaviour
             Time.timeScale = 0;
         }
 
-        if(collision.gameObject.CompareTag("ZoneAdvertisementTcepellin") && _cat == true)
+        if(collision.gameObject.CompareTag("ZoneAdvertisementTcepellin") & _cat == true)
         {
             source.clip = sound[2];
             source.Play();
@@ -70,7 +75,7 @@ public class DialogPanel : MonoBehaviour
             Time.timeScale = 0;
         }
 
-        if(collision.gameObject.GetComponent<HPStation>() && _hpStation == true)
+        if(collision.gameObject.GetComponent<HPStation>() & _hpStation == true)
         {
             source.clip = sound[3];
             source.Play();
@@ -84,9 +89,11 @@ public class DialogPanel : MonoBehaviour
 
     private void EnemyPanel()
     {
-        if (_enemy == true && enemyPanelMain.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0)
-            && enemyPanelJames.activeSelf == true)
+        if (_enemy == true & enemyPanelMain.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse0)
+            & enemyPanelJames.activeSelf == true)
         {
+            source.clip = sound[5];
+            source.Play();
             playerInput.enabled = false;
             _anim.SetBool("IsRun", false);
             _anim.SetBool("IsJump", false);
@@ -94,9 +101,11 @@ public class DialogPanel : MonoBehaviour
             enemyPanelJames.SetActive(false);
             enemyPanelCapitain.SetActive(true);
         }
-        else if(_enemy == true && enemyPanelMain.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0)
-            && enemyPanelCapitain.activeSelf == true)
+        else if(_enemy == true & enemyPanelMain.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse0)
+            & enemyPanelCapitain.activeSelf == true)
         {
+            source.clip = sound[6];
+            source.Play();
             playerInput.enabled = false;
             _anim.SetBool("IsRun", false);
             _anim.SetBool("IsJump", false);
@@ -104,8 +113,8 @@ public class DialogPanel : MonoBehaviour
             enemyPanelCapitain.SetActive(false);
             enemyPanelJames2.SetActive(true);
         }
-        else if(_enemy == true && enemyPanelMain.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0)
-            && enemyPanelJames2.activeSelf == true)
+        else if(_enemy == true & enemyPanelMain.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse0)
+            & enemyPanelJames2.activeSelf == true)
         {
             source.Stop();
             _enemy = false;
@@ -114,7 +123,7 @@ public class DialogPanel : MonoBehaviour
             _enemy = false;
             enemyPanelMain.SetActive(false);
         }
-        else if(enemyPanelMain.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse1))
+        else if(enemyPanelMain.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse1))
         {
             source.Stop();
             playerInput.enabled = true;
@@ -126,7 +135,7 @@ public class DialogPanel : MonoBehaviour
 
     private void OnClickMouse()
     {
-        if (hairGelPanel.activeSelf == true && _hairGel == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if (hairGelPanel.activeSelf == true & _hairGel == true & Input.GetKeyDown(KeyCode.Mouse0))
         {
             source.Stop();
             _hairGel = false;
@@ -134,7 +143,7 @@ public class DialogPanel : MonoBehaviour
             Time.timeScale = 1;
             hairGelPanel.SetActive(false);
         }
-        else if (hairGelPanel.activeSelf == true && _hairGel == true && Input.GetKeyDown(KeyCode.Mouse1))
+        else if (hairGelPanel.activeSelf == true & _hairGel == true & Input.GetKeyDown(KeyCode.Mouse1))
         {
             source.Stop();
             _hairGel = false;
@@ -143,7 +152,7 @@ public class DialogPanel : MonoBehaviour
             hairGelPanel.SetActive(false);
         }
 
-        if (_coins == true && coinsPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if (_coins == true & coinsPanel.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse0))
         {
             source.Stop();
             coinsPanel.SetActive(false);
@@ -151,7 +160,7 @@ public class DialogPanel : MonoBehaviour
             Time.timeScale = 1;
             _coins = false;
         }
-        else if (_coins == true && coinsPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse1))
+        else if (_coins == true & coinsPanel.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse1))
         {
             source.Stop();
             coinsPanel.SetActive(false);
@@ -160,7 +169,7 @@ public class DialogPanel : MonoBehaviour
             _coins = false;
         }
 
-        if (_cat == true && catPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if (_cat == true & catPanel.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse0))
         {
             source.Stop();
             catPanel.SetActive(false);
@@ -168,7 +177,7 @@ public class DialogPanel : MonoBehaviour
             Time.timeScale = 1;
             _cat = false;
         }
-        else if (_cat == true && catPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse1))
+        else if (_cat == true & catPanel.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse1))
         {
             source.Stop();
             catPanel.SetActive(false);
@@ -177,7 +186,7 @@ public class DialogPanel : MonoBehaviour
             _cat = false;
         }
 
-        if (_hpStation == true && hpStationPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0))
+        if (_hpStation == true & hpStationPanel.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse0))
         {
             source.Stop();
             hpStationPanel.SetActive(false);
@@ -185,7 +194,7 @@ public class DialogPanel : MonoBehaviour
             Time.timeScale = 1;
             _hpStation = false;
         }
-        else if (_hpStation == true && hpStationPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse1))
+        else if (_hpStation == true & hpStationPanel.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse1))
         {
             source.Stop();
             hpStationPanel.SetActive(false);
