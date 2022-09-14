@@ -8,7 +8,7 @@ public class CoinMenuAnim : MonoBehaviour
     public Image m_Image;
 
     public Sprite[] m_SpriteArray;
-    public float m_Speed = .3f;
+    public float m_Speed;
 
     private int m_IndexSprite;
     Coroutine m_CorotineAnim;
