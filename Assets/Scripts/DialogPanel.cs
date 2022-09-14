@@ -23,7 +23,8 @@ public class DialogPanel : MonoBehaviour
     private bool _hpStation = true;
     private bool _enemy = true;
 
-    private void Awake() {
+    private void Awake() 
+    {
         _anim = GetComponent<Animator>();
     }
     private void Update()

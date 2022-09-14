@@ -47,6 +47,7 @@ public class ButtonForGame : MonoBehaviour
             if (_pauseActive == false)
             {
                 playerInput.enabled = false;
+                enemyController.enabled = false;
                 helpPanel.SetActive(false);
                 _pauseActive = true;
                 pausePanel.SetActive(true);
@@ -54,6 +55,7 @@ public class ButtonForGame : MonoBehaviour
             }
             else
             {
+                enemyController.enabled=true;
                 ContinueGame();
             }
         }
@@ -61,6 +63,7 @@ public class ButtonForGame : MonoBehaviour
 
     public void ContinueGame()
     {
+        enemyController.enabled = false;
         playerInput.enabled = true;
         helpPanel.SetActive(true);
         _pauseActive = false;
