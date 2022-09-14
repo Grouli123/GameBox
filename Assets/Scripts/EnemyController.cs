@@ -157,9 +157,9 @@ public class EnemyController : MonoBehaviour
         transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
         _walkSpeed *= -1;
         _range *= -1;
-        Destroy(_bullet);
+        // Destroy(_bullet);
         _mustPatrol = true;
-        Destroy(_bullet);
+        // Destroy(_bullet);
     }
 
     private IEnumerator Shoot()
