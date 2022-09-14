@@ -53,8 +53,7 @@ public class HeroDeath : MonoBehaviour
         }
         else
         {
-            playerMovement.Speed = 0.5f;            
-            Time.timeScale = 1;    
+            playerMovement.Speed = 0.5f;              
         }
     }
 
@@ -62,11 +61,13 @@ public class HeroDeath : MonoBehaviour
     {
         if(playerSettings.Cassete <= 0)
         {
+            Time.timeScale = 1;
             clickImage.sprite = Click[0];
             ClickedButton.interactable = false;
         }
         else
         {
+            Time.timeScale = 1;
             clickImage.sprite= Click[1];
             ClickedButton.interactable = true;
         }
