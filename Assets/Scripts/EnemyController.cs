@@ -158,6 +158,7 @@ public class EnemyController : MonoBehaviour
         _walkSpeed *= -1;
         _range *= -1;
         _mustPatrol = true;
+        Destroy(_bullet);
     }
 
     private IEnumerator Shoot()

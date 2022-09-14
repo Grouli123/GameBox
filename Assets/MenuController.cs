@@ -97,23 +97,23 @@ public class MenuController : MonoBehaviour
     private void Update() 
     {       
 
-        if (Input.GetKey(KeyCode.Return)) 
-        {      
-            _startPannel.SetActive(false);
-            _mainMenu.SetActive(true);
-        }   
+        // if (Input.GetKey(KeyCode.Return)) 
+        // {      
+        //     _startPannel.SetActive(false);
+        //     _mainMenu.SetActive(true);
+        // }   
 
 
 
 
-        if (Input.GetKey(KeyCode.Backspace) && _isNewGameIn == true)
+        if (Input.GetKey(KeyCode.Escape) && _isNewGameIn == true)
         {
             _mainMenu.SetActive(true);
             _startNewGame.SetActive(false);
             _isNewGameIn = false;
         }
 
-        if (Input.GetKey(KeyCode.Backspace) && _isSelectPannelSaveMenu == true)
+        if (Input.GetKey(KeyCode.Escape) && _isSelectPannelSaveMenu == true)
         {
             _mainMenu.SetActive(true);
             _startNewGame.SetActive(false);
@@ -144,12 +144,14 @@ public class MenuController : MonoBehaviour
         }
 
 
-        // if (Input.GetKey(KeyCode.Backspace) && _isSelectPannelSaveMenu == true)
-        // {
-        //     _slot1.SetActive(true);
-        //     _nickname.SetActive(false);
-        //     _isSelectPannelSaveMenu = false;
-        // }
+        if (Input.GetKey(KeyCode.Escape) && _isSelectPannelSaveMenu == true)
+        {
+            _slot1.SetActive(true);
+            _nickname.SetActive(false);
+            _isSelectPannelSaveMenu = false;
+            
+        _selectSlotOneSaveButton.Select();
+        }
         
         // if (Input.GetKey(KeyCode.Backspace) && _isWriteNickname == true)
         // {
@@ -173,7 +175,7 @@ public class MenuController : MonoBehaviour
 
 
 
-        if (Input.GetKey(KeyCode.Backspace) && _isLoadGame == true)
+        if (Input.GetKey(KeyCode.Escape) && _isLoadGame == true)
         {
             _mainMenu.SetActive(true);
             _globalLoadGame.SetActive(false);
@@ -181,7 +183,7 @@ public class MenuController : MonoBehaviour
             _isLoadGame = false;
         }
 
-         if (Input.GetKey(KeyCode.Backspace) && _isSelectPannelLoadMenu == true)
+         if (Input.GetKey(KeyCode.Escape) && _isSelectPannelLoadMenu == true)
         {
             _mainMenu.SetActive(true);
             _loadGame.SetActive(false);
@@ -213,28 +215,28 @@ public class MenuController : MonoBehaviour
 
 
 
-        if (Input.GetKey(KeyCode.Backspace) && _isRecords == true)
+        if (Input.GetKey(KeyCode.Escape) && _isRecords == true)
         {
             _mainMenu.SetActive(true);
             _recordsPannel.SetActive(false);
             _isRecords = false;
         }
 
-        if (Input.GetKey(KeyCode.Backspace) && _isInSettings == true)
+        if (Input.GetKey(KeyCode.Escape) && _isInSettings == true)
         {
             _mainMenu.SetActive(true);
             _settings.SetActive(false);
             _isInSettings = false;
         }
 
-        if (Input.GetKey(KeyCode.Backspace) && _isInDevelopers == true)
+        if (Input.GetKey(KeyCode.Escape) && _isInDevelopers == true)
         {
             _mainMenu.SetActive(true);
             _developersPannel.SetActive(false);
             _isInDevelopers = false;
         }
 
-        if (Input.GetKey(KeyCode.Backspace) && _isInExit == true)
+        if (Input.GetKey(KeyCode.Escape) && _isInExit == true)
         {
             _mainMenu.SetActive(true);
             _exitPannel.SetActive(false);
@@ -246,10 +248,10 @@ public class MenuController : MonoBehaviour
 
 
 
-        if (Input.GetKey(KeyCode.Return) && _isStartGame == true)
-        {
-            StartNewGame();
-        }
+        // if (Input.GetKey(KeyCode.Return) && _isStartGame == true)
+        // {
+        //     StartNewGame();
+        // }
     }
 
     public void StartGame()
@@ -273,7 +275,6 @@ public class MenuController : MonoBehaviour
         _startNewGame.SetActive(false);
         _slot1.SetActive(true);
         _isSelectPannelSaveMenu = true;
-        _selectSlotOneSaveButton.Select();
     }
 
     public void SlotsYes()
