@@ -11,7 +11,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private DamageForBoss _damageForBoss;
 
     [SerializeField] private Transform _player;
-    [SerializeField] private Transform _shootPos;
+    // [SerializeField] private Transform _shootPos;
     // [SerializeField] private Transform _groundCheckPosition;
     [SerializeField] private Transform _originalPoint;
     
@@ -170,13 +170,13 @@ public class BossController : MonoBehaviour
         //Vector3 targetDir = _player.position - transform.position;
         //float angle = Vector3.Angle(targetDir, transform.forward);
 
-        endPos = _player.position + Vector3.right * _castDist;
+        //endPos = _player.position + Vector3.right * _castDist;
 
         
         _canShot = false;
         yield return new WaitForSeconds(_timeBTWShoots);
         GameObject newBullet = Instantiate(_bullet, _originalPoint.position, Quaternion.identity);
-        transform.position = Vector2.MoveTowards(transform.position, endPos, _shootSpeed * Time.deltaTime);
+        //transform.position = Vector2.MoveTowards(transform.position, endPos, _shootSpeed * Time.deltaTime);
         //newBullet.GetComponent<Rigidbody2D>().velocity = endPos;
 
         // Instantiate(_bullet, _shootPos.position, Quaternion.identity);

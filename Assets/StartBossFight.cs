@@ -9,6 +9,15 @@ public class StartBossFight : MonoBehaviour
     [SerializeField] private GameObject _boss;
     [SerializeField] private GameObject _cutscene;
     [SerializeField] private GameObject _firstSlide;
+    [SerializeField] private StartBossCutscene _startBossCutscene;
+
+    
+    [SerializeField] private EdgeCollider2D _boxSceneBossFight;
+    //[SerializeField] private DamageForBoss _damageForBoss;
+
+
+
+
 
     [SerializeField] private float _textSpeed;
 
@@ -21,21 +30,23 @@ public class StartBossFight : MonoBehaviour
     [SerializeField] private BossController _bossController;
 
     
-    [SerializeField] private PlayerInput playerInput;
-    [SerializeField] private Animator _anim;
+    // [SerializeField] private PlayerInput playerInput;
+    //[SerializeField] private Animator _anim;
 
     private void Start() 
     {
         _bossController.enabled = false;
+        //_damageForBoss.enabled = false;
+        _startBossCutscene = GetComponent<StartBossCutscene>();
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.CompareTag("Player"))
         {
-            _firstSlide.SetActive(true);
+            
             StartCoroutine(Test());
-            _bossController.enabled = true;
         }        
     }
 
@@ -51,9 +62,12 @@ public class StartBossFight : MonoBehaviour
 
     private IEnumerator Test ()
     {   
-        playerInput.enabled = false;
-        _anim.SetBool("IsRun", false);            
-        _anim.SetBool("IsJump", false);
+        yield return new WaitForSeconds(10);
+        _firstSlide.SetActive(true);
+        // // playerInput.enabled = false;
+        // _anim.SetBool("IsRun", false);            
+        // _anim.SetBool("IsJump", false);
+        _boxSceneBossFight.isTrigger = false;
         _James.SetActive(true);
         _boss.SetActive(false);
         _text.text = "";
@@ -99,8 +113,12 @@ public class StartBossFight : MonoBehaviour
         _James.SetActive(false);
         _boss.SetActive(false);
         _text.text = "";
-        _cutscene.SetActive(false);           
+        _cutscene.SetActive(false);       
+        _bossController.enabled = true;
+        _startBossCutscene.StopCutscene();    
         _firstSlide.SetActive(false);        
-        playerInput.enabled = true;
+        
+//        _damageForBoss.enabled = true;
+        // playerInput.enabled = true;
     }
 }

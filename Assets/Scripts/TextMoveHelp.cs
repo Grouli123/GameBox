@@ -1,4 +1,5 @@
 using Scriptable;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -85,6 +86,7 @@ public class TextMoveHelp : MonoBehaviour
         {
             Text.text = "Сохранение записано";
             FulText(true);
+            StartCoroutine(CloseSavePannel());
         }
 
         if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin"))
@@ -449,5 +451,12 @@ public class TextMoveHelp : MonoBehaviour
     {
         get { return _mostOpen; }
         set { _mostOpen = value; }
+    }
+
+    private IEnumerator CloseSavePannel()
+    {
+        yield return new WaitForSeconds(2);
+        FulText(false);
+        Text.text = "";
     }
 }
