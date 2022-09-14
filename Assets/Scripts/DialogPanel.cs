@@ -13,6 +13,9 @@ public class DialogPanel : MonoBehaviour
     [SerializeField] private GameObject enemyPanelCapitain;
     [SerializeField] private GameObject enemyPanelJames2;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip[] sound;
+    [SerializeField] private AudioSource source;
     
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Animator _anim;
@@ -36,6 +39,8 @@ public class DialogPanel : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<HairGelObject>() && _hairGel == true)
         {
+            source.clip = sound[1];
+            source.Play();
             hairGelPanel.SetActive(true);
             playerInput.enabled = false;
             _anim.SetBool("IsRun", false);            
@@ -45,6 +50,8 @@ public class DialogPanel : MonoBehaviour
 
         if(collision.gameObject.GetComponent<CoinCollectScript>() && _coins == true)
         {
+            source.clip = sound[0];
+            source.Play();
             coinsPanel.SetActive(true);
             playerInput.enabled = false;
             _anim.SetBool("IsRun", false);            
@@ -54,6 +61,8 @@ public class DialogPanel : MonoBehaviour
 
         if(collision.gameObject.CompareTag("ZoneAdvertisementTcepellin") && _cat == true)
         {
+            source.clip = sound[2];
+            source.Play();
             catPanel.SetActive(true);
             playerInput.enabled = false;
             _anim.SetBool("IsRun", false);            
@@ -63,6 +72,8 @@ public class DialogPanel : MonoBehaviour
 
         if(collision.gameObject.GetComponent<HPStation>() && _hpStation == true)
         {
+            source.clip = sound[3];
+            source.Play();
             hpStationPanel.SetActive(true);
             playerInput.enabled = false;
             _anim.SetBool("IsRun", false);            
@@ -96,6 +107,7 @@ public class DialogPanel : MonoBehaviour
         else if(_enemy == true && enemyPanelMain.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0)
             && enemyPanelJames2.activeSelf == true)
         {
+            source.Stop();
             _enemy = false;
             playerInput.enabled = true;
             Time.timeScale = 1;
@@ -104,6 +116,7 @@ public class DialogPanel : MonoBehaviour
         }
         else if(enemyPanelMain.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse1))
         {
+            source.Stop();
             playerInput.enabled = true;
             Time.timeScale = 1;
             _enemy = false;
@@ -115,6 +128,7 @@ public class DialogPanel : MonoBehaviour
     {
         if (hairGelPanel.activeSelf == true && _hairGel == true && Input.GetKeyDown(KeyCode.Mouse0))
         {
+            source.Stop();
             _hairGel = false;
             playerInput.enabled = true;
             Time.timeScale = 1;
@@ -122,6 +136,7 @@ public class DialogPanel : MonoBehaviour
         }
         else if (hairGelPanel.activeSelf == true && _hairGel == true && Input.GetKeyDown(KeyCode.Mouse1))
         {
+            source.Stop();
             _hairGel = false;
             playerInput.enabled = true;
             Time.timeScale = 1;
@@ -130,6 +145,7 @@ public class DialogPanel : MonoBehaviour
 
         if (_coins == true && coinsPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0))
         {
+            source.Stop();
             coinsPanel.SetActive(false);
             playerInput.enabled = true;
             Time.timeScale = 1;
@@ -137,6 +153,7 @@ public class DialogPanel : MonoBehaviour
         }
         else if (_coins == true && coinsPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse1))
         {
+            source.Stop();
             coinsPanel.SetActive(false);
             playerInput.enabled = true;
             Time.timeScale = 1;
@@ -145,6 +162,7 @@ public class DialogPanel : MonoBehaviour
 
         if (_cat == true && catPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0))
         {
+            source.Stop();
             catPanel.SetActive(false);
             playerInput.enabled = true;
             Time.timeScale = 1;
@@ -152,6 +170,7 @@ public class DialogPanel : MonoBehaviour
         }
         else if (_cat == true && catPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse1))
         {
+            source.Stop();
             catPanel.SetActive(false);
             playerInput.enabled = true;
             Time.timeScale = 1;
@@ -160,6 +179,7 @@ public class DialogPanel : MonoBehaviour
 
         if (_hpStation == true && hpStationPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse0))
         {
+            source.Stop();
             hpStationPanel.SetActive(false);
             playerInput.enabled = true;
             Time.timeScale = 1;
@@ -167,6 +187,7 @@ public class DialogPanel : MonoBehaviour
         }
         else if (_hpStation == true && hpStationPanel.activeSelf == true && Input.GetKeyDown(KeyCode.Mouse1))
         {
+            source.Stop();
             hpStationPanel.SetActive(false);
             playerInput.enabled = true;
             Time.timeScale = 1;
