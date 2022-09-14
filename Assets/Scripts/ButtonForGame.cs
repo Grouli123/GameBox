@@ -15,7 +15,6 @@ public class ButtonForGame : MonoBehaviour
     [Header("Sound")]
     [SerializeField] private AudioSource _hairGelSound;
 
-    private bool _pauseActive;
     private float _timeFreeze;
     private float _timeAnim;
     private bool _freeze;
@@ -29,7 +28,6 @@ public class ButtonForGame : MonoBehaviour
 
     private void Start()
     {        
-        _pauseActive = false;
         _freeze = false;
     }
 
@@ -42,20 +40,18 @@ public class ButtonForGame : MonoBehaviour
     }
     public void OnClickPause()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) & pausePanel.activeSelf == false)
         {
-            if (_pauseActive == false)
-            {
-                playerInput.enabled = false;
-                helpPanel.SetActive(false);
-                _pauseActive = true;
-                pausePanel.SetActive(true);
-                Time.timeScale = 0;
-            }
-            else
-            {
-                ContinueGame();
-            }
+            playerInput.enabled = false;
+            enemyController.enabled = false;
+            helpPanel.SetActive(false);
+            pausePanel.SetActive(true);
+            Time.timeScale = 0;
+            enemyController.enabled=true;
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) & pausePanel.activeSelf == true)
+        {
+            ContinueGame();
         }
     }
 
@@ -63,7 +59,6 @@ public class ButtonForGame : MonoBehaviour
     {
         playerInput.enabled = true;
         helpPanel.SetActive(true);
-        _pauseActive = false;
         Time.timeScale = 1;
         pausePanel.SetActive(false);
     }

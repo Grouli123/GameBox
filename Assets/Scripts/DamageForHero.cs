@@ -69,7 +69,6 @@ public class DamageForHero : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Double hp^ " + doubleHp);
         HealthFill();
         DoubleHp();
     }
