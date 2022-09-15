@@ -52,6 +52,10 @@ public class HPStation : MonoBehaviour
             audioSource.clip = audioClip[clipIndex];
             audioSource.Play();
         }
+        if(livesStation <= 0)
+        {
+            audioSource.Stop();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -210,6 +210,10 @@ public class DialogPanel : MonoBehaviour
         source.Play();
     }
 
+    public void TimeScale(int time)
+    {
+        Time.timeScale = time;
+    }
     public bool Enemy
     {
         get { return _enemy; }
