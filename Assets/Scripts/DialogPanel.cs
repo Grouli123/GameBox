@@ -32,12 +32,6 @@ public class DialogPanel : MonoBehaviour
     }
     private void Update()
     {
-        if(enemyPanelMain.activeSelf == true)
-        {
-            Time.timeScale = 0;
-            source.clip = sound[4];
-            source.Play();
-        }
         EnemyPanel();
         OnClickMouse();
     }
@@ -208,6 +202,12 @@ public class DialogPanel : MonoBehaviour
     public void OnActivePanelEnemy(bool active)
     {
         enemyPanelMain.SetActive(active);
+    }
+
+    public void SoundPanelEnemy(int number)
+    {
+        source.clip = sound[number];
+        source.Play();
     }
 
     public bool Enemy

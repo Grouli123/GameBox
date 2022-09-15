@@ -46,7 +46,7 @@ public class HPStation : MonoBehaviour
 
     private void Sound()
     {
-        if (audioSource.isPlaying!)
+        if (!audioSource.isPlaying)
         {
             int clipIndex = Random.Range(0, audioClip.Length - 1);
             audioSource.clip = audioClip[clipIndex];
