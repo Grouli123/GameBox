@@ -26,6 +26,8 @@ public class BafHero : MonoBehaviour
     private bool DoubleCoins = false;
     private bool DoubleJump = false;
 
+    public bool coinsDoubleStat;
+
     private void Start()
     {
         _speedMove = _shooter.timeBetweenShoots;
@@ -61,15 +63,17 @@ public class BafHero : MonoBehaviour
         }
     }
 
-    private void Coins()
+    public void Coins()
     {
         if (OnDoubleCoins == true) //DoubleCoins == true & 
         {
-            coinCollectScript.DoubleCoins = true;
+           // coinCollectScript.doubleCoins = true;
+            coinsDoubleStat = true;
         }
         else
         {
-            coinCollectScript.DoubleCoins = false;
+            //coinCollectScript.doubleCoins = false;
+            coinsDoubleStat = false;
         }
     }
 
