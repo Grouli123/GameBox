@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class FirstLvlStartCutscene : MonoBehaviour
 {
     [SerializeField] private Text _text;
+    [SerializeField] private GameObject _startCutscene;
+    [SerializeField] private GameObject _startCustceneSound;
     [SerializeField] private GameObject _James;
     [SerializeField] private GameObject _Shef;
     [SerializeField] private GameObject _cutscene;
@@ -16,23 +18,42 @@ public class FirstLvlStartCutscene : MonoBehaviour
     [SerializeField] private AudioClip[] _sound;
     [SerializeField] private AudioSource _source;
     
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private PlayerInput _playerInput;
 
     [SerializeField] private float _textSpeed;
 
     private string _dialog;
+
     private void Start() 
     {
         _cutscene.SetActive(true);
         _firstSlide.SetActive(true);
+        _startCutscene.SetActive(true);
+        _startCustceneSound.SetActive(true);
         _secondSlide.SetActive(false);
         _buttonsForGame.enabled = false;
         _source.clip = _sound[0];
         _source.Play();
 
                 
-        StartCoroutine(Test());
+        StartCoroutine(DialogStartScene());
           
+    }
+
+    private void Update() 
+    {
+        SkipStartDialog();
+    }
+
+    private void SkipStartDialog()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            _startCutscene.SetActive(false);
+            _startCustceneSound.SetActive(false);
+            _playerInput.enabled = true;
+            _buttonsForGame.enabled = true;
+        }
     }
 
     private IEnumerator OutputText(string str, float delay)
@@ -45,37 +66,39 @@ public class FirstLvlStartCutscene : MonoBehaviour
         }
     }
 
-    private IEnumerator Test ()
+    private IEnumerator DialogStartScene()
     {   
-        playerInput.enabled = false;
+        _playerInput.enabled = false;
         yield return new WaitForSeconds(7);
-        _firstSlide.SetActive(false);
-        _secondSlide.SetActive(true);
-        _James.SetActive(true);
-        _Shef.SetActive(false);
-        _text.text = "";
-        _source.clip = _sound[1];
-        _source.Play();
-        _dialog = "Добрый вечер, шеф. Вы хотели меня видеть?";
-        StartCoroutine(OutputText(_dialog, _textSpeed));
+            _firstSlide.SetActive(false);
+            _secondSlide.SetActive(true);
+            _James.SetActive(true);
+            _Shef.SetActive(false);
+            _text.text = "";
+            _source.clip = _sound[1];
+            _source.Play();
+            _dialog = "Добрый вечер, шеф. Вы хотели меня видеть?";
+            StartCoroutine(OutputText(_dialog, _textSpeed));
+
 
         yield return new WaitForSeconds(5);
-        _James.SetActive(false);
-        _Shef.SetActive(true);
-        _text.text = "";
-        _source.clip = _sound[2];
-        _source.Play();
-        _dialog = "Так точно, мой мальчик. Проходи, садись.";
-        StartCoroutine(OutputText(_dialog, _textSpeed));
+            _James.SetActive(false);
+            _Shef.SetActive(true);
+            _text.text = "";
+            _source.clip = _sound[2];
+            _source.Play();
+            _dialog = "Так точно, мой мальчик. Проходи, садись.";
+            StartCoroutine(OutputText(_dialog, _textSpeed));
 
         yield return new WaitForSeconds(4);
-        _James.SetActive(true);
-        _Shef.SetActive(false);    
-        _text.text = "";
-        _source.clip = _sound[3];
-        _source.Play();
-        _dialog = "Сегодня особенно красивый закат, шеф. В такие вечера мне хочется танцевать под лучами заходящего солнца.";
-        StartCoroutine(OutputText(_dialog, _textSpeed));
+            _James.SetActive(true);
+            _Shef.SetActive(false);    
+            _text.text = "";
+            _source.clip = _sound[3];
+            _source.Play();
+            _dialog = "Сегодня особенно красивый закат, шеф. В такие вечера мне хочется танцевать под лучами заходящего солнца.";
+            StartCoroutine(OutputText(_dialog, _textSpeed));
+         
 
         
         yield return new WaitForSeconds(8);
@@ -166,7 +189,7 @@ public class FirstLvlStartCutscene : MonoBehaviour
         _text.text = "";
         _secondSlide.SetActive(false);
         _cutscene.SetActive(false);
-        playerInput.enabled = true;
+        _playerInput.enabled = true;
         _buttonsForGame.enabled = true;
     }
 }
