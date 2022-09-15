@@ -34,6 +34,7 @@ public class DialogPanel : MonoBehaviour
     {
         if(enemyPanelMain.activeSelf == true)
         {
+            Time.timeScale = 0;
             source.clip = sound[4];
             source.Play();
         }

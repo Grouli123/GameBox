@@ -11,6 +11,8 @@ public class FirstLvlStartCutscene : MonoBehaviour
     [SerializeField] private GameObject _firstSlide;
     [SerializeField] private GameObject _secondSlide;
 
+    [SerializeField] private ButtonForGame _buttonsForGame;
+
     [SerializeField] private AudioClip[] _sound;
     [SerializeField] private AudioSource _source;
     
@@ -24,6 +26,7 @@ public class FirstLvlStartCutscene : MonoBehaviour
         _cutscene.SetActive(true);
         _firstSlide.SetActive(true);
         _secondSlide.SetActive(false);
+        _buttonsForGame.enabled = false;
         _source.clip = _sound[0];
         _source.Play();
 
@@ -45,7 +48,7 @@ public class FirstLvlStartCutscene : MonoBehaviour
     private IEnumerator Test ()
     {   
         playerInput.enabled = false;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(7);
         _firstSlide.SetActive(false);
         _secondSlide.SetActive(true);
         _James.SetActive(true);
@@ -117,7 +120,7 @@ public class FirstLvlStartCutscene : MonoBehaviour
         _source.clip = _sound[8];
         _source.Play();
         _text.text = "";
-        _dialog = "Изначально это был рэкет и мелкие грабежи, но с каждым днём они становятся всё наглее и наглее. Мы пытались подослать к ним своих людей, но \"Фанаты\" выводили их из строя быстрее. Поэтому я и решил обратиться к тебе. Выясни, что там происходит, и нейтрализуй угрозу.";
+        _dialog = "Изначально это был рэкет и мелкие грабежи, но с каждым днём они становятся всё наглее. Мы пытались подослать к ним своих людей, но \"Фанаты\" выводили их из строя быстрее. Поэтому я и решил обратиться к тебе. Выясни, что там происходит, и нейтрализуй угрозу.";
         StartCoroutine(OutputText(_dialog, _textSpeed));
 
         // yield return new WaitForSeconds(27);
@@ -134,7 +137,7 @@ public class FirstLvlStartCutscene : MonoBehaviour
         // _dialog = "Я тоже так подумал. Поэтому и решил обратиться к тебе. Выясни, что там происходит и, по возможности, нейтрилизуй угрозу.";
         // StartCoroutine(OutputText(_dialog, _textSpeed));
 
-        yield return new WaitForSeconds(18);
+        yield return new WaitForSeconds(23);
         _James.SetActive(true);
         _Shef.SetActive(false);    
         _text.text = "";
@@ -164,5 +167,6 @@ public class FirstLvlStartCutscene : MonoBehaviour
         _secondSlide.SetActive(false);
         _cutscene.SetActive(false);
         playerInput.enabled = true;
+        _buttonsForGame.enabled = true;
     }
 }

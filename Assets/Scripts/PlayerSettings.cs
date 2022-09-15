@@ -27,7 +27,7 @@ public class PlayerSettings : MonoBehaviour
 
     private void Start()
     {
-        cassete = 3;
+        // cassete = 3;
         hairGel = 0;
         anim.SetInteger("Coin", 0);
         _coins.SetValue(0);
@@ -37,15 +37,15 @@ public class PlayerSettings : MonoBehaviour
         textCassete.text = cassete.ToString();
         GelUsed();
 
-        if(isAddCassete == false)
-        {
+        // if(isAddCassete == false)
+        // {
 
-            CheckCoinToAddCassete();
-        }
-        else if (_coins.GetValue() == 0 && _casseteVar.GetValue() == 0)
-        {
-            cassete = 0;
-        }
+        //     CheckCoinToAddCassete();
+        // }
+        // else if (_coins.GetValue() == 0 && _casseteVar.GetValue() == 0)
+        // {
+        //     cassete = 0;
+        // }
 
         // if (_casseteVar.GetValue() > 0)
         // {

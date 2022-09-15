@@ -9,7 +9,7 @@ public class AllScore : MonoBehaviour
 
     private void Start() 
     {
-        _allOfScore.SetValue(0);
+        //_allOfScore.SetValue(0);
     }
     
     private void Update() 

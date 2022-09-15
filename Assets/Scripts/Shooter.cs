@@ -6,6 +6,8 @@ public class Shooter : MonoBehaviour
   [SerializeField] private GameObject _bullet;  
   [SerializeField] private Transform _firePoint;
 
+  [SerializeField] private HeroDeath _heroDeath;
+
   [SerializeField] private PlayerInput _playerInput;
   public float timeBetweenShoots;
 
@@ -24,6 +26,7 @@ public class Shooter : MonoBehaviour
   public void Shoot(float direction)
   {
       GameObject _currentBullet = Instantiate(_bullet, _firePoint.position, _firePoint.rotation);
+      _heroDeath.shootSoundOn.SetActive(true);
       StartCoroutine(CreateCooldown());
      // _animator.SetTrigger("IsAttack");
       shootSound.Play();

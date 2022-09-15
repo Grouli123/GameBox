@@ -82,6 +82,13 @@ public class TextMoveHelp : MonoBehaviour
             }
         }
 
+        if (collision.gameObject.CompareTag("Cassete"))
+        {
+            Text.text = "Собери 100 ГусьКоинов для дополнительной     жизни";
+            FulText(true);
+            playerSettings.CasseteText = false;
+        }
+
         if (collision.gameObject.CompareTag("Checkpoint"))
         {
             Text.text = "Сохранение записано";
@@ -121,7 +128,7 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("JumpZone"))
         {
-            Text.text = "Space - Прыжок";
+            Text.text = "Пробел - Прыжок";
             FulText(true);
         }
 
@@ -139,7 +146,7 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("2JumpZone"))
         {
-            Text.text = "Пробел + пробел - Прыжок в стиле Диско";
+            Text.text = "Пробел + Пробел прыжок в стиле диско";
             FulText(true);
         }
 

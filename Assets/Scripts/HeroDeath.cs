@@ -10,7 +10,7 @@ public class HeroDeath : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private EnemyController enemyController;
 
-    [SerializeField] private GameObject _shootSound;
+    public GameObject shootSoundOn;
 
     [Header("Objects")]
     [SerializeField] private GameObject deathPanel;
@@ -24,7 +24,7 @@ public class HeroDeath : MonoBehaviour
 
     private void Start() 
     {
-        _shootSound.SetActive(true);
+        shootSoundOn.SetActive(true);
         Time.timeScale = 1;    
     }  
     private void Update()
@@ -48,7 +48,7 @@ public class HeroDeath : MonoBehaviour
             
             playerMovement.Speed = 0f;
             AgainStartMenu.startMainMenu = true;
-            _shootSound.SetActive(false);            
+            shootSoundOn.SetActive(false);            
             Time.timeScale = 0;    
         }
         else

@@ -167,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
             _playerPosition.position = respawnPoint;
             _playerSettings.Hp = 10;
             _playerSettings.Cassete -= 1;
+            Time.timeScale = 1;
         }
     }
 }
