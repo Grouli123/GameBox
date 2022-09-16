@@ -110,9 +110,9 @@ public class UsedObjects : MonoBehaviour
             activatedLift = false;
         }
 
-        if (collision.gameObject.GetComponent<CallLift>() & Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.GetComponent<CallLift>() & Input.GetKey(KeyCode.E))
         {
-            StartCoroutine(LiftUp());
+            liftActivated.ActivatedLift("Activated", false);
         }
 
         if (Input.GetKeyDown(KeyCode.E) & activatedMost == true)
@@ -134,12 +134,6 @@ public class UsedObjects : MonoBehaviour
         if(Input.GetKey(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
         {
             liftActivated.ActivatedLift("Activated", false);
-        }
-
-        if(Input.GetKeyDown(KeyCode.E) 
-            & _isLiftUp == true & liftActivated.LiftPositionDown == true)
-        {
-            StartCoroutine(LiftUp());
         }
     }
 
@@ -171,12 +165,6 @@ public class UsedObjects : MonoBehaviour
         {
            // box.Stop();
         }
-    }
-
-    private IEnumerator LiftUp()
-    {
-        yield return new WaitForSeconds(1);
-        liftActivated.ActivatedLift("Activated", false);
     }
 
     private IEnumerator JamesSound()
