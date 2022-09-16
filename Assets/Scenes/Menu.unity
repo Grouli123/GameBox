@@ -1944,7 +1944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.26531252, y: 0.10462938}
   m_AnchorMax: {x: 0.734, y: 0.1823776}
-  m_AnchoredPosition: {x: 1.1199341, y: -0.5}
+  m_AnchoredPosition: {x: 1.1199341, y: 89}
   m_SizeDelta: {x: 0, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &125610088
@@ -2159,7 +2159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.26531252, y: 0.19113284}
   m_AnchorMax: {x: 0.734, y: 0.27162936}
-  m_AnchoredPosition: {x: 1.1199341, y: -0.5}
+  m_AnchoredPosition: {x: 1.1199341, y: 89}
   m_SizeDelta: {x: 0, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &134449188
@@ -5989,7 +5989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.26531252, y: 0.5498741}
   m_AnchorMax: {x: 0.7356249, y: 0.62774116}
-  m_AnchoredPosition: {x: -0.5, y: -0.5}
+  m_AnchoredPosition: {x: -0.5, y: -97.5}
   m_SizeDelta: {x: -3, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &369760684
@@ -6008,7 +6008,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 125610088}
-    m_SelectOnDown: {fileID: 881089973}
+    m_SelectOnDown: {fileID: 804521082}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -13838,7 +13838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.26531252, y: 0.2821259}
   m_AnchorMax: {x: 0.734, y: 0.36}
-  m_AnchoredPosition: {x: 0.000061035156, y: 1}
+  m_AnchoredPosition: {x: 0.000061035156, y: 90.5}
   m_SizeDelta: {x: 0, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &804521082
@@ -15228,7 +15228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &881089972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16947,7 +16947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &992248978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26477,7 +26477,7 @@ MonoBehaviour:
   _selectLevelSaveButton: {fileID: 445545586}
   _startPannel: {fileID: 1460698496}
   _mainMenu: {fileID: 123581820}
-  _startNewGame: {fileID: 1472512412}
+  _startNewGame: {fileID: 86070718}
   _slot1: {fileID: 1169095206}
   _nickname: {fileID: 86070718}
   _levelsAndCats: {fileID: 1483230130}
@@ -26657,6 +26657,7 @@ GameObject:
   - component: {fileID: 1596787643}
   - component: {fileID: 1596787642}
   - component: {fileID: 1596787641}
+  - component: {fileID: 1596787644}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -26730,6 +26731,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1596787644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596787640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9465e2091fa30d479fa576028525484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerName: {fileID: 11400000, guid: 03fb507b65441e14eae1a28cbef7be07, type: 2}
+  _btnClick: {fileID: 452405661}
+  _inputUser: {fileID: 963258081}
 --- !u!1 &1607739638
 GameObject:
   m_ObjectHideFlags: 0
