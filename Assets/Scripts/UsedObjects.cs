@@ -39,7 +39,7 @@ public class UsedObjects : MonoBehaviour
 
     private void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
+       // horizontal = Input.GetAxis("Horizontal");
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -120,17 +120,15 @@ public class UsedObjects : MonoBehaviour
             mostActivated2.Animation("Activation", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
+        if (Input.GetKey(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
         {
             liftActivated.ActivatedLift("Activated", true);
             StartCoroutine(JamesSound());
-            StartCoroutine(Lift());
         }
 
-        if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
+        if(Input.GetKey(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
         {
             liftActivated.ActivatedLift("Activated", false);
-            StartCoroutine(Lift());
         }
 
         if(Input.GetKeyDown(KeyCode.E) 
@@ -170,16 +168,9 @@ public class UsedObjects : MonoBehaviour
         }
     }
 
-
-    private IEnumerator Lift()
-    {
-        yield return new WaitForSeconds(10);
-        liftActivated.LiftPositionDown = !liftActivated.LiftPositionDown;
-
-    }
     private IEnumerator LiftUp()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         liftActivated.ActivatedLift("Activated", false);
     }
 
