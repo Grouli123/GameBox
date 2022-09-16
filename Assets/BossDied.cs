@@ -40,7 +40,8 @@ public class BossDied : MonoBehaviour
                 _text.text = "";
                 _cutscene.SetActive(false);       
                 _firstSlide.SetActive(false);        
-                playerInput.enabled = true;
+                playerInput.enabled = false;
+                _finishScene.SetActive(true);
             }
         }
 

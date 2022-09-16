@@ -56,6 +56,13 @@ public class MenuController : MonoBehaviour
     private bool _isInDevelopers = false;
     private bool _isInExit = false;
 
+    [SerializeField] private GameObject _emptydosie;
+    [SerializeField] private GameObject _firstcatdosie;
+    [SerializeField] private GameObject _secondcatdosie;    
+    [SerializeField] private GameObject _thirdcatdosie;
+    [SerializeField] private GameObject _fourthtcatdosie;
+    [SerializeField] private GameObject _fithcatdosie;
+
     private void Start() 
     {
         if (AgainStartMenu.startMainMenu == true)
@@ -307,6 +314,62 @@ public class MenuController : MonoBehaviour
         _levels.SetActive(false);
         _dossier.SetActive(true);
         _isLevelsOn = true;
+        _emptydosie.SetActive(true);
+        _firstcatdosie.SetActive(false);
+        _secondcatdosie.SetActive(false);
+        _thirdcatdosie.SetActive(false);
+        _fourthtcatdosie.SetActive(false);
+        _fithcatdosie.SetActive(false);
+    }
+
+    public void firstcat()
+    {
+        _emptydosie.SetActive(false);
+        _firstcatdosie.SetActive(true);
+        _secondcatdosie.SetActive(false);
+        _thirdcatdosie.SetActive(false);
+        _fourthtcatdosie.SetActive(false);
+        _fithcatdosie.SetActive(false);
+    }
+
+    public void secondcat()
+    {
+        _emptydosie.SetActive(false);
+        _firstcatdosie.SetActive(false);
+        _secondcatdosie.SetActive(true);
+        _thirdcatdosie.SetActive(false);
+        _fourthtcatdosie.SetActive(false);
+        _fithcatdosie.SetActive(false);
+    }
+
+    public void thirdcat()
+    {
+        _emptydosie.SetActive(false);
+        _firstcatdosie.SetActive(false);
+        _secondcatdosie.SetActive(false);
+        _thirdcatdosie.SetActive(true);
+        _fourthtcatdosie.SetActive(false);
+        _fithcatdosie.SetActive(false);
+    }
+
+    public void fourthcat()
+    {
+        _emptydosie.SetActive(false);
+        _firstcatdosie.SetActive(false);
+        _secondcatdosie.SetActive(false);
+        _thirdcatdosie.SetActive(false);
+        _fourthtcatdosie.SetActive(true);
+        _fithcatdosie.SetActive(false);
+    }
+
+    public void fithcat()
+    {
+        _emptydosie.SetActive(false);
+        _firstcatdosie.SetActive(false);
+        _secondcatdosie.SetActive(false);
+        _thirdcatdosie.SetActive(false);
+        _fourthtcatdosie.SetActive(false);
+        _fithcatdosie.SetActive(true);
     }
 
     public void Levels()
