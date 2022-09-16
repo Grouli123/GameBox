@@ -36,7 +36,7 @@ public class LiftActivated : MonoBehaviour
         }
         else
         {
-            rightDoor.SetBool("Door", true);
+            rightDoor.SetBool("Door", false);
         }
     }
 
