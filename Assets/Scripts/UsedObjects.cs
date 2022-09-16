@@ -110,6 +110,11 @@ public class UsedObjects : MonoBehaviour
             activatedLift = false;
         }
 
+        if (collision.gameObject.GetComponent<CallLift>() & Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(LiftUp());
+        }
+
         if (Input.GetKeyDown(KeyCode.E) & activatedMost == true)
         {
             mostActivated.Activated("Most", true);
