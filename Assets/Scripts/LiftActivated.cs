@@ -18,6 +18,26 @@ public class LiftActivated : MonoBehaviour
     private bool _leftDoor = true;
     private bool _rightDoor = false;
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Up"))
+        {
+            leftDoor.SetBool("Door", true);
+        }
+        else
+        {
+            leftDoor.SetBool("Door", false);
+        }
+
+        if (collision.gameObject.CompareTag("Down"))
+        {
+            rightDoor.SetBool("Door", true);
+        }
+        else
+        {
+            rightDoor.SetBool("Door", false);
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -44,16 +64,6 @@ public class LiftActivated : MonoBehaviour
     public void ActivatedLift(string name, bool active)
     {
         lift.SetBool(name, active);
-    }
-
-    public void ActivatedLeftDoor(string name, bool active)
-    {
-        leftDoor.SetBool(name, active);
-    }
-
-    public void ActivatedRightDoor(string name ,bool active)
-    {
-        rightDoor.SetBool(name, active);
     }
 
     public bool LiftPositionDown
