@@ -18,6 +18,9 @@ public class LiftActivated : MonoBehaviour
     private bool _leftDoor = true;
     private bool _rightDoor = false;
 
+    [SerializeField] private BoxCollider2D _leftDooor;
+    [SerializeField] private BoxCollider2D _rightDooor;
+
    /* private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Up"))
@@ -104,5 +107,17 @@ public class LiftActivated : MonoBehaviour
     public void LiftUp()
     {
         _liftPositionDown = false;
+    }
+
+    public void DoorOpen()
+    {
+        _leftDooor.isTrigger = true;        
+        _rightDooor.isTrigger = true;
+    }
+    
+    public void DoorClosed()
+    {
+        _leftDooor.isTrigger = false;        
+        _rightDooor.isTrigger = false;
     }
 }

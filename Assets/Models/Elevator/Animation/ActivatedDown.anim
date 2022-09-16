@@ -167,6 +167,13 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.016666668
+    functionName: DoorClosed
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.06666667
     functionName: StickToTheFloor
     data: 
@@ -181,8 +188,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 20.033333
+  - time: 19.766666
     functionName: DetachToTheFloor
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 20.033333
+    functionName: DoorOpen
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
