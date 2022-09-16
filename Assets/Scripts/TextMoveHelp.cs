@@ -33,6 +33,7 @@ public class TextMoveHelp : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource catsUp;
+    [SerializeField] private AudioSource _checkpoint;
 
     private void Start() 
     {
