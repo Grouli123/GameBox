@@ -15,11 +15,13 @@ public class BossController : MonoBehaviour
     // [SerializeField] private Transform _groundCheckPosition;
     [SerializeField] private Transform _originalPoint;
     
-    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private Transform _firepointSecond;
+    
+    // [SerializeField] private Rigidbody2D _rb;
 
-    [SerializeField] private Collider2D _bodyCollider;
+    // [SerializeField] private Collider2D _bodyCollider;
 
-    [SerializeField] private LayerMask _groundLayer;
+    // [SerializeField] private LayerMask _groundLayer;
 
     [SerializeField] private float _walkSpeed;
     [SerializeField] private float _range;
@@ -39,25 +41,49 @@ public class BossController : MonoBehaviour
     private bool _mustPatrol;
     private bool _isAgro = false;
 
+    public Transform pointForBulletOne;
+    public Transform pointForBulletTwo;    
+    public Transform pointForBulletThree;
+
+    private float _timer;
+
+    [HideInInspector] public Transform attackPoint;
+
+
     private void Start()
     {
+        _timer = 5f;
+        
         _mustPatrol = true;
         _canShot = true;
-        _damageForBoss = GetComponent<DamageForBoss>();
+        // _damageForBoss = GetComponent<DamageForBoss>();
     }
 
     private void Update()
     {
-        if (_damageForBoss.lives <= 7)
-        {
-            SecondState();
- 
-        }
+        attackPoint = _player;
 
-        if (_damageForBoss.lives <= 5)
-        {
-            ThirdState();
-        }
+        // _timer -= Time.deltaTime;
+
+        // if (_timer <= 0f)
+        // {
+        //     _player = pointForBulletTwo;
+        //     _timer = 5f;
+        // }
+        // else
+        // {
+        //     _player = pointForBulletOne;
+        // }
+        // if (_damageForBoss.lives <= 7)
+        // {
+        //     SecondState();
+ 
+        // }
+
+        // if (_damageForBoss.lives <= 5)
+        // {
+        //     ThirdState();
+        // }
         // if (_mustPatrol)
         // {
         //     Patrol();
@@ -131,7 +157,10 @@ public class BossController : MonoBehaviour
       //  _mustPatrol = false;
 //        _rb.velocity = Vector2.zero;
         if(_canShot)
-        StartCoroutine(Shoot());                
+        {
+            StartCoroutine(Shoot());    
+            // _timer = 5f;
+        }            
     }
 
     // private void FixedUpdate()
@@ -175,7 +204,10 @@ public class BossController : MonoBehaviour
         
         _canShot = false;
         yield return new WaitForSeconds(_timeBTWShoots);
-        GameObject newBullet = Instantiate(_bullet, _originalPoint.position, Quaternion.identity);
+        GameObject newBullet = Instantiate(_bullet, _originalPoint.position, Quaternion.identity); 
+
+        attackPoint = pointForBulletOne;        
+        
         //transform.position = Vector2.MoveTowards(transform.position, endPos, _shootSpeed * Time.deltaTime);
         //newBullet.GetComponent<Rigidbody2D>().velocity = endPos;
 
@@ -184,6 +216,13 @@ public class BossController : MonoBehaviour
 
         _canShot = true;
     }
+
+     private IEnumerator SecondShoot()
+     {
+        yield return new WaitForSeconds(_timeBTWShoots);
+        GameObject newBullett = Instantiate(_bullet, _firepointSecond.position, Quaternion.identity);     
+        attackPoint = pointForBulletTwo;
+     }
 
     private void SecondState()
     {

@@ -41,6 +41,7 @@ TagManager:
   - Metall
   - MostTextOpen
   - Cassete
+  - PointForBulletBoss
   layers:
   - Default
   - TransparentFX

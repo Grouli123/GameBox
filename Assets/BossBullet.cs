@@ -15,15 +15,18 @@ public class BossBullet : MonoBehaviour
 
     [SerializeField] private float _forseImpulse;
 
+    private BossController _bossController;
     
     [SerializeField] private Rigidbody2D _playerRb;
     // [SerializeField] private PlayerSettings _playerSettings;
+
+    
 
     private void Start() 
     {
         // _rb = GetComponent<Rigidbody2D>();
        _target = GameObject.FindObjectOfType<PlayerMovement>();
-
+        _bossController = GameObject.FindObjectOfType<BossController>();
        _playerRb = GetComponent<Rigidbody2D>();
         //_firePoint = GameObject.FindGameObjectWithTag("FirePoint");
         _playerRb = _target.rb;
@@ -39,7 +42,7 @@ public class BossBullet : MonoBehaviour
 
         _player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        _moveTargetDirection = new Vector2(_player.position.x, _player.position.y);
+        _moveTargetDirection = new Vector2(_bossController.attackPoint.position.x, _bossController.attackPoint.position.y);
 
     }
 
