@@ -20,7 +20,7 @@ public class BulletThreeBoss : MonoBehaviour
     private BossBulletThree _bossController;
     
     [SerializeField] private Rigidbody2D _playerRb;
-    // [SerializeField] private PlayerSettings _playerSettings;
+    [SerializeField] private PlayerSettings _playerSettings;
 
     
 
@@ -29,6 +29,8 @@ public class BulletThreeBoss : MonoBehaviour
         // _rb = GetComponent<Rigidbody2D>();
        _target = GameObject.FindObjectOfType<PlayerMovement>();
         _bossController = GameObject.FindObjectOfType<BossBulletThree>();
+        _playerSettings = GameObject.FindObjectOfType<PlayerSettings>();
+
        _playerRb = GetComponent<Rigidbody2D>();
         //_firePoint = GameObject.FindGameObjectWithTag("FirePoint");
         _playerRb = _target.rb;
@@ -63,6 +65,7 @@ public class BulletThreeBoss : MonoBehaviour
         {
             //выместо вектор ап написать направление куда полетит главный герой
             _playerRb.AddForce(_movePlayerFromBullet  * _forseImpulse, ForceMode2D.Impulse);
+            _playerSettings.Hp -= 1 ;
             DestroyBossBullet();
         }
    }

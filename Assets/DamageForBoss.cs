@@ -4,18 +4,19 @@ using UnityEngine;
 public class DamageForBoss : MonoBehaviour
 {
     [SerializeField] private GameObject _finishCutscene;
-
     public float lives;
     [SerializeField] private DamageDealler damageDealler;
-
     [SerializeField] private IntegerVariable _allOfScore;
     [SerializeField] private IntegerVariable _enemyCounter;
     [SerializeField] private int _scoreForEnemyDeath;
 
+    [SerializeField] TimerToEnd _timeToEnd;
+
     private void Start()
     {
+        _timeToEnd = GetComponent<TimerToEnd>();
         // _finishCutscene.SetActive(false);
-        lives = 10f;
+        lives = 50f;
         _enemyCounter.SetValue(0);
     }
 
@@ -27,6 +28,11 @@ public class DamageForBoss : MonoBehaviour
             _enemyCounter.ApplyChange(_scoreForEnemyDeath);
             _allOfScore.ApplyChange(_scoreForEnemyDeath);
             _finishCutscene.SetActive(true);
+        }
+
+        if (lives <= 0 && _timeToEnd.endTimeToUpScore > 0)
+        {
+            _scoreForEnemyDeath += 10000;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

@@ -14,10 +14,12 @@ public class BossManager : MonoBehaviour
     [SerializeField] private BossControllerTwo _bossControllerTwo;
     [SerializeField] private BossBulletThree _bossBulletThree;
 
+    [SerializeField] private Animator _anim;
+
 
     private void Start() 
     {
-        
+        _anim = GetComponent<Animator>();
         _bossBulletThree.enabled = false;
 
         // _bossController.enabled = true;
@@ -26,6 +28,33 @@ public class BossManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_bossController.enabled == true)
+        {
+            _anim.SetBool("IsLeft", true);
+        }
+        else
+        {            
+            _anim.SetBool("IsLeft", false);
+        }
+
+        if (_bossControllerTwo.enabled == true)
+        {
+            _anim.SetBool("IsRight", true);
+        }
+        else
+        {            
+            _anim.SetBool("IsRight", false);
+        }
+
+        if (_bossBulletThree.enabled == true)
+        {
+            _anim.SetBool("IsUp", true);
+        }
+        else
+        {            
+            _anim.SetBool("IsUp", false);
+        }
+
         // if (_damageForBoss.lives <= 7)
         // {
         //     SecondState();

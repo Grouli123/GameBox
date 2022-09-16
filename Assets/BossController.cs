@@ -201,7 +201,6 @@ public class BossController : MonoBehaviour
 
         //endPos = _player.position + Vector3.right * _castDist;
 
-        
         _canShot = false;
         yield return new WaitForSeconds(_timeBTWShoots);
         GameObject newBullet = Instantiate(_bullet, _originalPoint.position, Quaternion.identity); 

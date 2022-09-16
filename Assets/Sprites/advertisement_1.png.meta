@@ -1,0 +1,904 @@
+fileFormatVersion: 2
+guid: ea135c0fdb2c2f74798a32b14b4644a5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: advertisement_1_0
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1821
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0326179379b407644866e90768ba1d12
+      internalID: -2077458251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_1
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1821
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c27dd1961ebc40448b4162115ebf72c7
+      internalID: -277570456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_2
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 1821
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f7282459aa3abe439c7cbab4c3282f2
+      internalID: 1715037703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_3
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 1821
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d6934de61d369d49af8ca3a32035a4f
+      internalID: -229588915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_4
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1594
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92f9681234c1852418399b2fe71501f3
+      internalID: -1803490259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_5
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1594
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17d688dbae9873f44a2a3c446cf46675
+      internalID: -2132326715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_6
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 1594
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6719ea7f397792498b3f4b2e6d38f52
+      internalID: -213127899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_7
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 1594
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef0e913d66c8c6a409d99f05e56be48e
+      internalID: 2042133646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_8
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1367
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f94dd47572c319d459e24435c73955cb
+      internalID: 2074571265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_9
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1367
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf552af4d7fae33478af7981b115cf5c
+      internalID: -1665219927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_10
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 1367
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cea6baa9ff4c22e45ba7f0438d857343
+      internalID: 219523122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_11
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 1367
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb47a2540e948024ab7f1e9f9e969840
+      internalID: 513396045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_12
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1140
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45fc13cd07bf87a438bde7a8f4d4a2f8
+      internalID: 1889929268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_13
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1140
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86310288a224f0342a5980feed80438d
+      internalID: 478485670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_14
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 1139
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f36e5bf95979d49b7100fd586f3747
+      internalID: -652237181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_15
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 1139
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8367040d33d69df4490987721575b62d
+      internalID: 1673135470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_16
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 912
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8488af9f6422de4d8c619cfdf34655b
+      internalID: -515902502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_17
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 912
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8143292d586b1f4aa43cdc137693c58
+      internalID: -1471356411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_18
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 912
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b4036d4e4bc3914e95f29c9ce60c3cf
+      internalID: -1357855692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_19
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 912
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a4e27d9685c80b4382fe5fc0d8603bd
+      internalID: 1478614431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_20
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 683
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 737e7f55f9a59194ca23356ca66cb1f0
+      internalID: -1105117406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_21
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 683
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbd903711ceb19e4e8f30ef97b14d9ba
+      internalID: 760894015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_22
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 683
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2661b5366ee87442965fe2f80a4f480
+      internalID: 593453427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_23
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 683
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e21216d3e995374cb7f196591042e01
+      internalID: 1938241847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_24
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 456
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 095e6b51d7772fe4ab1efeeef6e73599
+      internalID: -309014216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_25
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 456
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ed6edb6522e962439f33f1342110d6a
+      internalID: -1004697116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_26
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 456
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1923dc012044524380b517686deb544
+      internalID: 1887624861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_27
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 456
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d2161c889b2476458a2073f2317fa9d
+      internalID: 297632792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_28
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 228
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d5c094f8430f24418b9061e27302294
+      internalID: 1388957655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_29
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 228
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab9278beb21f9f4bbed299e0dc6d2c1
+      internalID: 262916948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_30
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 228
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02cd152a6647fd04b88eddfb24585597
+      internalID: -861672701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_31
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 228
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8408f28caec57346b0f4f722b6480f2
+      internalID: -285572804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_32
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21395b6fdb117af48ae276016896a28c
+      internalID: -253270175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_33
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9354a956960d8ab4185bc0fc4df142ab
+      internalID: 612804909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: advertisement_1_34
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 1
+        width: 417
+        height: 226
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68d98d3b75c18af4d8b4a57be417af5d
+      internalID: 402463078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 99739fd706441df459eb1cdcb7fa3098
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      advertisement_1_19: 1478614431
+      advertisement_1_27: 297632792
+      advertisement_1_15: 1673135470
+      advertisement_1_33: 612804909
+      advertisement_1_30: -861672701
+      advertisement_1_24: -309014216
+      advertisement_1_6: -213127899
+      advertisement_1_11: 513396045
+      advertisement_1_1: -277570456
+      advertisement_1_31: -285572804
+      advertisement_1_13: 478485670
+      advertisement_1_34: 402463078
+      advertisement_1_25: -1004697116
+      advertisement_1_29: 262916948
+      advertisement_1_0: -2077458251
+      advertisement_1_7: 2042133646
+      advertisement_1_23: 1938241847
+      advertisement_1_16: -515902502
+      advertisement_1_12: 1889929268
+      advertisement_1_17: -1471356411
+      advertisement_1_8: 2074571265
+      advertisement_1_18: -1357855692
+      advertisement_1_20: -1105117406
+      advertisement_1_2: 1715037703
+      advertisement_1_28: 1388957655
+      advertisement_1_32: -253270175
+      advertisement_1_21: 760894015
+      advertisement_1_10: 219523122
+      advertisement_1_9: -1665219927
+      advertisement_1_4: -1803490259
+      advertisement_1_3: -229588915
+      advertisement_1_14: -652237181
+      advertisement_1_26: 1887624861
+      advertisement_1_22: 593453427
+      advertisement_1_5: -2132326715
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

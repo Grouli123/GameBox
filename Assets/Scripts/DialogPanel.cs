@@ -20,6 +20,8 @@ public class DialogPanel : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Animator _anim;
 
+    [SerializeField] private GameObject _timerStart;
+
     private bool _hairGel = true;
     private bool _coins = true;
     private bool _cat = true;
@@ -87,6 +89,7 @@ public class DialogPanel : MonoBehaviour
         if (_enemy == true & enemyPanelMain.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse0)
             & enemyPanelJames.activeSelf == true)
         {
+            _timerStart.SetActive(true);
             source.clip = sound[5];
             source.Play();
             playerInput.enabled = false;

@@ -18,7 +18,7 @@ public class BossBullet : MonoBehaviour
     private BossController _bossController;
     
     [SerializeField] private Rigidbody2D _playerRb;
-    // [SerializeField] private PlayerSettings _playerSettings;
+    [SerializeField] private PlayerSettings _playerSettings;
 
     
 
@@ -28,6 +28,7 @@ public class BossBullet : MonoBehaviour
        _target = GameObject.FindObjectOfType<PlayerMovement>();
         _bossController = GameObject.FindObjectOfType<BossController>();
        _playerRb = GetComponent<Rigidbody2D>();
+       _playerSettings = GameObject.FindObjectOfType<PlayerSettings>();
         //_firePoint = GameObject.FindGameObjectWithTag("FirePoint");
         _playerRb = _target.rb;
 
@@ -61,6 +62,7 @@ public class BossBullet : MonoBehaviour
         {
             //выместо вектор ап написать направление куда полетит главный герой
             _playerRb.AddForce(_movePlayerFromBullet  * _forseImpulse, ForceMode2D.Impulse);
+            _playerSettings.Hp -= 1 ;
             DestroyBossBullet();
         }
    }
