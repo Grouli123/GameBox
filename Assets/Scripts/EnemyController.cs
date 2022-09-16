@@ -37,10 +37,15 @@ public class EnemyController : MonoBehaviour
     private bool _mustPatrol;
     private bool _isAgro = false;
 
+    private bool isbul;
+    public bool isFlipBullet;
+
     private void Start()
     {
         _mustPatrol = true;
         _canShot = true;
+
+        isbul = true;
     }
 
     private void Update()
@@ -153,6 +158,7 @@ public class EnemyController : MonoBehaviour
 
     private void Flip()
     {
+        isFlipBullet = !isbul;
         _mustPatrol = false;                
         transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
         _walkSpeed *= -1;
