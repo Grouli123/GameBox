@@ -33,6 +33,7 @@ public class TextMoveHelp : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource catsUp;
+    [SerializeField] private AudioSource _checkpoint;
 
     private void Start() 
     {
@@ -91,6 +92,7 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Checkpoint"))
         {
+            _checkpoint.Play();
             Text.text = "Сохранение записано";
             FulText(true);
             StartCoroutine(CloseSavePannel());

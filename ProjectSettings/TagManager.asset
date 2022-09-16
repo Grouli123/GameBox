@@ -42,6 +42,8 @@ TagManager:
   - MostTextOpen
   - Cassete
   - PointForBulletBoss
+  - Up
+  - Down
   layers:
   - Default
   - TransparentFX

@@ -31,9 +31,7 @@ public class DamageForEnemy : MonoBehaviour
             Destroy(gameObject);
             _enemyCounter.ApplyChange(_scoreForEnemyDeath);
             _allOfScore.ApplyChange(_scoreForEnemyDeath);
-            dialogPanel.OnActivePanelEnemy(true);
-            dialogPanel.SoundPanelEnemy(4);
-            dialogPanel.TimeScale(0);
+            StartCoroutine(DialogPanel());
         }
         else if(lives <= 0 && dialogPanel.Enemy == false)
         {
@@ -98,6 +96,14 @@ public class DamageForEnemy : MonoBehaviour
             gameObject.GetComponent<EnemyController>().WalkSpeed = -30;
         }
     } 
+
+    private IEnumerator DialogPanel()
+    {
+        yield return new WaitForSeconds(2);
+        dialogPanel.OnActivePanelEnemy(true);
+        dialogPanel.SoundPanelEnemy(4);
+        dialogPanel.TimeScale(0);
+    }
 
     private IEnumerator Hit()
     {

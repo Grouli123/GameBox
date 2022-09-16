@@ -19,6 +19,8 @@ public class UsedObjects : MonoBehaviour
     private bool activatedMost2 = false;
     private bool activatedLift = false;
 
+    private bool _jamesLift = true;
+
     private bool _isLiftUp = false;
 
     private float horizontal;
@@ -30,13 +32,14 @@ public class UsedObjects : MonoBehaviour
     [SerializeField] private AudioSource grandMatherSound;
     [SerializeField] private AudioSource runStone;
     [SerializeField] private AudioSource runMetall;
+    [SerializeField] private AudioSource jamesLift;
  
     [SerializeField] private float _timeMoveLift;
 
 
     private void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
+       // horizontal = Input.GetAxis("Horizontal");
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -107,6 +110,11 @@ public class UsedObjects : MonoBehaviour
             activatedLift = false;
         }
 
+        if (collision.gameObject.GetComponent<CallLift>() & Input.GetKey(KeyCode.E))
+        {
+            liftActivated.ActivatedLift("Activated", false);
+        }
+
         if (Input.GetKeyDown(KeyCode.E) & activatedMost == true)
         {
             mostActivated.Activated("Most", true);
@@ -117,33 +125,15 @@ public class UsedObjects : MonoBehaviour
             mostActivated2.Animation("Activation", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false & 
-            liftActivated.LeftDoor == true & liftActivated.RightDoor == false)
+        if (Input.GetKey(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
         {
-            liftActivated.ActivatedRightDoor("Door", false);
-            liftActivated.ActivatedLeftDoor("Door", false);
             liftActivated.ActivatedLift("Activated", true);
-            StartCoroutine(Lift());
+            StartCoroutine(JamesSound());
         }
 
-        if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true &
-            liftActivated.LeftDoor == false & liftActivated.RightDoor == true)
+        if(Input.GetKey(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
         {
-            liftActivated.ActivatedRightDoor("Door", false);
-            liftActivated.ActivatedLeftDoor("Door", false);
             liftActivated.ActivatedLift("Activated", false);
-            StartCoroutine(Lift());
-        }
-
-        if(Input.GetKeyDown(KeyCode.E) 
-            & _isLiftUp == true & liftActivated.LiftPositionDown == true)
-        {
-            liftActivated.LeftDoor = false;
-            liftActivated.RightDoor = false;
-            _callLift.LeftDoor("Door", false);
-            _callLift.RightDoor("Door", false);
-            StartCoroutine(LiftUp());
-            StartCoroutine(Lift());
         }
     }
 
@@ -177,32 +167,18 @@ public class UsedObjects : MonoBehaviour
         }
     }
 
-    private IEnumerator LiftUp()
+    private IEnumerator JamesSound()
     {
-        yield return new WaitForSeconds(2);
-        liftActivated.ActivatedLift("Activated", false);
-    }
-
-
-    private IEnumerator Lift()
-    {
-        yield return new WaitForSeconds(20);
-        liftActivated.LiftPositionDown = !liftActivated.LiftPositionDown;
-
-        yield return new WaitForSeconds(1);
-        if (liftActivated.LiftPositionDown == false)
+        yield return new WaitForSeconds(4);
+        if(_jamesLift == true)
         {
-            liftActivated.ActivatedRightDoor("Door", false);
-            liftActivated.ActivatedLeftDoor("Door", true);
-            liftActivated.LeftDoor = true;
-            liftActivated.RightDoor = false;
+            jamesLift.Play();
         }
         else
         {
-            liftActivated.ActivatedRightDoor("Door", true);
-            liftActivated.ActivatedLeftDoor("Door", false);
-            liftActivated.LeftDoor = false;
-            liftActivated.RightDoor = true;
+            jamesLift.Stop();
         }
+        yield return new WaitForSeconds(3);
+        _jamesLift = false;
     }
 }

@@ -21,6 +21,9 @@ public class BossDied : MonoBehaviour
 
     [SerializeField] private Animator _anim;
 
+    [SerializeField] private AudioClip[] _sound;
+    [SerializeField] private AudioSource _source;
+
     private string _dialog;
 
 
@@ -76,6 +79,8 @@ public class BossDied : MonoBehaviour
         playerInput.enabled = false;
         _James.SetActive(false);
         _boss.SetActive(true);
+        _source.clip = _sound[0];
+        _source.Play();
         _text.text = "";
         _dialog = "Ты хорош! Но хорош недостаточно. Плоть никогда не сможет что-то противопоставить крепкости металла.";
         StartCoroutine(OutputText(_dialog, _textSpeed));
@@ -83,6 +88,8 @@ public class BossDied : MonoBehaviour
         yield return new WaitForSeconds(7);
         _James.SetActive(true);
         _boss.SetActive(false);
+        _source.clip = _sound[1];
+        _source.Play();
         _text.text = "";
         _dialog = "Ты ведь тоже когда-то был человеком...";
         StartCoroutine(OutputText(_dialog, _textSpeed));
@@ -90,6 +97,8 @@ public class BossDied : MonoBehaviour
         yield return new WaitForSeconds(4);
         _James.SetActive(false);
         _boss.SetActive(true);
+        _source.clip = _sound[2];
+        _source.Play();
         _text.text = "";
         _dialog = "Был! И Я ни о чем не жалею. Эта форма... Это безупречное тело позволило мне сотворить свой опус магнум. Никто и никогда не сравнится со мной в безграничной мощи моего таланта!";
         StartCoroutine(OutputText(_dialog, _textSpeed));
@@ -97,6 +106,8 @@ public class BossDied : MonoBehaviour
         yield return new WaitForSeconds(15);
         _James.SetActive(true);
         _boss.SetActive(false);
+        _source.clip = _sound[3];
+        _source.Play();
         _text.text = "";
         _dialog = "В скромности тебе не занимать. Это я уже понял.";
         StartCoroutine(OutputText(_dialog, _textSpeed));
@@ -104,6 +115,8 @@ public class BossDied : MonoBehaviour
         yield return new WaitForSeconds(4);
         _James.SetActive(false);
         _boss.SetActive(true);
+        _source.clip = _sound[4];
+        _source.Play();
         _text.text = "";
         _dialog = "Цыц, ничтожество! Ты спрашивал у меня что здесь происходит, не так ли? Что ж. Ты меня позабавил, полицейский. И я отвечу тебе. То, что ты сейчас услышал - лишь первые аккорды моего нового гениального сигнала. И раз тебе так понравилась вступительная часть, ты обязан задержаться на основную.";
         StartCoroutine(OutputText(_dialog, _textSpeed));
@@ -120,6 +133,8 @@ public class BossDied : MonoBehaviour
         
         _James.SetActive(true);
         _boss.SetActive(false);
+        _source.clip = _sound[5];
+        _source.Play();
         _text.text = "";
         _dialog = "Что происходит?";
         StartCoroutine(OutputText(_dialog, _textSpeed));
@@ -127,6 +142,8 @@ public class BossDied : MonoBehaviour
         yield return new WaitForSeconds(3);
         _James.SetActive(false);
         _boss.SetActive(true);
+        _source.clip = _sound[6];
+        _source.Play();
         _text.text = "";
         _dialog = "Эта реальность слишком сильно ограничевает мои возможности. Но я собираюсь не просто проникнуть в Киберпространство. Я открою в него двери для всех страждущих.";
         StartCoroutine(OutputText(_dialog, _textSpeed));
@@ -134,6 +151,8 @@ public class BossDied : MonoBehaviour
         yield return new WaitForSeconds(13);
         _James.SetActive(true);
         _boss.SetActive(false);
+        _source.clip = _sound[7];
+        _source.Play();
         _text.text = "";
         _dialog = "Я остановлю тебя... Любой ценой.";
         StartCoroutine(OutputText(_dialog, _textSpeed));
