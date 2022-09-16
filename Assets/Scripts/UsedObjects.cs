@@ -123,14 +123,14 @@ public class UsedObjects : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
         {
             liftActivated.ActivatedLift("Activated", true);
-            liftActivated.LiftPositionDown = true;
             StartCoroutine(JamesSound());
+            StartCoroutine(Lift());
         }
 
         if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
         {
-            liftActivated.LiftPositionDown = false;
             liftActivated.ActivatedLift("Activated", false);
+            StartCoroutine(Lift());
         }
 
         if(Input.GetKeyDown(KeyCode.E) 
@@ -170,6 +170,13 @@ public class UsedObjects : MonoBehaviour
         }
     }
 
+
+    private IEnumerator Lift()
+    {
+        yield return new WaitForSeconds(10);
+        liftActivated.LiftPositionDown = !liftActivated.LiftPositionDown;
+
+    }
     private IEnumerator LiftUp()
     {
         yield return new WaitForSeconds(2);
