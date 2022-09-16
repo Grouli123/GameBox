@@ -141,8 +141,6 @@ public class BossDied : MonoBehaviour
         yield return new WaitForSeconds(3);
         _James.SetActive(false);
         _boss.SetActive(false);
-        _source.clip = _sound[8];
-        _source.Play();
         _text.text = "";
         _cutscene.SetActive(false);           
         _firstSlide.SetActive(false);

@@ -18,21 +18,12 @@ public class StartBossFight : MonoBehaviour
     [SerializeField] private EdgeCollider2D _boxSceneBossFight;
     //[SerializeField] private DamageForBoss _damageForBoss;
 
-
-
-
-
     [SerializeField] private float _textSpeed;
 
     private string _dialog;
 
-
-
-
-
     [SerializeField] private BossController _bossController;
 
-    
     // [SerializeField] private PlayerInput playerInput;
     //[SerializeField] private Animator _anim;
 
@@ -41,14 +32,12 @@ public class StartBossFight : MonoBehaviour
         _bossController.enabled = false;
         //_damageForBoss.enabled = false;
         _startBossCutscene = GetComponent<StartBossCutscene>();
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.CompareTag("Player"))
-        {
-            
+        {   
             StartCoroutine(Test());
         }        
     }

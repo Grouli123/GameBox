@@ -92,6 +92,7 @@ public class TextMoveHelp : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Checkpoint"))
         {
+            _checkpoint.Play();
             Text.text = "Сохранение записано";
             FulText(true);
             StartCoroutine(CloseSavePannel());

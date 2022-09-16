@@ -120,8 +120,6 @@ public class UsedObjects : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false & 
             liftActivated.LeftDoor == true & liftActivated.RightDoor == false)
         {
-            liftActivated.ActivatedRightDoor("Door", false);
-            liftActivated.ActivatedLeftDoor("Door", false);
             liftActivated.ActivatedLift("Activated", true);
             StartCoroutine(Lift());
         }
@@ -129,8 +127,6 @@ public class UsedObjects : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true &
             liftActivated.LeftDoor == false & liftActivated.RightDoor == true)
         {
-            liftActivated.ActivatedRightDoor("Door", false);
-            liftActivated.ActivatedLeftDoor("Door", false);
             liftActivated.ActivatedLift("Activated", false);
             StartCoroutine(Lift());
         }
@@ -138,10 +134,6 @@ public class UsedObjects : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E) 
             & _isLiftUp == true & liftActivated.LiftPositionDown == true)
         {
-            liftActivated.LeftDoor = false;
-            liftActivated.RightDoor = false;
-            _callLift.LeftDoor("Door", false);
-            _callLift.RightDoor("Door", false);
             StartCoroutine(LiftUp());
             StartCoroutine(Lift());
         }
@@ -188,21 +180,5 @@ public class UsedObjects : MonoBehaviour
     {
         yield return new WaitForSeconds(20);
         liftActivated.LiftPositionDown = !liftActivated.LiftPositionDown;
-
-        yield return new WaitForSeconds(1);
-        if (liftActivated.LiftPositionDown == false)
-        {
-            liftActivated.ActivatedRightDoor("Door", false);
-            liftActivated.ActivatedLeftDoor("Door", true);
-            liftActivated.LeftDoor = true;
-            liftActivated.RightDoor = false;
-        }
-        else
-        {
-            liftActivated.ActivatedRightDoor("Door", true);
-            liftActivated.ActivatedLeftDoor("Door", false);
-            liftActivated.LeftDoor = false;
-            liftActivated.RightDoor = true;
-        }
     }
 }
