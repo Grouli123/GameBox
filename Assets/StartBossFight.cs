@@ -42,6 +42,10 @@ public class StartBossFight : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Animator _anim;
 
+    
+    [SerializeField] private AudioClip[] _sound;
+    [SerializeField] private AudioSource _source;
+
     private void Start() 
     {
         //_mainSlide.SetActive(true);
@@ -106,6 +110,10 @@ public class StartBossFight : MonoBehaviour
         yield return new WaitForSeconds(10);
         _firstSlide.SetActive(true);
         playerInput.enabled = false;
+        
+        _source.clip = _sound[0];
+        _source.Play();
+
         _anim.SetBool("IsRun", false);            
         _anim.SetBool("IsJump", false);
         _boxSceneBossFight.isTrigger = false;
@@ -118,6 +126,11 @@ public class StartBossFight : MonoBehaviour
         yield return new WaitForSeconds(6);
         _James.SetActive(false);
         _boss.SetActive(true);
+
+        
+        _source.clip = _sound[1];
+        _source.Play();
+
         _text.text = "";
         _dialog = "Так, так, так. Кто у нас здесь? Еще один бестолковый коп? Неужели я не слишком доходчиво дал понять, что вам не стоит совать крысиные носы в мои дела?";
         StartCoroutine(OutputText(_dialog, _textSpeed));
@@ -125,6 +138,10 @@ public class StartBossFight : MonoBehaviour
         yield return new WaitForSeconds(12);
         _James.SetActive(true);
         _boss.SetActive(false);
+        
+        _source.clip = _sound[2];
+        _source.Play();
+
         _text.text = "";
         _dialog = "Руки вверх и отвечайте на вопрос!";
         StartCoroutine(OutputText(_dialog, _textSpeed));
@@ -132,6 +149,11 @@ public class StartBossFight : MonoBehaviour
         yield return new WaitForSeconds(4);
         _James.SetActive(false);
         _boss.SetActive(true);
+
+
+        _source.clip = _sound[3];
+        _source.Play();
+
         _text.text = "";
         _dialog = "Повторяю в последний раз, красавчик, уходи по хорошему. Парни, покажите нашему гостю где выход.";
         StartCoroutine(OutputText(_dialog, _textSpeed));
@@ -139,6 +161,11 @@ public class StartBossFight : MonoBehaviour
         yield return new WaitForSeconds(7);
         _James.SetActive(true);
         _boss.SetActive(false);
+
+    
+        _source.clip = _sound[4];
+        _source.Play();
+
         _text.text = "";
         _dialog = "Твои бандиты тебе не помогут. Я о них уже позаботился.";
         StartCoroutine(OutputText(_dialog, _textSpeed));
@@ -146,6 +173,11 @@ public class StartBossFight : MonoBehaviour
         yield return new WaitForSeconds(6);
         _James.SetActive(false);
         _boss.SetActive(true);
+
+        
+        _source.clip = _sound[5];
+        _source.Play();
+
         _text.text = "";
         _dialog = "Проклятье! Всё приходится делать самому. Что ж, тебе повезло. Ты первым ощутишь на себе всю гениальность тизера моего нового альбома.";
         StartCoroutine(OutputText(_dialog, _textSpeed));
