@@ -224,24 +224,24 @@ public class BossController : MonoBehaviour
         attackPoint = pointForBulletTwo;
      }
 
-    private void SecondState()
-    {
-        for (int i = 0; i < _groundBoss.Length; i++)
-        {
-            _groundBoss[i].SetActive(false);
-        }
-    }
+    // private void SecondState()
+    // {
+    //     for (int i = 0; i < _groundBoss.Length; i++)
+    //     {
+    //         _groundBoss[i].SetActive(false);
+    //     }
+    // }
 
-    private void ThirdState()
-    {
-        for (int i = 0; i < _sliderJooint.Length; i++)
-        {
-            _sliderJooint[i].enabled = true;
-        }
+    // private void ThirdState()
+    // {
+    //     for (int i = 0; i < _sliderJooint.Length; i++)
+    //     {
+    //         _sliderJooint[i].enabled = true;
+    //     }
 
-        for (int i = 0; i < _sliderUp.Length; i++)
-        {
-            _sliderUp[i].enabled = true;
-        }
-    }
+    //     for (int i = 0; i < _sliderUp.Length; i++)
+    //     {
+    //         _sliderUp[i].enabled = true;
+    //     }
+    // }
 }

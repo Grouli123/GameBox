@@ -26,6 +26,24 @@ public class BossDied : MonoBehaviour
 
 
 
+    private void Update() 
+    {
+        SkipStartDialog();
+    }
+
+    private void SkipStartDialog()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                _James.SetActive(false);
+                _boss.SetActive(false);
+                _text.text = "";
+                _cutscene.SetActive(false);       
+                _firstSlide.SetActive(false);        
+                playerInput.enabled = true;
+            }
+        }
+
     // private void Start() 
     // {
         

@@ -22,6 +22,8 @@ public class StartBossCutscene : MonoBehaviour
     
     [SerializeField] private Animator _animHero;
 
+    [SerializeField] private StartBossFight _startBossFight;
+
     private bool _isCutsceneStart = false;
     
     private void Update() 
@@ -48,6 +50,7 @@ public class StartBossCutscene : MonoBehaviour
             _cutsceneText.SetActive(true);
             _isCutsceneStart = true;
             _animHero.SetBool("IsRun", true);
+            _startBossFight.enabled = true;
 
             
             
