@@ -19,6 +19,8 @@ public class UsedObjects : MonoBehaviour
     private bool activatedMost2 = false;
     private bool activatedLift = false;
 
+    private bool _jamesLift = true;
+
     private bool _isLiftUp = false;
 
     private float horizontal;
@@ -30,6 +32,7 @@ public class UsedObjects : MonoBehaviour
     [SerializeField] private AudioSource grandMatherSound;
     [SerializeField] private AudioSource runStone;
     [SerializeField] private AudioSource runMetall;
+    [SerializeField] private AudioSource jamesLift;
  
     [SerializeField] private float _timeMoveLift;
 
@@ -117,15 +120,14 @@ public class UsedObjects : MonoBehaviour
             mostActivated2.Animation("Activation", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false & 
-            liftActivated.LeftDoor == true & liftActivated.RightDoor == false)
+        if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
         {
             liftActivated.ActivatedLift("Activated", true);
             StartCoroutine(Lift());
+            StartCoroutine(JamesSound());
         }
 
-        if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true &
-            liftActivated.LeftDoor == false & liftActivated.RightDoor == true)
+        if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
         {
             liftActivated.ActivatedLift("Activated", false);
             StartCoroutine(Lift());
@@ -175,7 +177,20 @@ public class UsedObjects : MonoBehaviour
         liftActivated.ActivatedLift("Activated", false);
     }
 
-
+    private IEnumerator JamesSound()
+    {
+        yield return new WaitForSeconds(4);
+        if(_jamesLift == true)
+        {
+            jamesLift.Play();
+        }
+        else
+        {
+            jamesLift.Stop();
+        }
+        yield return new WaitForSeconds(3);
+        _jamesLift = false;
+    }
     private IEnumerator Lift()
     {
         yield return new WaitForSeconds(20);
