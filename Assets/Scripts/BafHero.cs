@@ -59,7 +59,7 @@ public class BafHero : MonoBehaviour
         }
         else
         {
-            _speedMove = _shooter.timeBetweenShoots;;
+            _shooter.timeBetweenShoots = _speedMove;
         }
     }
 

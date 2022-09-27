@@ -70,7 +70,7 @@ public class ButtonForGame : MonoBehaviour
             _hairGelSound.Play();
             playerMovement.OnAnimator("Stun", true);
             _timeAnim = 1;
-            _timeFreeze = 5;
+            _timeFreeze = 10;
             _stopAttack = 5;
             _freeze = true;
             playerSettings.HairGel = 0;
@@ -85,6 +85,7 @@ public class ButtonForGame : MonoBehaviour
         {
             _freeze = false;            
             _stopAttack = 0.5f;
+            _timeFreeze = 0;
         }
     }
 

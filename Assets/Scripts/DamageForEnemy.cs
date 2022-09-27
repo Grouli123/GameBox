@@ -26,14 +26,14 @@ public class DamageForEnemy : MonoBehaviour
     private void Update()
     {
         Freeze();
-        if (lives <= 0 && dialogPanel.Enemy == true)
+        if (lives <= 0 & dialogPanel.Enemy == true)
         {
             Destroy(gameObject);
             _enemyCounter.ApplyChange(_scoreForEnemyDeath);
             _allOfScore.ApplyChange(_scoreForEnemyDeath);
             StartCoroutine(DialogPanel());
         }
-        else if(lives <= 0 && dialogPanel.Enemy == false)
+        else if(lives <= 0 & dialogPanel.Enemy == false)
         {
             Destroy(gameObject);
             _enemyCounter.ApplyChange(_scoreForEnemyDeath);

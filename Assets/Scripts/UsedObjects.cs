@@ -25,6 +25,8 @@ public class UsedObjects : MonoBehaviour
 
     private float horizontal;
 
+    private RaycastHit hit;
+
     [Header("Sounds")]
     [SerializeField] private AudioSource box;
     [SerializeField] private AudioSource artefactSound;
@@ -41,7 +43,7 @@ public class UsedObjects : MonoBehaviour
 
     private void Update()
     {
-       // horizontal = Input.GetAxis("Horizontal");
+        
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -135,33 +137,49 @@ public class UsedObjects : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if(horizontal > 0.1 & collision.gameObject.CompareTag("Ground") || horizontal < -0.1 & collision.gameObject.CompareTag("Ground"))
+        if(collision.gameObject.CompareTag("Ground"))
         {
-           // runStone.Play();
+           if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.35f)
+           {
+             if (runStone.isPlaying) return;
+             runStone.Play();
+           }
+           else
+           {
+             runStone.Stop();
+           }
         }
-        else if(horizontal == 0)
+        else if(collision.gameObject.CompareTag("Metall"))
         {
-           // runStone.Stop();
-        }
-
-        if(horizontal > 0.1 & collision.gameObject.CompareTag("Metall") || horizontal < -0.1 & collision.gameObject.CompareTag("Metall"))
-        {
-           // runMetall.Play();
-        }
-        else if (horizontal == 0)
-        {
-           // runMetall.Stop();
-        }
-
-        if (collision.gameObject.CompareTag("Box"))
-        {
-           // box.Play();
+           runStone.Stop();
         }
         else
         {
-           // box.Stop();
+            runStone.Stop();
+        }
+
+
+        if(collision.gameObject.CompareTag("Metall"))
+        {
+           if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.35f)
+           {
+             if (runMetall.isPlaying) return;
+             runMetall.Play();
+           }
+           else
+           {
+             runMetall.Stop();
+           }
+        }
+        else if(collision.gameObject.CompareTag("Ground"))
+        {
+           runMetall.Stop(); 
+        }
+        else
+        {
+            runMetall.Stop();
         }
     }
 
@@ -190,5 +208,17 @@ public class UsedObjects : MonoBehaviour
         }
         yield return new WaitForSeconds(3);
         _jamesLift = false;
+    }
+
+    public void AudioStop()
+    {
+        runMetall.volume = 0f;
+        runStone.volume = 0f;
+    }
+
+    public void AudioPlay()
+    {
+        runMetall.volume = 1f;
+        runStone.volume = 1f;
     }
 }

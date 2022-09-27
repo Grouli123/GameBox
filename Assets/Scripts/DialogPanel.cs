@@ -16,7 +16,10 @@ public class DialogPanel : MonoBehaviour
     [Header("Sound")]
     [SerializeField] private AudioClip[] sound;
     [SerializeField] private AudioSource source;
+    [SerializeField] private AudioSource runStone;
+    [SerializeField] private AudioSource runMetall;
     
+    [Header("Other")]
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Animator _anim;
 
@@ -37,10 +40,12 @@ public class DialogPanel : MonoBehaviour
         EnemyPanel();
         OnClickMouse();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<HairGelObject>() & _hairGel == true)
         {
+            runStone.volume = 0f;
             source.clip = sound[1];
             source.Play();
             hairGelPanel.SetActive(true);
@@ -52,6 +57,7 @@ public class DialogPanel : MonoBehaviour
 
         if(collision.gameObject.GetComponent<CoinCollectScript>() & _coins == true)
         {
+            runStone.volume = 0f;
             source.clip = sound[0];
             source.Play();
             coinsPanel.SetActive(true);
@@ -63,6 +69,7 @@ public class DialogPanel : MonoBehaviour
 
         if(collision.gameObject.CompareTag("ZoneAdvertisementTcepellin") & _cat == true)
         {
+            runStone.volume = 0f;
             source.clip = sound[2];
             source.Play();
             catPanel.SetActive(true);
@@ -74,6 +81,7 @@ public class DialogPanel : MonoBehaviour
 
         if(collision.gameObject.GetComponent<HPStation>() & _hpStation == true)
         {
+            runMetall.volume = 0f;
             source.clip = sound[3];
             source.Play();
             hpStationPanel.SetActive(true);
@@ -135,6 +143,7 @@ public class DialogPanel : MonoBehaviour
     {
         if (hairGelPanel.activeSelf == true & _hairGel == true & Input.GetKeyDown(KeyCode.Mouse0))
         {
+            runStone.volume = 1f;
             source.Stop();
             _hairGel = false;
             playerInput.enabled = true;
@@ -143,6 +152,7 @@ public class DialogPanel : MonoBehaviour
         }
         else if (hairGelPanel.activeSelf == true & _hairGel == true & Input.GetKeyDown(KeyCode.Mouse1))
         {
+            runStone.volume = 1f;
             source.Stop();
             _hairGel = false;
             playerInput.enabled = true;
@@ -152,6 +162,7 @@ public class DialogPanel : MonoBehaviour
 
         if (_coins == true & coinsPanel.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse0))
         {
+            runStone.volume = 1f;
             source.Stop();
             coinsPanel.SetActive(false);
             playerInput.enabled = true;
@@ -160,6 +171,7 @@ public class DialogPanel : MonoBehaviour
         }
         else if (_coins == true & coinsPanel.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse1))
         {
+            runStone.volume = 1f;
             source.Stop();
             coinsPanel.SetActive(false);
             playerInput.enabled = true;
@@ -169,6 +181,7 @@ public class DialogPanel : MonoBehaviour
 
         if (_cat == true & catPanel.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse0))
         {
+            runStone.volume = 1f;
             source.Stop();
             catPanel.SetActive(false);
             playerInput.enabled = true;
@@ -177,6 +190,7 @@ public class DialogPanel : MonoBehaviour
         }
         else if (_cat == true & catPanel.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse1))
         {
+            runStone.volume = 1f;
             source.Stop();
             catPanel.SetActive(false);
             playerInput.enabled = true;
@@ -194,6 +208,7 @@ public class DialogPanel : MonoBehaviour
         }
         else if (_hpStation == true & hpStationPanel.activeSelf == true & Input.GetKeyDown(KeyCode.Mouse1))
         {
+            runMetall.volume = 1f;
             source.Stop();
             hpStationPanel.SetActive(false);
             playerInput.enabled = true;
@@ -217,6 +232,7 @@ public class DialogPanel : MonoBehaviour
     {
         Time.timeScale = time;
     }
+    
     public bool Enemy
     {
         get { return _enemy; }

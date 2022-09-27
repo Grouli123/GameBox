@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Scripts")]
     [SerializeField] private HeroDeath heroDeath;
+    [SerializeField] private UsedObjects usedObjects;
 
     [HideInInspector] public Rigidbody2D rb;    
     private bool facingRight;
@@ -55,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 _overlapCirrcleTransform = _groundColliderTransform.position;
         _isGrounded = Physics2D.OverlapCircle(_overlapCirrcleTransform, jumpOffset, _groundMask);
-        
     }
 
     private void OnDrawGizmos() {
@@ -67,10 +67,12 @@ public class PlayerMovement : MonoBehaviour
         if (_isGrounded == false)
         {
             _animator.SetBool("IsJump", true);
+            usedObjects.AudioStop();
         }
         else
         {
             _animator.SetBool("IsJump", false);
+            usedObjects.AudioPlay();
         }
 
         if (isJumpButtonPressed)
