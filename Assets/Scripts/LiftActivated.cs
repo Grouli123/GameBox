@@ -5,8 +5,6 @@ using UnityEngine;
 public class LiftActivated : MonoBehaviour
 {
     [SerializeField] private Animator lift;
-    //[SerializeField] private Animator leftDoor;
-    //[SerializeField] private Animator rightDoor;
 
     [SerializeField] private BafHero _bafHero;
 
@@ -20,49 +18,6 @@ public class LiftActivated : MonoBehaviour
 
     [SerializeField] private BoxCollider2D _leftDooor;
     [SerializeField] private BoxCollider2D _rightDooor;
-
-   /* private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Up"))
-        {
-            leftDoor.SetBool("Door", true);
-        }
-        else
-        {
-            leftDoor.SetBool("Door", false);
-        }
-
-        if (collision.gameObject.CompareTag("Down"))
-        {
-            rightDoor.SetBool("Door", true);
-        }
-        else
-        {
-            rightDoor.SetBool("Door", false);
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Up"))
-        {
-            leftDoor.SetBool("Door", true);
-        }
-        else
-        {
-            leftDoor.SetBool("Door", false);
-        }
-
-        if (collision.gameObject.CompareTag("Down"))
-        {
-            rightDoor.SetBool("Door", true);
-        }
-        else
-        {
-            rightDoor.SetBool("Door", false);
-        }
-    }
-   */
 
     public void ActivatedLift(string name, bool active)
     {

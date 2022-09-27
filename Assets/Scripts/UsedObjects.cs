@@ -41,6 +41,7 @@ public class UsedObjects : MonoBehaviour
     {
        // horizontal = Input.GetAxis("Horizontal");
     }
+    
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Cat1") | collision.gameObject.CompareTag("Cat2") | collision.gameObject.CompareTag("Cat3")
