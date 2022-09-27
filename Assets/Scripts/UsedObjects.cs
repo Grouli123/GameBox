@@ -33,6 +33,8 @@ public class UsedObjects : MonoBehaviour
     [SerializeField] private AudioSource runStone;
     [SerializeField] private AudioSource runMetall;
     [SerializeField] private AudioSource jamesLift;
+    //[SerializeField] private AudioSource callLift;
+    //[SerializeField] private AudioSource activateMost;
  
     [SerializeField] private float _timeMoveLift;
 
@@ -41,7 +43,7 @@ public class UsedObjects : MonoBehaviour
     {
        // horizontal = Input.GetAxis("Horizontal");
     }
-    
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Cat1") | collision.gameObject.CompareTag("Cat2") | collision.gameObject.CompareTag("Cat3")
@@ -74,18 +76,7 @@ public class UsedObjects : MonoBehaviour
             textMoveHelp.FulText(true);
         }
 
-        if (collision.gameObject.GetComponent<LiftActivated>())
-        {
-            activatedLift = true;
-            textMoveHelp.Texting("E - Запуск");
-            textMoveHelp.FulText(true);
-        }
-        else
-        {
-            activatedLift = false;
-        }
-
-        if (collision.gameObject.GetComponent<CallLift>())
+        if (collision.gameObject.GetComponent<CallLift>() & liftActivated.LiftPositionDown == true)
         {
             _isLiftUp = true;
             textMoveHelp.Texting("E - Вызов лифта");
@@ -111,30 +102,36 @@ public class UsedObjects : MonoBehaviour
             activatedLift = false;
         }
 
-        if (collision.gameObject.GetComponent<CallLift>() & Input.GetKey(KeyCode.E))
+        if (collision.gameObject.GetComponent<CallLift>() & Input.GetKeyDown(KeyCode.E) & liftActivated.LiftPositionDown == true)
         {
             liftActivated.ActivatedLift("Activated", false);
+            StartCoroutine(LiftPositionUp());
+           // callLift.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.E) & activatedMost == true)
         {
             mostActivated.Activated("Most", true);
+           // activateMost.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.E) & activatedMost2 == true)
         {
             mostActivated2.Animation("Activation", true);
+            // activateMost.Play();
         }
 
-        if (Input.GetKey(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
+        if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
         {
             liftActivated.ActivatedLift("Activated", true);
+            StartCoroutine(LiftPositionDown());
             StartCoroutine(JamesSound());
         }
 
-        if(Input.GetKey(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
+        if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
         {
             liftActivated.ActivatedLift("Activated", false);
+            StartCoroutine(LiftPositionUp());
         }
     }
 
@@ -166,6 +163,18 @@ public class UsedObjects : MonoBehaviour
         {
            // box.Stop();
         }
+    }
+
+    private IEnumerator LiftPositionDown()
+    {
+        yield return new WaitForSeconds(5);
+        liftActivated.LiftDown();
+    }
+
+    private IEnumerator LiftPositionUp()
+    {
+        yield return new WaitForSeconds(5);
+        liftActivated.LiftUp();
     }
 
     private IEnumerator JamesSound()
