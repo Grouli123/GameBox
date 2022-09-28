@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Sound")]
     [SerializeField] private AudioSource jump;
     [SerializeField] private AudioSource downJump;
+    [SerializeField] private AudioSource isGround;
 
 
     private Vector3 respawnPoint;

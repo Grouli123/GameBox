@@ -35,6 +35,7 @@ public class UsedObjects : MonoBehaviour
     [SerializeField] private AudioSource runStone;
     [SerializeField] private AudioSource runMetall;
     [SerializeField] private AudioSource jamesLift;
+    [SerializeField] private AudioSource lever;
     //[SerializeField] private AudioSource callLift;
     //[SerializeField] private AudioSource activateMost;
  
@@ -88,6 +89,19 @@ public class UsedObjects : MonoBehaviour
         {
             _isLiftUp = false;
         }
+
+        if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
+        {
+            liftActivated.ActivatedLift("Activated", true);
+            StartCoroutine(LiftPositionDown());
+            StartCoroutine(JamesSound());
+        }
+
+        if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
+        {
+            liftActivated.ActivatedLift("Activated", false);
+            StartCoroutine(LiftPositionUp());
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -106,6 +120,7 @@ public class UsedObjects : MonoBehaviour
 
         if (collision.gameObject.GetComponent<CallLift>() & Input.GetKeyDown(KeyCode.E) & liftActivated.LiftPositionDown == true)
         {
+            lever.Play();
             liftActivated.ActivatedLift("Activated", false);
             StartCoroutine(LiftPositionUp());
            // callLift.Play();
@@ -113,12 +128,14 @@ public class UsedObjects : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) & activatedMost == true)
         {
+            lever.Play();
             mostActivated.Activated("Most", true);
            // activateMost.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.E) & activatedMost2 == true)
         {
+            lever.Play();
             mostActivated2.Animation("Activation", true);
             // activateMost.Play();
         }
@@ -185,13 +202,13 @@ public class UsedObjects : MonoBehaviour
 
     private IEnumerator LiftPositionDown()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         liftActivated.LiftDown();
     }
 
     private IEnumerator LiftPositionUp()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         liftActivated.LiftUp();
     }
 

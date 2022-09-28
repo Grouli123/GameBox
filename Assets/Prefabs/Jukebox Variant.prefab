@@ -163,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: feac0c3761c7bd64990bf2ab43fd296c, type: 2}
     - target: {fileID: 919132149155446097, guid: 2c5151bccd754684489662f13aeaedee, type: 3}
       propertyPath: m_Name
-      value: Jukebox
+      value: Jukebox Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2c5151bccd754684489662f13aeaedee, type: 3}
       propertyPath: m_IsActive
@@ -248,8 +248,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.9966613
-  MaxDistance: 1.5
+  MinDistance: 0.545361
+  MaxDistance: 1.2776728
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -346,3 +346,5 @@ MonoBehaviour:
   audioSource: {fileID: 1486710494}
   light: {fileID: 128236379}
   collider: {fileID: 1486710490}
+  emission: {fileID: 0}
+  livesStation: 0
