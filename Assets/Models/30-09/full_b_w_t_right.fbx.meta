@@ -3,7 +3,12 @@ guid: 99aade5d8c114a14ca6360ce5d6cb4d1
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brick_curb_stone_mat
+    second: {fileID: 2100000, guid: 1b4f1fb4a2dabaa4fb4ce418bbbb4840, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
