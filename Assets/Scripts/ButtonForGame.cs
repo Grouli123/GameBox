@@ -16,6 +16,8 @@ public class ButtonForGame : MonoBehaviour
 
     [Header("Sound")]
     [SerializeField] private AudioSource _hairGelSound;
+    [SerializeField] private AudioSource _runGround;
+    [SerializeField] private AudioSource _runMetall;
 
     private float _timeFreeze;
     private float _timeAnim;
@@ -47,6 +49,8 @@ public class ButtonForGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) & pausePanel.activeSelf == false)
         {
+            _runGround.Stop();
+            _runMetall.Stop();
             Cursor.visible = true;
             playerInput.enabled = false;
             enemyController.enabled = false;
