@@ -29,7 +29,8 @@ public class ButtonForGame : MonoBehaviour
     }
 
     private void Start()
-    {        
+    {   
+        Cursor.visible = false;     
         _freeze = false;
     }
 
@@ -46,6 +47,7 @@ public class ButtonForGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) & pausePanel.activeSelf == false)
         {
+            Cursor.visible = true;
             playerInput.enabled = false;
             enemyController.enabled = false;
             helpPanel.SetActive(false);
@@ -55,6 +57,7 @@ public class ButtonForGame : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Escape) & pausePanel.activeSelf == true)
         {
+            Cursor.visible = false;
             ContinueGame();
         }
     }

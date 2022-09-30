@@ -38,11 +38,13 @@ public class HeroDeath : MonoBehaviour
         if(playerSettings.Hp <= 0 || playerMovement.FallDetector == true)
         {
             if (playerSettings.Cassete <= 0)
-            {                
+            { 
+                Cursor.visible = true;               
                deathPanelGoose.SetActive(true);
             }
             else
             {
+                Cursor.visible = true;
                 deathPanel.SetActive(true);
             }
             
@@ -61,6 +63,7 @@ public class HeroDeath : MonoBehaviour
     {
         if(playerSettings.Cassete <= 0)
         {
+            Cursor.visible = true;
             // Time.timeScale = 1;
             clickImage.sprite = Click[0];
             ClickedButton.interactable = false;
