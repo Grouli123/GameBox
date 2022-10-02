@@ -7,6 +7,8 @@ public class PlayerName : MonoBehaviour
     [SerializeField] private SavePlayerStats _playerName;
     [SerializeField] private Button _btnClick;
 
+    [SerializeField] private Text _testName;
+
     [SerializeField] private InputField _inputUser;
     private string _input;
 
@@ -19,6 +21,7 @@ public class PlayerName : MonoBehaviour
     {
         _input = _inputUser.text;
         _playerName.SetValue(_input);
+        _testName.text = _input.ToString();
         // _input = s;
         // Debug.Log(_input);
         // _playerName.SetValue(_input);
