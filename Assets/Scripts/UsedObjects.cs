@@ -25,6 +25,8 @@ public class UsedObjects : MonoBehaviour
 
     private float horizontal;
 
+    private RaycastHit hit;
+
     [Header("Sounds")]
     [SerializeField] private AudioSource box;
     [SerializeField] private AudioSource artefactSound;
@@ -33,15 +35,18 @@ public class UsedObjects : MonoBehaviour
     [SerializeField] private AudioSource runStone;
     [SerializeField] private AudioSource runMetall;
     [SerializeField] private AudioSource jamesLift;
+    [SerializeField] private AudioSource lever;
+    //[SerializeField] private AudioSource callLift;
+    //[SerializeField] private AudioSource activateMost;
  
     [SerializeField] private float _timeMoveLift;
 
 
     private void Update()
     {
-       // horizontal = Input.GetAxis("Horizontal");
+        
     }
-    
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Cat1") | collision.gameObject.CompareTag("Cat2") | collision.gameObject.CompareTag("Cat3")
@@ -74,18 +79,7 @@ public class UsedObjects : MonoBehaviour
             textMoveHelp.FulText(true);
         }
 
-        if (collision.gameObject.GetComponent<LiftActivated>())
-        {
-            activatedLift = true;
-            textMoveHelp.Texting("E - Запуск");
-            textMoveHelp.FulText(true);
-        }
-        else
-        {
-            activatedLift = false;
-        }
-
-        if (collision.gameObject.GetComponent<CallLift>())
+        if (collision.gameObject.GetComponent<CallLift>() & liftActivated.LiftPositionDown == true)
         {
             _isLiftUp = true;
             textMoveHelp.Texting("E - Вызов лифта");
@@ -94,6 +88,19 @@ public class UsedObjects : MonoBehaviour
         else
         {
             _isLiftUp = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
+        {
+            liftActivated.ActivatedLift("Activated", true);
+            StartCoroutine(LiftPositionDown());
+            StartCoroutine(JamesSound());
+        }
+
+        if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
+        {
+            liftActivated.ActivatedLift("Activated", false);
+            StartCoroutine(LiftPositionUp());
         }
     }
 
@@ -111,61 +118,98 @@ public class UsedObjects : MonoBehaviour
             activatedLift = false;
         }
 
-        if (collision.gameObject.GetComponent<CallLift>() & Input.GetKey(KeyCode.E))
+        if (collision.gameObject.GetComponent<CallLift>() & Input.GetKeyDown(KeyCode.E) & liftActivated.LiftPositionDown == true)
         {
+            lever.Play();
             liftActivated.ActivatedLift("Activated", false);
+            StartCoroutine(LiftPositionUp());
+           // callLift.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.E) & activatedMost == true)
         {
+            lever.Play();
             mostActivated.Activated("Most", true);
+           // activateMost.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.E) & activatedMost2 == true)
         {
+            lever.Play();
             mostActivated2.Animation("Activation", true);
+            // activateMost.Play();
         }
 
-        if (Input.GetKey(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
+        if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
         {
             liftActivated.ActivatedLift("Activated", true);
+            StartCoroutine(LiftPositionDown());
             StartCoroutine(JamesSound());
         }
 
-        if(Input.GetKey(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
+        if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
         {
             liftActivated.ActivatedLift("Activated", false);
+            StartCoroutine(LiftPositionUp());
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if(horizontal > 0.1 & collision.gameObject.CompareTag("Ground") || horizontal < -0.1 & collision.gameObject.CompareTag("Ground"))
+        if(collision.gameObject.CompareTag("Ground"))
         {
-           // runStone.Play();
+           if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.35f)
+           {
+             if (runStone.isPlaying) return;
+             runStone.Play();
+           }
+           else
+           {
+             runStone.Stop();
+           }
         }
-        else if(horizontal == 0)
+        else if(collision.gameObject.CompareTag("Metall"))
         {
-           // runStone.Stop();
-        }
-
-        if(horizontal > 0.1 & collision.gameObject.CompareTag("Metall") || horizontal < -0.1 & collision.gameObject.CompareTag("Metall"))
-        {
-           // runMetall.Play();
-        }
-        else if (horizontal == 0)
-        {
-           // runMetall.Stop();
-        }
-
-        if (collision.gameObject.CompareTag("Box"))
-        {
-           // box.Play();
+           runStone.Stop();
         }
         else
         {
-           // box.Stop();
+            runStone.Stop();
         }
+
+
+        if(collision.gameObject.CompareTag("Metall"))
+        {
+           if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.35f)
+           {
+             if (runMetall.isPlaying) return;
+             runMetall.Play();
+           }
+           else
+           {
+             runMetall.Stop();
+           }
+        }
+        else if(collision.gameObject.CompareTag("Ground"))
+        {
+           runMetall.Stop(); 
+        }
+        else
+        {
+            runMetall.Stop();
+        }
+    }
+
+    private IEnumerator LiftPositionDown()
+    {
+        yield return new WaitForSeconds(10);
+        liftActivated.LiftDown();
+    }
+
+    private IEnumerator LiftPositionUp()
+    {
+        yield return new WaitForSeconds(10);
+        liftActivated.LiftUp();
     }
 
     private IEnumerator JamesSound()
@@ -181,5 +225,17 @@ public class UsedObjects : MonoBehaviour
         }
         yield return new WaitForSeconds(3);
         _jamesLift = false;
+    }
+
+    public void AudioStop()
+    {
+        runMetall.volume = 0f;
+        runStone.volume = 0f;
+    }
+
+    public void AudioPlay()
+    {
+        runMetall.volume = 1f;
+        runStone.volume = 1f;
     }
 }

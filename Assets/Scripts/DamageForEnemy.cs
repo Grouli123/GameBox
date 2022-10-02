@@ -26,14 +26,17 @@ public class DamageForEnemy : MonoBehaviour
     private void Update()
     {
         Freeze();
-        if (lives <= 0 && dialogPanel.Enemy == true)
+        if (lives <= 0 & dialogPanel.Enemy == true)
         {
+            dialogPanel.OnActivePanelEnemy(true);
+            dialogPanel.SoundPanelEnemy(4);
+            dialogPanel.TimeScale(0);
+            //StartCoroutine(DialogPanelActive());
             Destroy(gameObject);
             _enemyCounter.ApplyChange(_scoreForEnemyDeath);
             _allOfScore.ApplyChange(_scoreForEnemyDeath);
-            StartCoroutine(DialogPanel());
         }
-        else if(lives <= 0 && dialogPanel.Enemy == false)
+        else if(lives <= 0 & dialogPanel.Enemy == false)
         {
             Destroy(gameObject);
             _enemyCounter.ApplyChange(_scoreForEnemyDeath);
@@ -97,7 +100,7 @@ public class DamageForEnemy : MonoBehaviour
         }
     } 
 
-    private IEnumerator DialogPanel()
+    private IEnumerator DialogPanelActive()
     {
         yield return new WaitForSeconds(2);
         dialogPanel.OnActivePanelEnemy(true);

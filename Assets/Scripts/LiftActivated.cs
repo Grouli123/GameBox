@@ -52,8 +52,9 @@ public class LiftActivated : MonoBehaviour
     public void DetachToTheFloor()
     {
         heroDontMoveInsideLift.SetActive(false);
-        _bafHero.heroForceJump = 3.5f;
+        _bafHero.heroForceJump = 3.8f;
     }
+
     public void LiftDown()
     {
         _liftPositionDown = true;

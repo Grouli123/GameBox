@@ -11,7 +11,7 @@ public class Shooter : MonoBehaviour
   [SerializeField] private PlayerInput _playerInput;
   public float timeBetweenShoots;
 
-    [Header("Sound")]
+  [Header("Sound")]
   public AudioSource shootSound; 
   //[SerializeField] private Animator _animator;
 

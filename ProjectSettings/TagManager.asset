@@ -44,6 +44,11 @@ TagManager:
   - PointForBulletBoss
   - Up
   - Down
+  - Used
+  - Exit
+  - Damage
+  - Surprise
+  - LimitedEnemy
   layers:
   - Default
   - TransparentFX
@@ -54,7 +59,7 @@ TagManager:
   - Enemy
   - Action
   - Finish
-  - 
+  - ShadowHero
   - 
   - 
   - 

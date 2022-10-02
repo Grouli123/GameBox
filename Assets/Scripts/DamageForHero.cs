@@ -100,7 +100,6 @@ public class DamageForHero : MonoBehaviour
         {
             doubleHp = false;
             _baseStickHp.SetActive(true);
-
         }
 
         switch (playerSettings.Hp)

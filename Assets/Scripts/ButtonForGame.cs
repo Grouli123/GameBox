@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonForGame : MonoBehaviour
 {
@@ -11,9 +12,12 @@ public class ButtonForGame : MonoBehaviour
     [Header("Objects")]
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject helpPanel;
+    [SerializeField] private Text textTimeFreeze;
 
     [Header("Sound")]
     [SerializeField] private AudioSource _hairGelSound;
+    [SerializeField] private AudioSource _runGround;
+    [SerializeField] private AudioSource _runMetall;
 
     private float _timeFreeze;
     private float _timeAnim;
@@ -27,12 +31,15 @@ public class ButtonForGame : MonoBehaviour
     }
 
     private void Start()
-    {        
+    {   
+        Cursor.visible = false;     
         _freeze = false;
     }
 
     private void Update()
     {
+        
+        textTimeFreeze.text = Mathf.Round(_timeFreeze).ToString();
         _timeFreeze -= Time.deltaTime;
         _timeAnim -= Time.deltaTime;
         OnClickPause();
@@ -42,6 +49,9 @@ public class ButtonForGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) & pausePanel.activeSelf == false)
         {
+            _runGround.Stop();
+            _runMetall.Stop();
+            Cursor.visible = true;
             playerInput.enabled = false;
             enemyController.enabled = false;
             helpPanel.SetActive(false);
@@ -51,6 +61,7 @@ public class ButtonForGame : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Escape) & pausePanel.activeSelf == true)
         {
+            Cursor.visible = false;
             ContinueGame();
         }
     }
@@ -67,6 +78,7 @@ public class ButtonForGame : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q) & playerSettings.HairGel >= 3 )
         {
+            textTimeFreeze.enabled = true;
             _hairGelSound.Play();
             playerMovement.OnAnimator("Stun", true);
             _timeAnim = 1;
@@ -83,8 +95,10 @@ public class ButtonForGame : MonoBehaviour
 
         if (_timeFreeze < 0)
         {
+            textTimeFreeze.enabled = false;
             _freeze = false;            
             _stopAttack = 0.5f;
+            _timeFreeze = 0;
         }
     }
 

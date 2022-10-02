@@ -98,7 +98,7 @@ public class TextMoveHelp : MonoBehaviour
             StartCoroutine(CloseSavePannel());
         }
 
-        if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin"))
+       /* if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin"))
         {
             Text.text = "Е - посмотреть объявление";
             FulText(true);
@@ -126,7 +126,7 @@ public class TextMoveHelp : MonoBehaviour
         {
             Text.text = "Е - посмотреть объявление";
             FulText(true);
-        }
+        } */
 
         if (collision.gameObject.CompareTag("JumpZone"))
         {
@@ -385,7 +385,7 @@ public class TextMoveHelp : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin") & Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.CompareTag("ZoneAdvertisementTcepellin"))
         {
             //Text.text = "Esc - закрыть";
             //FulText(true);
@@ -394,7 +394,7 @@ public class TextMoveHelp : MonoBehaviour
             cats.TcepellinAdvertisement = true;
         }
 
-        if (collision.gameObject.CompareTag("ZoneAdvertisementOfeliya") & Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.CompareTag("ZoneAdvertisementOfeliya"))
         {
             //Text.text = "Esc - закрыть";
            // FulText(true);
@@ -403,7 +403,7 @@ public class TextMoveHelp : MonoBehaviour
             cats.OfeliyaAdvertisement = true;
         }
 
-        if (collision.gameObject.CompareTag("ZoneAdvertisementPryanic") & Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.CompareTag("ZoneAdvertisementPryanic"))
         {
             cats.PryanicAdvertisement = true;
            // Text.text = "Esc - закрыть";
@@ -412,7 +412,7 @@ public class TextMoveHelp : MonoBehaviour
             advertisement.sprite = advertisementSprite[2];
         }
 
-        if (collision.gameObject.CompareTag("ZoneAdvertisementVurdalak") & Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.CompareTag("ZoneAdvertisementVurdalak"))
         {
             cats.VurdalakAdvertisement = true;
             // Text.text = "Esc - закрыть";
@@ -421,7 +421,7 @@ public class TextMoveHelp : MonoBehaviour
             advertisement.sprite = advertisementSprite[3];
         }
 
-        if (collision.gameObject.CompareTag("ZoneAdvertisementUri") & Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.CompareTag("ZoneAdvertisementUri"))
         {
             cats.UriAdvertisement = true;
             // Text.text = "Esc - закрыть";
