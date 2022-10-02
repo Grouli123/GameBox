@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
-    // [SerializeField] private GameObject[] _groundBoss;  
+    [SerializeField] private GameObject[] _groundBoss;  
     [SerializeField] private SliderJoint2D[] _sliderJooint;
     [SerializeField] private SliderUp[] _sliderUp;
 
@@ -55,11 +55,11 @@ public class BossManager : MonoBehaviour
             _anim.SetBool("IsUp", false);
         }
 
-        // if (_damageForBoss.lives <= 7)
-        // {
-        //     SecondState();
+        if (_damageForBoss.lives <= 7)
+        {
+            SecondState();
  
-        // }
+        }
 
         if (_damageForBoss.lives <= 5)
         {
@@ -67,17 +67,17 @@ public class BossManager : MonoBehaviour
         }
     }
 
-    // private void SecondState()
-    // {
-    //     _bossController.enabled = true;
-    //     _bossControllerTwo.enabled = true;
-    //     _bossBulletThree.enabled = true;
+    private void SecondState()
+    {
+        _bossController.enabled = true;
+        _bossControllerTwo.enabled = true;
+        _bossBulletThree.enabled = true;
         
-    //     for (int i = 0; i < _groundBoss.Length; i++)
-    //     {
-    //         _groundBoss[i].SetActive(false);
-    //     }
-    // }
+        for (int i = 0; i < _groundBoss.Length; i++)
+        {
+            _groundBoss[i].SetActive(false);
+        }
+    }
 
     private void ThirdState()
     {
