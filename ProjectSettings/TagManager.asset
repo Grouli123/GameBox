@@ -49,6 +49,7 @@ TagManager:
   - Damage
   - Surprise
   - LimitedEnemy
+  - elevator
   layers:
   - Default
   - TransparentFX

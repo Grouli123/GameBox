@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LiftActivated : MonoBehaviour
 {
-    [SerializeField] private Animator lift;
+    //[SerializeField] private Animator lift;
 
     [SerializeField] private BafHero _bafHero;
 
@@ -21,7 +21,7 @@ public class LiftActivated : MonoBehaviour
 
     public void ActivatedLift(string name, bool active)
     {
-        lift.SetBool(name, active);
+       // lift.SetBool(name, active);
     }
 
     public bool LiftPositionDown

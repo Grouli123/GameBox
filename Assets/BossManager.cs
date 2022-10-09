@@ -55,13 +55,13 @@ public class BossManager : MonoBehaviour
             _anim.SetBool("IsUp", false);
         }
 
-        if (_damageForBoss.lives <= 7)
+        if (_damageForBoss.lives <= 25)
         {
             SecondState();
  
         }
 
-        if (_damageForBoss.lives <= 5)
+        if (_damageForBoss.lives <= 15)
         {
             ThirdState();
         }

@@ -9,19 +9,19 @@ public class UsedObjects : MonoBehaviour
     [SerializeField] private PlayerSettings settings;
     [SerializeField] private MostActivated mostActivated;
     [SerializeField] private Most2Activation mostActivated2;
-    [SerializeField] private LiftActivated liftActivated;
+    // [SerializeField] private LiftActivated liftActivated;
     [SerializeField] private TextMoveHelp textMoveHelp;
 
-    [SerializeField] private CallLift _callLift;
+    //[SerializeField] private CallLift _callLift;
 
     [Header("Objects")]
     private bool activatedMost = false;
     private bool activatedMost2 = false;
-    private bool activatedLift = false;
+    //private bool activatedLift = false;
 
     private bool _jamesLift = true;
 
-    private bool _isLiftUp = false;
+    // private bool _isLiftUp = false;
 
     private float horizontal;
 
@@ -39,9 +39,16 @@ public class UsedObjects : MonoBehaviour
     //[SerializeField] private AudioSource callLift;
     //[SerializeField] private AudioSource activateMost;
  
-    [SerializeField] private float _timeMoveLift;
+    // [SerializeField] private float _timeMoveLift;
 
 
+    // [SerializeField] private LiftUp _liftUp;
+    // [SerializeField] private LiftDown _liftDown;
+
+    private void Start() 
+    {
+       
+    }
     private void Update()
     {
         
@@ -79,52 +86,58 @@ public class UsedObjects : MonoBehaviour
             textMoveHelp.FulText(true);
         }
 
-        if (collision.gameObject.GetComponent<CallLift>() & liftActivated.LiftPositionDown == true)
-        {
-            _isLiftUp = true;
-            textMoveHelp.Texting("E - Вызов лифта");
-            textMoveHelp.FulText(true);
-        }
-        else
-        {
-            _isLiftUp = false;
-        }
+        // if (_liftUp.isElevatorUp == false)
+        // {
+        //     _liftUp.isElevatorUp = true;
+        //     textMoveHelp.Texting("E - Вызов лифта");
+        //     textMoveHelp.FulText(true);
+        // }
+        // else
+        // {
+        //     // _liftUp.isElevatorUp = false;
+        // }
 
-        if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
-        {
-            liftActivated.ActivatedLift("Activated", true);
-            StartCoroutine(LiftPositionDown());
-            StartCoroutine(JamesSound());
-        }
+        // if (Input.GetKeyDown(KeyCode.E) & _liftUp.isElevatorUp == false)
+        // {
+        //     _liftUp.isElevatorUp = true;
+            
+        //     Debug.Log("Лифт едет вниз");
+        //     StartCoroutine(LiftPositionDown());
+        //     StartCoroutine(JamesSound());
+        // }
+        // else
+        // {
+        //     _liftUp.isElevatorUp = false;
+        // }
 
-        if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
-        {
-            liftActivated.ActivatedLift("Activated", false);
-            StartCoroutine(LiftPositionUp());
-        }
+        // if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
+        // {
+        //     liftActivated.ActivatedLift("Activated", false);
+        //     StartCoroutine(LiftPositionUp());
+        // }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
 
-        if (collision.gameObject.GetComponent<LiftActivated>())
-        {
-            activatedLift = true;
-            textMoveHelp.Texting("E - Запуск");
-            textMoveHelp.FulText(true);
-        }
-        else
-        {
-            activatedLift = false;
-        }
+        // if (collision.gameObject.GetComponent<LiftActivated>())
+        // {
+        //    // activatedLift = true;
+        //     textMoveHelp.Texting("E - Запуск");
+        //     textMoveHelp.FulText(true);
+        // }
+        // else
+        // {
+        //     //activatedLift = false;
+        // }
 
-        if (collision.gameObject.GetComponent<CallLift>() & Input.GetKeyDown(KeyCode.E) & liftActivated.LiftPositionDown == true)
-        {
-            lever.Play();
-            liftActivated.ActivatedLift("Activated", false);
-            StartCoroutine(LiftPositionUp());
-           // callLift.Play();
-        }
+        // if (collision.gameObject.GetComponent<CallLift>() & Input.GetKeyDown(KeyCode.E) & liftActivated.LiftPositionDown == true)
+        // {
+        //     lever.Play();
+        //     //liftActivated.ActivatedLift("Activated", false);
+        //     StartCoroutine(LiftPositionUp());
+        //    // callLift.Play();
+        // }
 
         if (Input.GetKeyDown(KeyCode.E) & activatedMost == true)
         {
@@ -140,18 +153,18 @@ public class UsedObjects : MonoBehaviour
             // activateMost.Play();
         }
 
-        if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
-        {
-            liftActivated.ActivatedLift("Activated", true);
-            StartCoroutine(LiftPositionDown());
-            StartCoroutine(JamesSound());
-        }
+        // if (Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == false)
+        // {
+        //     liftActivated.ActivatedLift("Activated", true);
+        //     StartCoroutine(LiftPositionDown());
+        //     StartCoroutine(JamesSound());
+        // }
 
-        if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
-        {
-            liftActivated.ActivatedLift("Activated", false);
-            StartCoroutine(LiftPositionUp());
-        }
+        // if(Input.GetKeyDown(KeyCode.E) & activatedLift == true & liftActivated.LiftPositionDown == true)
+        // {
+        //     liftActivated.ActivatedLift("Activated", false);
+        //     StartCoroutine(LiftPositionUp());
+        // }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -200,17 +213,17 @@ public class UsedObjects : MonoBehaviour
         }
     }
 
-    private IEnumerator LiftPositionDown()
-    {
-        yield return new WaitForSeconds(10);
-        liftActivated.LiftDown();
-    }
+    // private IEnumerator LiftPositionDown()
+    // {
+    //     yield return new WaitForSeconds(10);
+    //     liftActivated.LiftDown();
+    // }
 
-    private IEnumerator LiftPositionUp()
-    {
-        yield return new WaitForSeconds(10);
-        liftActivated.LiftUp();
-    }
+    // private IEnumerator LiftPositionUp()
+    // {
+    //     yield return new WaitForSeconds(10);
+    //     liftActivated.LiftUp();
+    // }
 
     private IEnumerator JamesSound()
     {
